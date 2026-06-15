@@ -1,0 +1,1461 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>پروپوزال سامانهٔ هوشمند امنیت و نگهبانی — نگاهبان</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+
+:root{
+  --navy:#0F2A4A; --navy-deep:#081B30; --navy-2:#163a63;
+  --cyan:#15B5CB; --cyan-bright:#4dd7e6; --cyan-soft:#e8f8fb;
+  --green:#23A65B; --green-soft:#e9f7ef;
+  --red:#E23B3B; --red-soft:#fdecec;
+  --amber:#E8A317; --amber-soft:#fdf3e1;
+  --ink:#16202B; --muted:#5B6B7A; --line:#E2E8EF;
+  --bg:#EDF1F6; --surface:#ffffff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:'Vazirmatn',Tahoma,sans-serif;
+  background:var(--bg); color:var(--ink);
+  line-height:2; font-size:15.5px; -webkit-font-smoothing:antialiased;
+}
+.doc{max-width:880px;margin:28px auto;background:var(--surface);
+  box-shadow:0 12px 40px rgba(15,42,74,.13);border-radius:6px;overflow:hidden}
+.logo-svg{display:block;width:100%;height:100%}
+
+/* ---------- صفحات تمام‌صفحه ---------- */
+.sheet{padding:64px 60px;min-height:920px;display:flex;flex-direction:column}
+
+/* جلد */
+.cover{
+  position:relative;justify-content:center;align-items:center;text-align:center;
+  background:radial-gradient(1100px 600px at 50% 18%, #1c4a7a 0%, var(--navy) 42%, var(--navy-deep) 100%);
+  color:#fff;overflow:hidden;
+}
+.cover::before{content:"";position:absolute;inset:0;opacity:.16;
+  background-image:radial-gradient(rgba(77,215,230,.6) 1px, transparent 1.4px);
+  background-size:26px 26px;}
+.cover-glow{position:absolute;top:8%;left:50%;transform:translateX(-50%);
+  width:360px;height:360px;border-radius:50%;
+  background:radial-gradient(circle, rgba(77,215,230,.30), transparent 62%);filter:blur(8px)}
+.cover-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+.cover-logo{width:140px;height:160px;margin-bottom:22px;filter:drop-shadow(0 10px 24px rgba(0,0,0,.35))}
+.wordmark{font-size:62px;font-weight:900;letter-spacing:-1px;line-height:1}
+.wordmark-lat{font-size:15px;letter-spacing:7px;color:var(--cyan-bright);margin-top:8px;font-weight:600}
+.cover-rule{width:84px;height:3px;background:var(--cyan);border-radius:2px;margin:26px 0}
+.cover-title{font-size:25px;font-weight:700;margin:0;max-width:560px;line-height:1.7;color:#eaf3fb}
+.cover-slogan{margin-top:18px;font-size:17px;color:var(--cyan-bright);font-weight:600}
+.cover-foot{position:absolute;bottom:40px;left:0;right:0;z-index:2;text-align:center;color:#aecbe6;font-size:13.5px;letter-spacing:.5px}
+.cover-foot .dot{margin:0 12px;color:var(--cyan)}
+
+/* شعار */
+.slogan-sheet{justify-content:center;align-items:center;text-align:center;background:linear-gradient(180deg,#fff, #f5f9fc)}
+.slogan-mark{width:84px;height:96px;margin-bottom:26px}
+.slogan-big{font-size:40px;font-weight:900;color:var(--navy)}
+.slogan-line{width:120px;height:4px;background:var(--cyan);border-radius:3px;margin-top:24px}
+
+/* تصور کنید */
+.imagine-sheet{justify-content:center;background:linear-gradient(180deg,#f7fbfd,#fff)}
+.imagine-kicker{font-size:34px;font-weight:900;color:var(--cyan);margin-bottom:26px;text-align:center}
+.imagine-sheet p{font-size:18px;color:#23354a;margin:0 0 18px;max-width:680px;font-weight:500}
+.imagine-closer{margin-top:18px;font-size:21px;font-weight:800;color:var(--navy);text-align:center}
+
+/* به نام خالق خلاق */
+.ded-sheet{justify-content:center;align-items:center;text-align:center}
+.ded-title{font-size:30px;font-weight:900;color:var(--navy);margin-bottom:28px}
+.ded-sheet p{font-size:18px;color:#34465a;max-width:620px;font-weight:500}
+.ded-values{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;justify-content:center}
+.ded-values span{background:var(--cyan-soft);color:var(--navy);border:1px solid #cfeef4;
+  padding:8px 18px;border-radius:30px;font-weight:700;font-size:14px}
+
+/* فهرست */
+.toc-sheet{min-height:auto}
+.toc-head{display:flex;align-items:center;gap:14px;border-bottom:3px solid var(--navy);padding-bottom:16px;margin-bottom:26px}
+.toc-head .logo-svg{width:38px;height:44px}
+.toc-head h2{margin:0;font-size:28px;color:var(--navy);font-weight:800}
+.toc-group{margin-bottom:18px}
+.toc-chap{font-size:15px;font-weight:800;color:var(--cyan);background:var(--cyan-soft);
+  display:inline-block;padding:5px 14px;border-radius:6px;margin-bottom:8px}
+.toc-group ul{list-style:none;margin:0;padding:0}
+.toc-group li a{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);
+  padding:6px 4px;border-bottom:1px dotted #d9e2ec}
+.toc-n{width:26px;height:26px;flex:none;border-radius:50%;background:var(--navy);color:#fff;
+  font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.toc-t{font-weight:600}
+.toc-dots{flex:1}
+.toc-group li a:hover .toc-t{color:var(--cyan)}
+.toc-note{color:var(--muted);font-size:12.5px;margin-top:18px}
+
+/* جداکنندهٔ فصل */
+.chapter-divider{min-height:760px;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(800px 480px at 50% 40%, #1c4a7a, var(--navy) 55%, var(--navy-deep));
+  color:#fff;text-align:center;position:relative;padding:40px}
+.chapter-divider::before{content:"";position:absolute;inset:0;opacity:.14;
+  background-image:radial-gradient(rgba(77,215,230,.6) 1px, transparent 1.4px);background-size:26px 26px}
+.cd-inner{position:relative;z-index:2}
+.cd-mark{width:92px;height:104px;margin:0 auto 22px}
+.cd-num{font-size:18px;letter-spacing:8px;color:var(--cyan-bright);font-weight:700;margin-bottom:10px}
+.cd-title{font-size:46px;font-weight:900}
+
+/* ---------- صفحات محتوا ---------- */
+.content-page{padding:46px 60px 30px}
+.run-head{display:flex;align-items:center;gap:10px;margin-bottom:28px}
+.rh-logo{width:22px;height:25px;flex:none}
+.rh-title{font-size:11.5px;color:var(--muted);font-weight:600;white-space:nowrap}
+.rh-rule{flex:1;height:1px;background:linear-gradient(90deg,var(--cyan),var(--line))}
+
+.sec-head{margin-bottom:18px}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:1px;color:var(--cyan);margin-bottom:6px}
+.sec-head h2{margin:0;font-size:25px;font-weight:800;color:var(--navy)}
+.sec-underline{display:block;width:54px;height:3px;background:var(--cyan);border-radius:2px;margin-top:10px}
+
+.sec-body p{margin:0 0 14px;text-align:justify}
+.lead{font-size:19px!important;font-weight:700;color:var(--navy)}
+h3{font-size:17px;color:var(--navy);font-weight:800;margin:22px 0 12px;display:flex;align-items:center;gap:8px}
+h3::before{content:"";width:9px;height:9px;background:var(--cyan);
+  transform:rotate(45deg);border-radius:2px;flex:none}
+
+/* لیست‌ها */
+ul.bullets{list-style:none;margin:0 0 14px;padding:0}
+ul.bullets li{position:relative;padding-right:26px;margin-bottom:9px;text-align:justify}
+ul.bullets li::before{content:"";position:absolute;right:2px;top:11px;width:9px;height:9px;
+  background:var(--cyan);transform:rotate(45deg);border-radius:2px}
+ol.numbers{list-style:none;margin:0 0 14px;padding:0;counter-reset:n}
+ol.numbers li{position:relative;padding-right:38px;margin-bottom:10px;counter-increment:n;text-align:justify}
+ol.numbers li::before{content:counter(n);position:absolute;right:0;top:2px;width:26px;height:26px;
+  background:var(--navy);color:#fff;border-radius:50%;font-size:12.5px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+
+/* یادداشت */
+.note{background:var(--cyan-soft);border-right:4px solid var(--cyan);border-radius:8px;
+  padding:14px 18px;margin:16px 0;color:#1d3a4e;font-weight:500}
+blockquote{margin:20px 0;padding:18px 22px;background:linear-gradient(90deg,#f4f8fc,transparent);
+  border-right:4px solid var(--navy);border-radius:8px;font-size:18px;font-weight:700;color:var(--navy)}
+
+/* جدول‌ها */
+.table-wrap{overflow-x:auto;margin:16px 0}
+table.grid,table.stats,table.kv{width:100%;border-collapse:collapse;font-size:14.5px}
+table.grid th,table.stats th{background:var(--navy);color:#fff;padding:11px 12px;font-weight:700;text-align:right}
+table.grid td,table.stats td{padding:10px 12px;border-bottom:1px solid var(--line)}
+table.grid tbody tr:nth-child(even),table.stats tbody tr:nth-child(even){background:#f6f9fc}
+table.stats .s-num{color:var(--navy);font-weight:800;white-space:nowrap}
+table.stats .s-title{font-weight:700}
+table.kv th{background:#f1f6fb;color:var(--navy);text-align:right;width:30%;padding:11px 14px;
+  font-weight:800;border-bottom:1px solid var(--line);vertical-align:top}
+table.kv td{padding:11px 14px;border-bottom:1px solid var(--line)}
+
+/* کارت‌ها */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:18px 0}
+.card{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;
+  display:flex;flex-direction:column}
+.card-head{background:var(--navy);color:#fff;padding:14px;text-align:center}
+.card-title{font-size:16px;font-weight:800}
+.card-sub{font-size:11.5px;color:var(--cyan-bright);margin-top:3px;direction:ltr}
+.card-desc{padding:12px 14px 0;margin:0;font-size:13.5px;color:#34465a;text-align:justify}
+.card-col{padding:10px 14px}
+.tag{display:inline-block;padding:3px 12px;border-radius:20px;font-size:12px;font-weight:800;margin-bottom:6px}
+.tag-pro{background:var(--green-soft);color:var(--green)}
+.tag-con{background:var(--red-soft);color:var(--red)}
+.card-col ul{list-style:none;margin:0;padding:0}
+.card-col.pros li,.card-col.cons li{position:relative;padding-right:20px;font-size:13px;margin-bottom:5px}
+.card-col.pros li::before{content:"✓";position:absolute;right:0;color:var(--green);font-weight:800}
+.card-col.cons li::before{content:"!";position:absolute;right:3px;color:var(--red);font-weight:800}
+
+/* مراحل */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+.step{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line);
+  border-radius:12px;padding:14px;background:#fbfdff}
+.step-n{width:36px;height:36px;flex:none;border-radius:10px;background:var(--cyan-soft);
+  color:var(--navy);font-weight:900;font-size:16px;display:flex;align-items:center;justify-content:center;
+  border:1.5px solid #bfe7ee}
+.step-t{font-weight:800;color:var(--navy);font-size:14.5px;margin-bottom:3px}
+.step-d{font-size:12.5px;color:#475a6c;line-height:1.7}
+
+/* ویژگی‌ها */
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+.feat{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff}
+.feat-t{font-weight:800;color:#fff;background:var(--cyan);display:inline-block;
+  padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:10px}
+.feat ul{list-style:none;margin:0;padding:0}
+.feat li{position:relative;padding-right:18px;font-size:13px;margin-bottom:6px}
+.feat li::before{content:"";position:absolute;right:2px;top:9px;width:7px;height:7px;
+  background:var(--navy);transform:rotate(45deg)}
+
+/* پالت رنگ */
+.palette{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:18px 0}
+.swatch{text-align:center}
+.chip{height:96px;border-radius:12px;display:flex;align-items:flex-end;justify-content:center;
+  padding-bottom:8px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.hex{background:rgba(255,255,255,.92);color:#16202b;font-size:11px;font-weight:800;
+  padding:2px 8px;border-radius:20px;direction:ltr;letter-spacing:.5px}
+.sw-name{font-weight:800;font-size:13px;color:var(--navy);margin-top:8px}
+.sw-note{font-size:11.5px;color:#566778;line-height:1.7;margin-top:3px}
+
+/* پایان و تماس */
+.closing-sheet{justify-content:center;align-items:center;text-align:center;background:linear-gradient(180deg,#f7fbfd,#fff)}
+.closing-mark{width:86px;height:98px;margin-bottom:22px}
+.closing-title{font-size:32px;color:var(--navy);font-weight:900;margin:0 0 22px}
+.closing-sheet p{font-size:17.5px;color:#34465a;max-width:640px;font-weight:500}
+.closing-sign{margin-top:26px;font-size:18px;font-weight:800;color:var(--cyan)}
+.contact-sheet{justify-content:center;align-items:center;background:radial-gradient(700px 420px at 50% 40%,#1c4a7a,var(--navy) 60%,var(--navy-deep));color:#fff;text-align:center}
+.contact-logo{width:84px;height:96px;margin:0 auto 18px}
+.contact-name{font-size:23px;font-weight:900;margin-bottom:18px}
+.contact-rows{font-size:14.5px;color:#bdd6ee;line-height:2.2}
+.contact-rows div{direction:ltr}
+.contact-slogan{margin-top:22px;color:var(--cyan-bright);font-weight:700;font-size:16px}
+
+/* ---------- موبایل ---------- */
+@media (max-width:760px){
+  .sheet,.content-page{padding:34px 22px}
+  .cards,.steps,.feats,.palette{grid-template-columns:1fr}
+  .palette{grid-template-columns:repeat(2,1fr)}
+  .wordmark{font-size:46px}.cover-title{font-size:20px}.cd-title{font-size:34px}
+  .slogan-big{font-size:30px}
+}
+
+/* ---------- چاپ / PDF ---------- */
+@page{size:A4;margin:16mm 14mm;
+  @bottom-center{content:counter(page);color:#5B6B7A;font-size:10pt}}
+@media print{
+  body{background:#fff}
+  .doc{box-shadow:none;margin:0;max-width:none;border-radius:0}
+  .sheet,.content-page{min-height:auto;padding:0}
+  .cover,.chapter-divider,.slogan-sheet,.imagine-sheet,.ded-sheet,.toc-sheet,.closing-sheet,.contact-sheet,.content-page{
+    page-break-before:always;break-before:page}
+  .cover{page-break-before:avoid;break-before:auto}
+  .cover,.chapter-divider,.contact-sheet,.closing-sheet,.slogan-sheet,.imagine-sheet,.ded-sheet{
+    min-height:247mm;display:flex}
+  .cover *,.chapter-divider *,.contact-sheet *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .card,.step,.feat,.swatch,blockquote,.note,table{break-inside:avoid}
+  .run-head{margin-bottom:14px}
+}
+
+</style>
+</head>
+<body>
+<div class="doc">
+<section class="sheet cover">
+    <div class="cover-glow"></div>
+    <div class="cover-inner">
+      <div class="cover-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></div>
+      <div class="wordmark">نگاهبان</div>
+      <div class="wordmark-lat">NEGAHBAN</div>
+      <div class="cover-rule"></div>
+      <h1 class="cover-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی</h1>
+      <div class="cover-slogan">«پیش به سوی امنیتی هوشمند»</div>
+    </div>
+    <div class="cover-foot"><span>خرداد ۱۴۰۵</span><span class="dot">•</span><span>www.negahban.ir</span></div>
+  </section>
+<section class="sheet slogan-sheet">
+    <div class="slogan-mark"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></div>
+    <div class="slogan-big">پیش به سوی امنیتی هوشمند</div>
+    <div class="slogan-line"></div>
+  </section>
+<section class="sheet imagine-sheet">
+    <div class="imagine-kicker">تصور کنید !</div>
+    <p>این بار به‌جای آنکه نیمه‌شب نگران غیبت نگهبان یا باز ماندن یک درِ پشتی باشید، خیالتان آسوده است؛ چون چشمی هوشمند بی‌وقفه مراقب است.</p><p>تصور کنید هر تردد مجاز و غیرمجاز در محوطه، در همان لحظه شناسایی، ثبت و در صورت لزوم اعلام خطر شود.</p><p>فکرش را بکنید! موقعیت دقیق هر نگهبان، طبقه‌به‌طبقه و اتاق‌به‌اتاق، روی نقشه پیش چشم شما باشد و اگر کسی از محدودهٔ خود خارج شد یا بدون اطلاع جایگزین شد، بلافاصله بدانید.</p><p>چه می‌شد اگر امنیت، نه یک هزینهٔ مبهم، بلکه یک سامانهٔ شفاف، قابل‌اندازه‌گیری و در اختیار شما بود؟</p>
+    <div class="imagine-closer">همهٔ این تصورات با «نگاهبان» شدنی‌ست.</div>
+  </section>
+<section class="sheet ded-sheet">
+    <div class="ded-title">به نام خالق خلاق</div>
+    <p>در این طرح، ما شما را در جریان تمام نکات ریز و درشت این پروژه قرار خواهیم داد؛ زیرا باور داریم آگاهی، شفافیت به همراه دارد و شفافیت، رضایتمندی و مهم‌تر از همه، آرامش خاطر شما را به دنبال دارد.</p>
+    <div class="ded-values"><span>شفافیت</span><span>آگاهی</span><span>اعتماد</span><span>آرامش خاطر</span></div>
+  </section>
+<section class="sheet toc-sheet">
+    <div class="toc-head"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg><h2>فهرست مطالب</h2></div>
+    <div class="toc-group"><div class="toc-chap">فصل یک — دربارۀ ما</div><ul><li><a href="#about-us"><span class="toc-n">1</span><span class="toc-t">دربارۀ ما</span><span class="toc-dots"></span></a></li><li><a href="#about-doc"><span class="toc-n">2</span><span class="toc-t">دربارۀ این سند</span><span class="toc-dots"></span></a></li><li><a href="#need"><span class="toc-n">3</span><span class="toc-t">شرح نیاز</span><span class="toc-dots"></span></a></li><li><a href="#goal"><span class="toc-n">4</span><span class="toc-t">هدف از پلتفرم نگاهبان</span><span class="toc-dots"></span></a></li><li><a href="#scope"><span class="toc-n">5</span><span class="toc-t">اجرای پروژه در یک نگاه</span><span class="toc-dots"></span></a></li><li><a href="#delivery-models"><span class="toc-n">6</span><span class="toc-t">راهکارهای رایج عرضهٔ سامانه</span><span class="toc-dots"></span></a></li><li><a href="#stats"><span class="toc-n">7</span><span class="toc-t">آمارهای عددی</span><span class="toc-dots"></span></a></li><li><a href="#base-features"><span class="toc-n">8</span><span class="toc-t">ویژگی‌های پایهٔ سامانهٔ نگاهبان</span><span class="toc-dots"></span></a></li><li><a href="#workflow"><span class="toc-n">9</span><span class="toc-t">فرآیند انجام کار</span><span class="toc-dots"></span></a></li><li><a href="#hw"><span class="toc-n">10</span><span class="toc-t">پیش‌نیازهای سخت‌افزاری</span><span class="toc-dots"></span></a></li><li><a href="#sw"><span class="toc-n">11</span><span class="toc-t">پیش‌نیازهای نرم‌افزاری</span><span class="toc-dots"></span></a></li><li><a href="#data"><span class="toc-n">12</span><span class="toc-t">نگهداری داده‌ها و اطلاعات</span><span class="toc-dots"></span></a></li><li><a href="#advanced"><span class="toc-n">13</span><span class="toc-t">امکانات پیشرفتهٔ سامانهٔ نگاهبان</span><span class="toc-dots"></span></a></li><li><a href="#ai-face"><span class="toc-n">14</span><span class="toc-t">هوش مصنوعی و تشخیص چهره</span><span class="toc-dots"></span></a></li><li><a href="#zone"><span class="toc-n">15</span><span class="toc-t">زون‌بندی و کنترل تردد</span><span class="toc-dots"></span></a></li><li><a href="#tag"><span class="toc-n">16</span><span class="toc-t">تگ امنیتی و مکان‌یابی دقیق نگهبان</span><span class="toc-dots"></span></a></li><li><a href="#behavior"><span class="toc-n">17</span><span class="toc-t">تحلیل الگوی رفتاری و کشف جایگزینی</span><span class="toc-dots"></span></a></li><li><a href="#diagram"><span class="toc-n">18</span><span class="toc-t">دیاگرام تولید و چرخهٔ توسعه</span><span class="toc-dots"></span></a></li><li><a href="#ui-stages"><span class="toc-n">19</span><span class="toc-t">مراحل طراحی ظاهری اپلیکیشن و پنل</span><span class="toc-dots"></span></a></li><li><a href="#package"><span class="toc-n">20</span><span class="toc-t">بستهٔ پیشنهادی ما</span><span class="toc-dots"></span></a></li><li><a href="#scalability"><span class="toc-n">21</span><span class="toc-t">مقیاس‌پذیری و انواع پنل مشتری</span><span class="toc-dots"></span></a></li><li><a href="#timeline"><span class="toc-n">22</span><span class="toc-t">زمان‌بندی اجرای پروژه</span><span class="toc-dots"></span></a></li><li><a href="#nda"><span class="toc-n">23</span><span class="toc-t">حفظ محرمانگی و عدم افشای اطلاعات</span><span class="toc-dots"></span></a></li><li><a href="#ip"><span class="toc-n">24</span><span class="toc-t">مالکیت مادی و معنوی</span><span class="toc-dots"></span></a></li><li><a href="#tech"><span class="toc-n">25</span><span class="toc-t">تکنولوژی‌های مورد استفاده در نگاهبان</span><span class="toc-dots"></span></a></li><li><a href="#monitoring"><span class="toc-n">26</span><span class="toc-t">نظارت و کنترل بهبود خدمات</span><span class="toc-dots"></span></a></li><li><a href="#risks"><span class="toc-n">27</span><span class="toc-t">ریسک‌های پروژه</span><span class="toc-dots"></span></a></li><li><a href="#post"><span class="toc-n">28</span><span class="toc-t">خدمات قابل ارائه پس از اجرای پروژه</span><span class="toc-dots"></span></a></li></ul></div><div class="toc-group"><div class="toc-chap">فصل دوم — بوم مدل کسب‌وکار</div><ul><li><a href="#bmc"><span class="toc-n">29</span><span class="toc-t">بوم مدل کسب‌وکار پلتفرم نگاهبان</span><span class="toc-dots"></span></a></li><li><a href="#swot"><span class="toc-n">30</span><span class="toc-t">فرصت‌ها و تهدیدها</span><span class="toc-dots"></span></a></li><li><a href="#audience"><span class="toc-n">31</span><span class="toc-t">مخاطبان هدف</span><span class="toc-dots"></span></a></li><li><a href="#market-need"><span class="toc-n">32</span><span class="toc-t">نیاز موجود در بازار</span><span class="toc-dots"></span></a></li><li><a href="#marketing"><span class="toc-n">33</span><span class="toc-t">بازاریابی و تبلیغات</span><span class="toc-dots"></span></a></li><li><a href="#final-features"><span class="toc-n">34</span><span class="toc-t">امکانات نهایی</span><span class="toc-dots"></span></a></li><li><a href="#biz-model"><span class="toc-n">35</span><span class="toc-t">مدل تجاری</span><span class="toc-dots"></span></a></li><li><a href="#cost"><span class="toc-n">36</span><span class="toc-t">ساختار هزینه</span><span class="toc-dots"></span></a></li><li><a href="#specialists"><span class="toc-n">37</span><span class="toc-t">ساختار کامل متخصصان و تخصص‌های مورد نیاز</span><span class="toc-dots"></span></a></li><li><a href="#workforce"><span class="toc-n">38</span><span class="toc-t">رسته‌های نیروی کار</span><span class="toc-dots"></span></a></li><li><a href="#architecture"><span class="toc-n">39</span><span class="toc-t">معماری سیستم و زیرساخت</span><span class="toc-dots"></span></a></li><li><a href="#revenue"><span class="toc-n">40</span><span class="toc-t">منابع درآمدی</span><span class="toc-dots"></span></a></li><li><a href="#conclusion"><span class="toc-n">41</span><span class="toc-t">نتیجه‌گیری</span><span class="toc-dots"></span></a></li></ul></div><div class="toc-group"><div class="toc-chap">فصل سوم — هویت بصری</div><ul><li><a href="#identity-story"><span class="toc-n">42</span><span class="toc-t">اینگونه شکل گرفت</span><span class="toc-dots"></span></a></li><li><a href="#colors"><span class="toc-n">43</span><span class="toc-t">رنگ‌های انتخابی ما</span><span class="toc-dots"></span></a></li><li><a href="#why-cyan"><span class="toc-n">44</span><span class="toc-t">چرا فیروزه‌ای؟</span><span class="toc-dots"></span></a></li><li><a href="#logo-font"><span class="toc-n">45</span><span class="toc-t">مدل‌های لوگو و فونت</span><span class="toc-dots"></span></a></li><li><a href="#preview"><span class="toc-n">46</span><span class="toc-t">پیش‌نمایش اپلیکیشن و داشبورد</span><span class="toc-dots"></span></a></li></ul></div>
+    <p class="toc-note">شماره‌گذاری صفحات در نسخهٔ چاپی/PDF نمایش داده می‌شود.</p>
+  </section>
+<section class="chapter-divider">
+        <div class="cd-inner"><div class="cd-mark"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></div><div class="cd-num">فصل یک</div><div class="cd-title">دربارۀ ما</div></div>
+      </section><section class="content-page" id="about-us">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>دربارۀ ما</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>با گسترش روزافزون فناوری‌های نوین و افزایش اهمیت امنیت فیزیکی در ساختمان‌ها، سازمان‌ها و زیرساخت‌های حساس، نیاز به راهکاری بومی، هوشمند و یکپارچه بیش از هر زمان دیگری احساس می‌شود. شیوه‌های سنتیِ نگهبانی، که عمدتاً بر دفترچهٔ ورود و خروج، نظارت چشمیِ محدود و اعتماد صرف استوارند، دیگر پاسخگوی تهدیدهای امروز نیستند.</p>
+<p>ما گروهی از متخصصان نرم‌افزار، هوش مصنوعی، شبکه و امنیت فیزیکی هستیم که با هدف ایرانی امن و آسوده، گرد هم آمده‌ایم. با بررسی دقیق و نکته‌به‌نکتهٔ مشکلات حوزهٔ حفاظت و نگهبانی، و با تکیه بر دانش فنی و تجربهٔ اجرای پروژه‌های مشابه، به راهکاری رسیدیم که آن را در قالب پلتفرمی با نام «نگاهبان» طراحی کردیم تا حلقهٔ گم‌شدهٔ میان نیروی انسانی، دوربین و سامانهٔ مدیریت باشد.</p>
+<p>نگاهبان زاییدهٔ یک باور است: امنیت واقعی زمانی شکل می‌گیرد که «انسان» و «هوشمندی ماشین» در کنار هم و در یک بستر شفاف کار کنند. ما این پلتفرم را به‌گونه‌ای ساخته‌ایم که از یک لابیِ کوچک مسکونی تا یک مرکز حساس و نظامی، در هر مقیاسی قابل استقرار باشد.</p></div>
+  </section>
+<section class="content-page" id="about-doc">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>دربارۀ این سند</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>این سند، پیشنهاد و ارائهٔ ما برای توسعه و استقرار پلتفرمی با نام «نگاهبان» است. در این سند، جزئیات کاملی از اهداف، ویژگی‌ها، مراحل اجرای پروژه، هزینه‌ها، شرایط پرداخت و سایر جوانب مرتبط با توسعهٔ این پلتفرم را ارائه کرده‌ایم.</p>
+<p>هدف این سند، ارتباطی شفاف میان ما و شما به‌منظور درک بهتر نیازها و خواسته‌های شما در ایجاد سامانهٔ مورد نظر است. این طرح کمکی است در جهت شفافیت و آگاه‌سازی شما، تا با اطمینان خاطر هر چه تمام‌تر برای شروع داستان پروژهٔ خود تصمیم‌گیری نمایید.</p>
+<p>این پروپوزال یک سند فنی و رسمی با تشریح تمامی جوانب و جزئیات پروژهٔ پیشنهادی است و حقوق آن متعلق به تیم «نگاهبان» است؛ لذا از انتشار آن نزد افراد ثالث بدون هماهنگی خودداری فرمایید.</p>
+<div class="note">این سند، درک روشنی از راهکار پیشنهادی ما برای هوشمندسازی حفاظت فیزیکی، مدیریت نیروی نگهبانی و کنترل تردد ایجاد می‌کند و چارچوب، ویژگی‌ها، مزایا، جنبه‌های فنی و برنامهٔ پیاده‌سازی آن را تشریح می‌نماید.</div></div>
+  </section>
+<section class="content-page" id="need">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>شرح نیاز</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p class="lead">آیا شما به این راهکار نیاز دارید؟</p>
+<p>حفاظت فیزیکی، امروز دیگر به معنای حضور صرفِ چند نیرو در یک نقطه نیست. در نبودِ یک سامانهٔ یکپارچه، مدیران با مجموعه‌ای از نقاط کور روبه‌رو هستند: نمی‌دانند نگهبان واقعاً کجاست، آیا مسیر گشت را کامل طی کرده، چه کسی وارد محوطه شده و آیا رویدادی که دیشب رخ داده، اصلاً ثبت شده است یا نه. «نگاهبان» دقیقاً برای پر کردن همین نقاط کور طراحی شده است.</p>
+<h3>مشکلات و چالش‌های روش‌های سنتی</h3>
+<ul class="bullets"><li>ثبت دستی و قابل‌دستکاریِ ورود و خروج نگهبان‌ها</li><li>نبود اطمینان از حضور واقعی نگهبان در محل و در ساعت مقرر</li><li>ناتوانی در پایش مسیر گشت‌زنی و پوشش کامل محیط</li><li>تشخیص دیرهنگام یا ثبت‌نشدهٔ ورود افراد غیرمجاز</li><li>نبود گزارشِ دقیق و قابل‌استناد از رویدادها و کارکرد نیروها</li><li>امکان جایگزینی نگهبان بدون اطلاع کارفرما</li><li>پراکندگی دوربین‌ها، تردد و نیروی انسانی در سامانه‌های مجزا و ناهماهنگ</li><li>وابستگی به راهکارهای خارجی و نگرانی از حریم خصوصی و دادهٔ حساس</li></ul>
+<h3>راهکار ما</h3>
+<p>نگاهبان همهٔ این چالش‌ها را در یک بستر واحد حل می‌کند: حضوروغیاب زیست‌سنجشی (چهره و اثر انگشت) مقیّد به زمان و مکان، پایش زندهٔ موقعیت نیروها روی نقشه، تعریف محدودهٔ عملیاتی و هشدارِ خروج از آن، زون‌بندی و کنترل تردد با ثبت ورود مجاز و اعلام ورود غیرمجاز، تشخیص چهرهٔ افراد مجاز/غیرمجاز با هوش مصنوعی، تحلیل الگوی رفتاری نیرو و کشف جایگزینی پنهانی، و گزارش‌گیری کامل از کارکرد و رویدادها — همگی به‌صورت بومی، امن و قابل‌اعتماد.</p>
+<p>به بیان دیگر، نگاهبان یک «اتاق فرمان امنیتیِ» همراه شماست که در هر لحظه می‌داند چه کسی، کجا و با چه دسترسی‌ای حضور دارد.</p></div>
+  </section>
+<section class="content-page" id="goal">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>هدف از پلتفرم نگاهبان</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>هدف این پلتفرم آن است که به شما کمک کند حفاظت از محیط، دارایی و افراد خود را به بالاترین سطح ممکن برسانید و در عین حال، کنترل کامل و شفاف بر عملکرد نیروهای نگهبانی داشته باشید. نگاهبان بستری امن و یکپارچه فراهم می‌کند که در آن نیروی انسانی، دوربین‌های هوشمند و تگ‌های مکان‌یاب در کنار هم کار می‌کنند.</p>
+<ul class="bullets"><li>نوع پنل و مجموعهٔ خدمات را بر اساس نیاز و مقیاس مجموعهٔ خود انتخاب کنید.</li><li>از حضور واقعی، به‌موقع و در محلِ صحیحِ نیروها مطمئن شوید.</li><li>ورود و خروج هر فرد به هر زون را به‌صورت مجاز ثبت و موارد غیرمجاز را بلافاصله دریافت کنید.</li><li>با هوش مصنوعیِ تشخیص چهره، تهدیدها را پیش از وقوع حادثه شناسایی کنید.</li><li>مسیر و رفتار نیروها را بسنجید و هرگونه انحراف از الگوی عادی را زودهنگام تشخیص دهید.</li><li>ما راهنما و پشتیبان شما در مسیر ساختن یک محیط امن هستیم.</li><li>امنیت پیش و پس از استقرار نگاهبان را با هم مقایسه کنید.</li></ul></div>
+  </section>
+<section class="content-page" id="scope">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>اجرای پروژه در یک نگاه</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>جدول زیر یک ارزیابی اولیه و خطی از اقلامی است که برای اجرای چنین پروژه‌ای لازم و ضروری است و بر اساس تجربهٔ ما در پروژه‌های مشابه اولویت‌بندی شده است. این اقلام توسط شما قابل کم و زیاد شدن است و یک تصویر بزرگ از صفر تا صدِ پروژه به دست می‌دهد.</p>
+<ol class="numbers"><li>توسعهٔ ماژولارِ اپلیکیشن موبایل (نگهبان و مدیر) و سامانهٔ مدیریتی تحت وب، با طراحی لایه‌ای ایمن</li><li>پیاده‌سازی موتور تشخیص چهره و تحلیل ویدئوی بلادرنگ بر پایهٔ هوش مصنوعی</li><li>سامانهٔ مکان‌یابی داخلی (RTLS) و یکپارچه‌سازی تگ‌های امنیتی و اسکنر چهره/اثر انگشت</li><li>موتور زون‌بندی و کنترل دسترسی تردد، تعریف محدودهٔ عملیاتی و قواعد هشدار</li><li>سامانهٔ حضوروغیاب زیست‌سنجشی مقیّد به زمان و لوکیشن شیفت</li><li>داشبورد مانیتورینگ زنده روی نقشه، بازپخش مسیر و گزارش‌سازی پیشرفته</li><li>اتصال به دوربین‌های شبکه (RTSP/ONVIF) و درگاه اعلان (پیامک، اعلان درون‌برنامه‌ای)</li><li>آموزش و راهبری سامانه و انتشار اپلیکیشن در بسترهای موبایل</li><li>گارانتی و پشتیبانی سرویس و ارائهٔ مستندات کامل پروژه</li></ol>
+<p>این جدول، اساس و پایهٔ مشخصات فنیِ ساختار اولیه و استانداردِ ارائهٔ پروژه است؛ به بیان دیگر، طرحی بی‌رنگ از داستان پروژهٔ شماست که علاوه بر انسجام در پیشرفت کار، سبب اشراف شما و کاهش هزینه‌ها در آینده می‌شود.</p></div>
+  </section>
+<section class="content-page" id="delivery-models">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>راهکارهای رایج عرضهٔ سامانه</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>برای استقرار سامانه‌ای مانند نگاهبان، چند معماری وجود دارد که به دلیل هزینه، امنیت، حساسیت داده و سیاست‌های هر سازمان از هم متفاوت‌اند. جدول‌های زیر دیدی کافی از رایج‌ترین روش‌های عرضه در اختیار شما می‌گذارد تا انتخاب آگاهانه‌ای داشته باشید:</p>
+<div class="cards"><div class="card">
+        <div class="card-head"><div class="card-title">استقرار درون‌سازمانی (On-Premise)</div><div class="card-sub">On-Premise Deployment</div></div>
+        <p class="card-desc">تمام سرورها، داده‌ها و پردازش هوش مصنوعی در محل خود سازمان نگهداری می‌شود.</p>
+        <div class="card-col pros"><span class="tag tag-pro">مزایا</span><ul><li>بالاترین سطح امنیت و کنترل داده</li><li>استقلال کامل از اینترنت بیرونی</li><li>مناسب مراکز حساس و نظامی</li><li>حاکمیت کامل بر دادهٔ زیست‌سنجشی</li></ul></div>
+        <div class="card-col cons"><span class="tag tag-con">معایب</span><ul><li>نیاز به زیرساخت سخت‌افزاری در محل</li><li>هزینهٔ اولیهٔ بالاتر</li><li>نگهداری بر عهدهٔ سازمان</li></ul></div>
+      </div><div class="card">
+        <div class="card-head"><div class="card-title">استقرار ابری (Cloud)</div><div class="card-sub">Cloud Deployment</div></div>
+        <p class="card-desc">زیرساخت و پردازش روی فضای ابری امن میزبانی می‌شود.</p>
+        <div class="card-col pros"><span class="tag tag-pro">مزایا</span><ul><li>راه‌اندازی سریع</li><li>هزینهٔ اولیهٔ پایین</li><li>مقیاس‌پذیری آسان</li><li>بدون نیاز به اتاق سرور</li></ul></div>
+        <div class="card-col cons"><span class="tag tag-con">معایب</span><ul><li>وابستگی به اتصال اینترنت</li><li>مناسب‌نبودن برای برخی داده‌های فوق‌حساس</li></ul></div>
+      </div><div class="card">
+        <div class="card-head"><div class="card-title">معماری ترکیبی (Hybrid)</div><div class="card-sub">Hybrid Architecture</div></div>
+        <p class="card-desc">دادهٔ حساس به‌صورت محلی و بخش‌های مقیاس‌پذیر روی ابر اجرا می‌شود.</p>
+        <div class="card-col pros"><span class="tag tag-pro">مزایا</span><ul><li>تعادل امنیت و انعطاف</li><li>بهینه از نظر هزینه</li><li>انطباق با سیاست‌های مختلف</li></ul></div>
+        <div class="card-col cons"><span class="tag tag-con">معایب</span><ul><li>پیچیدگی بیشتر در طراحی</li><li>نیاز به همگام‌سازی دقیق</li></ul></div>
+      </div></div>
+<p>اپلیکیشن موبایل نگاهبان با فریم‌ورک Flutter توسعه می‌یابد تا با یک‌بار کدنویسی، تجربه‌ای یکدست و باکارایی بالا روی هر دو پلتفرم Android و iOS فراهم شود؛ و سامانهٔ مدیریتی به‌صورت تحت‌وب (Web-based) در دسترس است تا از هر نقطه‌ای قابل پایش باشد.</p></div>
+  </section>
+<section class="content-page" id="stats">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>آمارهای عددی</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>اعلام آمارهای عددی، تمرکز و دقت بهتری در خصوص انتخاب راهکارهای مورد نیاز به شما می‌دهد و کمک می‌کند با معیارهای جهانی، اهمیت و ضریب نفوذ این فناوری را بسنجید. آمارهای زیر تخمینی و بر پایهٔ برآوردهای صنعت است و گوشه‌ای از روند روبه‌رشد این حوزه را نشان می‌دهد.</p>
+<div class="table-wrap"><table class="stats"><thead><tr><th>شاخص</th><th>آمار</th><th>توضیح</th></tr></thead><tbody><tr><td class="s-title">دوربین‌های نظارتی فعال در جهان</td><td class="s-num">+۱ میلیارد</td><td>شمار دوربین‌های مداربستهٔ در حال بهره‌برداری در سطح جهان به بیش از یک میلیارد دستگاه می‌رسد</td></tr><tr><td class="s-title">رشد بازار تحلیل ویدئویی هوشمند</td><td class="s-num">دو رقمی سالانه</td><td>بازار Video Analytics و هوش مصنوعیِ نظارتی با نرخ رشد سالانهٔ دو رقمی در حال گسترش است</td></tr><tr><td class="s-title">سهم خطای انسانی در رخدادهای امنیتی</td><td class="s-num">بخش قابل‌توجه</td><td>بخش بزرگی از نقص‌های امنیتی ناشی از خطا، خستگی یا غیبت نیروی انسانی است که هوشمندسازی آن را کاهش می‌دهد</td></tr><tr><td class="s-title">بازار امنیت فیزیکی و کنترل تردد</td><td class="s-num">ده‌ها میلیارد دلار</td><td>بازار جهانی سامانه‌های کنترل دسترسی و حفاظت فیزیکی ابعادی چند ده میلیارد دلاری دارد</td></tr><tr><td class="s-title">دقت موتورهای مدرن تشخیص چهره</td><td class="s-num">بالای ۹۹٪ در شرایط مطلوب</td><td>الگوریتم‌های امروزی در شرایط نوری و تصویری مناسب به دقت بسیار بالایی دست یافته‌اند</td></tr></tbody></table></div>
+<div class="note">اعداد فوق جنبهٔ تخمینی و راهنما دارند و پیش از ارائهٔ نهایی، با منابع و آمار به‌روزِ مرجع جایگزین خواهند شد.</div></div>
+  </section>
+<section class="content-page" id="base-features">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>ویژگی‌های پایهٔ سامانهٔ نگاهبان</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>امکانات سامانه بنا به موضوع و هدف، متفاوت‌اند؛ اما جدای از قابلیت‌های ویژه، مجموعه‌ای از امکانات پایه وجود دارد که انتظار می‌رود در هر سامانهٔ حفاظتیِ هوشمند در اختیار شما باشد:</p>
+<div class="feats"><div class="feat"><div class="feat-t">حضور و هویت</div><ul><li>ورود/خروج با تشخیص چهره و اثر انگشت</li><li>اعتبارسنجی زمان و موقعیت شیفت</li><li>مدیریت نیروها و سطوح دسترسی</li></ul></div><div class="feat"><div class="feat-t">پایش و موقعیت</div><ul><li>نمایش زندهٔ موقعیت روی نقشه</li><li>بازپخش مسیر گشت</li><li>تعریف محدودهٔ عملیاتی</li></ul></div><div class="feat"><div class="feat-t">تردد و دسترسی</div><ul><li>زون‌بندی محیط</li><li>ثبت ورود مجاز</li><li>اعلام ورود غیرمجاز</li></ul></div><div class="feat"><div class="feat-t">هوش مصنوعی</div><ul><li>تشخیص چهرهٔ افراد مجاز/غیرمجاز</li><li>تحلیل ویدئوی بلادرنگ</li><li>گزارش رخدادها</li></ul></div><div class="feat"><div class="feat-t">هشدار و اعلان</div><ul><li>هشدار آنی خروج از محدوده</li><li>اعلان ورود غیرمجاز</li><li>پیامک و اعلان درون‌برنامه‌ای</li></ul></div><div class="feat"><div class="feat-t">گزارش و مدیریت</div><ul><li>کنترل پنل مدیریتی</li><li>گزارش کارکرد و تایم‌بندی</li><li>خروجی گزارش‌ها به فرمت آفیس</li></ul></div></div></div>
+  </section>
+<section class="content-page" id="workflow">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>فرآیند انجام کار</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>جدول فرایند انجام کار، چشم‌اندازی از مراحل و نحوهٔ فعالیت حرفه‌ای ما را در مسیر پیاده‌سازی پروژه ارائه می‌کند. از لحظهٔ تدوین سند نیازمندی‌ها (RFP) تا تحویل نهایی، هر گام به‌دقت تنظیم و شرح داده شده تا آسوده‌خاطر باشید که یک تایم‌لاینِ مهندسی‌شده در کار است.</p>
+<div class="steps"><div class="step"><div class="step-n">۱</div><div class="step-b"><div class="step-t">ارائهٔ پروپوزال</div><div class="step-d">ارائهٔ سندی شبیه همین پروپوزال متناسب با نیاز شما</div></div></div><div class="step"><div class="step-n">۲</div><div class="step-b"><div class="step-t">تنظیم قرارداد</div><div class="step-d">عقد قرارداد پس از تأیید و تکمیل پرسش‌نامه و سایر نیازمندی‌ها</div></div></div><div class="step"><div class="step-n">۳</div><div class="step-b"><div class="step-t">ارائهٔ اطلاعات</div><div class="step-d">تحویل اطلاعات پایه، نقشهٔ محیط، چیدمان دوربین و الزامات امنیتی</div></div></div><div class="step"><div class="step-n">۴</div><div class="step-b"><div class="step-t">انجام مراحل تولید</div><div class="step-d">توسعهٔ سامانه بر مبنای تجزیه و تحلیل‌های انجام‌شده</div></div></div><div class="step"><div class="step-n">۵</div><div class="step-b"><div class="step-t">بررسی و تست</div><div class="step-d">آزمون کارایی، امنیت، تحمل خطا و دقت تشخیص چهره</div></div></div><div class="step"><div class="step-n">۶</div><div class="step-b"><div class="step-t">بهینه‌سازی</div><div class="step-d">ارائهٔ بهبودها جهت پایداری و دقت بیشتر سامانه</div></div></div><div class="step"><div class="step-n">۷</div><div class="step-b"><div class="step-t">عملیات اجرایی و نصب</div><div class="step-d">نصب سرور، دوربین، اسکنر و تگ و راه‌اندازی در محل</div></div></div><div class="step"><div class="step-n">۸</div><div class="step-b"><div class="step-t">آموزش</div><div class="step-d">آموزش راهبری و کاربری برای کارشناسان و مدیران مجموعه</div></div></div><div class="step"><div class="step-n">۹</div><div class="step-b"><div class="step-t">مستندسازی، گارانتی و پشتیبانی</div><div class="step-d">تحویل مستندات و پشتیبانی و گارانتی طبق قرارداد</div></div></div></div></div>
+  </section>
+<section class="content-page" id="hw">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>پیش‌نیازهای سخت‌افزاری</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>هر پروژهٔ حفاظتی، جدا از مستندات و پیش‌نیازهای نرم‌افزاری، به بستر سخت‌افزاری نیز نیاز دارد که بسته به حجم و گستردگی محیط و روش استقرار، باید فراهم گردد. چک‌لیست زیر مهم‌ترین تجهیزات و زیرساخت‌های مورد نیاز است که ممکن است در حین یا پس از اجرا کم یا زیاد شوند:</p>
+<ul class="bullets"><li>سرور پردازش هوش مصنوعی مجهز به GPU برای تحلیل ویدئو و تشخیص چهره</li><li>سرور اپلیکیشن و پایگاه‌داده (فیزیکی رک‌مونت در محل، یا ابری)</li><li>دوربین‌های شبکهٔ تحت‌IP با پشتیبانی از ONVIF/RTSP و توان شب‌دید</li><li>دستگاه‌های اسکنر چهره و اثر انگشت در نقاط ورود/خروج شیفت</li><li>تگ‌های امنیتیِ مکان‌یاب (BLE/UWB) و گیت‌وی‌ها/بیکن‌های مکان‌یابی داخلی</li><li>تجهیزات شبکه (سوئیچ PoE، روتر) و لینک ارتباطی و خط پشتیبان اینترنت</li><li>دستگاه ذخیره‌سازی شبکه (NAS/SAN) برای آرشیو ویدئو و داده</li></ul>
+<p>برای یک محیط کوچک، یک سرور با حداقل سخت‌افزار و تعداد محدودی دوربین کفایت می‌کند؛ اما برای مراکز بزرگ یا حساس، سرور اختصاصیِ پردازش هوش مصنوعی، ارتباطات فیبرنوری و ذخیره‌سازیِ سازمانی اهمیت بیشتری پیدا می‌کند. در هر حال، زیرساخت مناسب، حرف اول را در پایداری و دقت سامانه می‌زند.</p></div>
+  </section>
+<section class="content-page" id="sw">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>پیش‌نیازهای نرم‌افزاری</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>تأمین پیش‌نیازهای نرم‌افزاری، اساسِ کاراییِ بهینهٔ پروژه است. مهم‌ترین نیازمندی‌های نرم‌افزاری عبارت‌اند از:</p>
+<ol class="numbers"><li>سیستم‌عامل سروری (Linux) و محیط اجرای کانتینری (Docker/Kubernetes)</li><li>سامانهٔ مدیریت پایگاه‌داده و حافظهٔ نهانِ بلادرنگ</li><li>زبان‌ها و فریم‌ورک‌های توسعه (Backend و موبایل)</li><li>موتور بینایی ماشین و کتابخانه‌های یادگیری عمیق برای تشخیص چهره</li><li>ابزار مدیریت نسخه، مدیریت پروژه و یکپارچه‌سازی مستمر (CI/CD)</li><li>ابزارهای مانیتورینگ، لاگ و رصد سلامت سرویس‌ها</li><li>ابزارهای امنیت، رمزنگاری و مدیریت دسترسی</li><li>گواهی‌های امنیتی (SSL/TLS) برای ارتباط امن</li></ol></div>
+  </section>
+<section class="content-page" id="data">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>نگهداری داده‌ها و اطلاعات</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>سامانهٔ نگاهبان از لحظهٔ استقرار، حجم قابل‌توجهی داده تولید می‌کند: تصاویر و ویدئوی دوربین‌ها، دادهٔ زیست‌سنجشیِ چهره و اثر انگشت، رویدادهای تردد، مسیر حرکت نیروها و گزارش‌های کارکرد. حفظ و نگهداریِ امنِ این داده‌ها، به‌ویژه به‌دلیل ماهیت حساس و زیست‌سنجشیِ بخشی از آن‌ها، از مهم‌ترین ارکان پروژه است؛ زیرا امنیت داده، مستقیماً اعتماد و آرامش خاطر شما را تضمین می‌کند.</p>
+<h3>چالش‌های مسیر نگهداری اطلاعات</h3>
+<ul class="bullets"><li>تدوین سیاست‌های نگهداری، رمزنگاری و دورهٔ ماندگاری داده</li><li>انتخاب رسانهٔ مناسب برای ذخیره‌سازی و بازگردانی ویدئوی حجیم</li><li>محاسبهٔ ضریب رشد داده و برآورد ظرفیت در بازه‌های زمانی</li><li>کاهش ریسک افشا یا امحای دادهٔ زیست‌سنجشی و رعایت حریم خصوصی</li><li>تست منظمِ نسخه‌های پشتیبان در محیط آزمایشگاهی برای حصول اطمینان</li><li>تفکیک دسترسی به داده بر اساس نقش و سطح محرمانگی</li></ul>
+<p>ما میان «آرشیو» و «پشتیبان‌گیری» تفاوت قائلیم: آرشیو، نگهداری بلندمدت رویدادهاست و پشتیبان‌گیری، فرایند بازگردانی پس از هر خرابی. ترکیب درست این دو، تضمین می‌کند که هیچ رویداد امنیتی از دست نرود و سامانه پس از هر شکستی به حالت پایدار بازگردد. رسانه‌های ذخیره‌سازی شامل دیسک‌های محلی، ذخیره‌سازی شبکه (NAS/SAN) و فضای ابریِ امن خواهند بود.</p></div>
+  </section>
+<section class="content-page" id="advanced">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>امکانات پیشرفتهٔ سامانهٔ نگاهبان</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>نگاهبان، علاوه بر یک هستهٔ ثابت، می‌تواند ده‌ها قابلیت منحصربه‌فرد داشته باشد. در زیر، مهم‌ترین امکانات هسته و ماژول‌های پیشرفتهٔ آن را مشاهده می‌کنید:</p>
+<h3>هستهٔ اصلی</h3>
+<ul class="bullets"><li>داشبورد مدیریتیِ زنده با نقشهٔ تعاملی محیط</li><li>مدیریت نیروها، شیفت‌ها و سطوح دسترسی</li><li>حضوروغیاب زیست‌سنجشی و ثبت دقیق ورود/خروج</li><li>سیستم اعلان و هشدار چندکاناله</li><li>ایجاد، ویرایش و پیکربندی زون‌ها و محدوده‌ها</li><li>جست‌وجوی ساده و پیشرفته در رویدادها</li></ul>
+<h3>ماژول‌های پیشرفته</h3>
+<ul class="bullets"><li>موتور تشخیص چهره و فهرست سفید/سیاهِ افراد</li><li>بازپخش و تحلیل مسیر حرکت نیروها روی نقشه</li><li>تحلیل الگوی رفتاری و کشف ناهنجاری/جایگزینی</li><li>اتصال زندهٔ دوربین‌ها (RTSP/ONVIF) و ضبط رویداد</li><li>مدیریت تگ‌های امنیتی و مکان‌یابی داخلی (RTLS)</li><li>گزارش‌ساز پیشرفته با خروجی به فرمت آفیس و PDF</li><li>اتصال به سامانهٔ کنترل دربِ برقی و راه‌بند (در صورت نیاز)</li><li>صفحهٔ اختصاصی و پروفایل برای هر نیرو</li></ul></div>
+  </section>
+<section class="content-page" id="ai-face">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>هوش مصنوعی و تشخیص چهره</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p class="lead">چشمی که هرگز خسته نمی‌شود.</p>
+<p>قلب تپندهٔ نگاهبان، موتور هوش مصنوعیِ آن است. دوربین‌های متصل به سامانه، تصویر را به‌صورت بلادرنگ تحلیل می‌کنند و چهرهٔ هر فردِ واردشده به محوطه یا ساختمان را با پایگاهِ افراد مجاز می‌سنجند. اگر چهره در فهرست مجاز باشد، ورود به‌صورت خودکار ثبت می‌شود؛ و اگر فردی ناشناس یا در فهرست افراد غیرمجاز شناسایی شود، در همان لحظه گزارش و هشدار صادر می‌گردد.</p>
+<h3>قابلیت‌های موتور هوش مصنوعی</h3>
+<ul class="bullets"><li>تشخیص و تطبیق چهره با فهرست افراد مجاز و غیرمجاز</li><li>ثبت خودکار تردد افراد شناخته‌شده و ساخت گزارش رفت‌وآمد</li><li>هشدار آنی هنگام شناسایی چهرهٔ غیرمجاز یا ناشناس</li><li>احراز هویت نگهبان از طریق چهره، در کنار تگ امنیتی</li><li>تحلیل تصویرِ مقاوم در برابر شرایط مختلف نوری و زاویه</li><li>نگهداری امن و رمزنگاری‌شدهٔ بردارهای چهره با رعایت حریم خصوصی</li></ul>
+<div class="note">تمام پردازشِ چهره می‌تواند به‌صورت درون‌سازمانی و بدون خروج داده از محیط شما انجام شود؛ ویژگی‌ای کلیدی برای مراکز حساس.</div></div>
+  </section>
+<section class="content-page" id="zone">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>زون‌بندی و کنترل تردد</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>هر محیط، نقاط با حساسیت متفاوت دارد: لابی، انبار، اتاق سرور، طبقات اداری یا مناطق ممنوعه. نگاهبان به شما امکان می‌دهد محیط را به «زون»های مجزا تقسیم کنید و برای هر زون، سطح دسترسیِ مشخص تعریف نمایید. ورود مجاز ثبت و ورود غیرمجاز بلافاصله اعلام می‌شود.</p>
+<h3>قابلیت‌های زون‌بندی</h3>
+<ul class="bullets"><li>تعریف نامحدود زون و دسته‌بندی سطوح دسترسی</li><li>تخصیص مجوز ورود/خروج به افراد و نقش‌ها برای هر زون</li><li>ثبت خودکار ورود مجاز همراه با زمان و هویت</li><li>اعلام و ثبت فوریِ ورود غیرمجاز به هر زون</li><li>تعریف محدودهٔ عملیاتی برای هر نگهبان و هشدار خروج از آن</li><li>اتصال زون‌ها به دوربین و درِ کنترلی برای واکنش خودکار</li></ul>
+<p>به این ترتیب، به‌جای یک محیطِ یکپارچه و کنترل‌نشده، شبکه‌ای از فضاهای تعریف‌شده دارید که هرکدام قواعد دسترسی خود را دارند و هر تخطی، ثبت و گزارش می‌شود.</p></div>
+  </section>
+<section class="content-page" id="tag">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>تگ امنیتی و مکان‌یابی دقیق نگهبان</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>نگاهبان از تگ‌های امنیتیِ مکان‌یاب — مشابه AirTag اپل اما با گرید امنیتی — بهره می‌برد تا موقعیت دقیق هر نیرو را، حتی در داخل ساختمان و میان طبقات و اتاق‌ها، به‌صورت زنده روی نقشه نمایش دهد. این تگ‌ها در کنار تشخیص چهرهٔ دوربین، هویت و حضور نیرو را به‌صورت دوعاملی تضمین می‌کنند.</p>
+<h3>آنچه تگ امنیتی فراهم می‌کند</h3>
+<ul class="bullets"><li>مکان‌یابی داخلیِ دقیق (Indoor RTLS) در طبقات و اتاق‌ها</li><li>نمایش زندهٔ موقعیت نیرو روی نقشهٔ محیط</li><li>هشدار آنی در صورت خروج نیرو از محدودهٔ عملیاتی تعیین‌شده</li><li>کنترل دسترسی ورود/خروج به زون‌ها بر اساس مجاورت تگ</li><li>ثبت و بازپخش مسیر حرکت برای بازرسیِ گذشته</li><li>احراز هویت دوعاملی: تگ + تشخیص چهره</li></ul>
+<div class="note">ترکیب تگ مکان‌یاب با هوش مصنوعیِ تصویر، عملاً امکان حضور صوری یا ثبت نادرست را از بین می‌برد.</div></div>
+  </section>
+<section class="content-page" id="behavior">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>تحلیل الگوی رفتاری و کشف جایگزینی</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>یکی از نوآوری‌های نگاهبان، تحلیل الگوی رفتاری نیروهاست. سامانه، مسیر حرکت، ریتم گشت‌زنی، نقاط توقف و رفتار هر نیرو را در طول شیفت می‌آموزد و به‌عنوان «امضای رفتاری» ذخیره می‌کند. سپس رفتار هر روز را با این الگو می‌سنجد.</p>
+<h3>این تحلیل چه می‌کند؟</h3>
+<ul class="bullets"><li>یادگیری و ذخیرهٔ الگوی رفتاری عادی هر نیرو در طول شیفت</li><li>مقایسهٔ رفتار روزانه با الگوی ثبت‌شده برای کشف انحراف</li><li>شناسایی جایگزینیِ پنهان نگهبان بدون اطلاع کارفرما</li><li>تشخیص ناهنجاری مانند توقف غیرعادی، بی‌حرکتی طولانی یا مسیر ناقص</li><li>صدور هشدار هنگام مشاهدهٔ اختلاف معنادار با رفتار عادی</li></ul>
+<p>این قابلیت در کنار حضوروغیاب و تشخیص چهره، لایه‌ای هوشمند می‌افزاید که نه‌تنها «چه کسی» بلکه «چگونه» انجام وظیفه را نیز می‌سنجد.</p></div>
+  </section>
+<section class="content-page" id="diagram">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>دیاگرام تولید و چرخهٔ توسعه</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>پس از تعیین نوع راهکار، تکمیل پرسش‌نامه و ارائهٔ مستندات، مراحل تولید سامانه در یک فرایند مهندسی‌شده به پنج مرحله تقسیم می‌شود:</p>
+<div class="steps"><div class="step"><div class="step-n">۱</div><div class="step-b"><div class="step-t">برنامه‌ریزی (Planning)</div><div class="step-d">تدوین اهداف، نیازمندی‌ها و ویژگی‌های اصلی سامانه و نحوهٔ زون‌بندی</div></div></div><div class="step"><div class="step-n">۲</div><div class="step-b"><div class="step-t">طراحی گرافیکی (UI Design)</div><div class="step-d">طراحی رابط کاربری اپلیکیشن و داشبورد مدیریتی</div></div></div><div class="step"><div class="step-n">۳</div><div class="step-b"><div class="step-t">پیاده‌سازی (Implementation)</div><div class="step-d">کدنویسی، توسعهٔ موتور هوش مصنوعی و اتصال سخت‌افزارها</div></div></div><div class="step"><div class="step-n">۴</div><div class="step-b"><div class="step-t">تست (Testing)</div><div class="step-d">آزمون واحد، یکپارچگی و عملکرد در شرایط واقعی</div></div></div><div class="step"><div class="step-n">۵</div><div class="step-b"><div class="step-t">انتشار (Release)</div><div class="step-d">استقرار روی سرور واقعی، نصب در محل و به‌روزرسانی‌های آتی</div></div></div></div>
+<p>این پنج مرحله در یک چرخهٔ مستمر قرار دارند تا حیات و بهبود پیوستهٔ سامانه تضمین شود. تعامل و همکاری مستمر میان اعضای تیم و کارفرما، در رسیدن به بهترین نتیجه نقشی کلیدی دارد.</p></div>
+  </section>
+<section class="content-page" id="ui-stages">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>مراحل طراحی ظاهری اپلیکیشن و پنل</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>الگوی گرافیکیِ ظاهری، اهمیت بالایی در کاربرپسندی و مقبولیت سامانه دارد؛ به‌ویژه در یک محصول امنیتی که باید سریع، خوانا و بدون ابهام باشد. شما با ارائهٔ یک ایده — حتی روی کاغذ — می‌توانید این مسیر را با ما آغاز کنید و با مشاورهٔ تیم ما، آن را به طرح نهایی برسانید.</p>
+<ol class="numbers"><li>دریافت نمونه‌ها و انتظارات کارفرما</li><li>بررسی و تحلیل طرح‌های کاربرپسند</li><li>ارائهٔ طرح اولیه بر مبنای کلیات و جزئیات به‌دست‌آمده (Sketch)</li><li>طراحی گرافیک رابط و تجربهٔ کاربری بر اساس اتودهای اولیه</li><li>رعایت رنگ‌بندی برند نگاهبان در سراسر پروژه</li><li>طراحی صفحه‌آرایی و توسعهٔ زیرساخت</li><li>تولید نمونهٔ رابط در محیط شبیه‌سازی‌شده (دمو)</li><li>خطایابی و رفع مشکلات گرافیکی و کاربری</li><li>تحویل نهایی و ارجاع به بخش تولید</li></ol></div>
+  </section>
+<section class="content-page" id="package">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>بستهٔ پیشنهادی ما</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>بر اساس تجربهٔ ما، درک مشترکی از نیاز مشتریان داریم؛ از این رو با ارائهٔ یک بستهٔ پیشنهادی، ضمن تسریع در تصمیم‌گیری، هزینه و خدمات را در یک پکیج منسجم در اختیار شما می‌گذاریم. این بسته، نمونه‌ای برای یک محیط کوچک تا متوسط است؛ اگر می‌خواهید با حداقل هزینه و در کوتاه‌ترین زمان به یک سامانهٔ مناسب برسید، این بسته بهترین پیشنهاد است:</p>
+<div class="table-wrap"><table class="grid"><thead><tr><th style="width:10%">ردیف</th><th style="width:64%">شرح امکانات</th><th style="width:26%">مقدار</th></tr></thead><tbody><tr><td>۱</td><td>اپلیکیشن موبایل نگهبان و مدیر با گرافیک اختصاصی</td><td>۱ نسخه</td></tr><tr><td>۲</td><td>سامانهٔ مدیریتی تحت‌وب با داشبورد و نقشهٔ زنده</td><td>۱ نسخه</td></tr><tr><td>۳</td><td>موتور تشخیص چهره و فهرست افراد مجاز/غیرمجاز</td><td>۱ ماژول</td></tr><tr><td>۴</td><td>حضوروغیاب زیست‌سنجشی (چهره و اثر انگشت)</td><td>۱ ماژول</td></tr><tr><td>۵</td><td>زون‌بندی و کنترل تردد</td><td>تا ۵ زون</td></tr><tr><td>۶</td><td>مکان‌یابی نیرو با تگ امنیتی</td><td>تا ۵ تگ</td></tr><tr><td>۷</td><td>گزارش‌ساز و خروجی استاندارد</td><td>۱ نسخه</td></tr><tr><td>۸</td><td>طراحی لوگو و هویت بصری پایه</td><td>۱ مورد</td></tr></tbody></table></div></div>
+  </section>
+<section class="content-page" id="scalability">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>مقیاس‌پذیری و انواع پنل مشتری</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p class="lead">از یک لابی تا یک مرکز حساس.</p>
+<p>نگاهبان به‌گونه‌ای طراحی شده که در مقیاس‌های متفاوت و برای مشتریان گوناگون قابل عرضه باشد. مشتری می‌تواند نوع پنل و مجموعهٔ خدمات دریافتی را متناسب با نیاز و بودجهٔ خود انتخاب کند. سه سطحِ نمونه به شرح زیر است:</p>
+<div class="cards"><div class="card">
+        <div class="card-head"><div class="card-title">پنل پایه</div><div class="card-sub">ساختمان مسکونی / لابی</div></div>
+        <p class="card-desc">برای یک ساختمان مسکونی با یک یا چند ورودی و لابی.</p>
+        <div class="card-col pros"><span class="tag tag-pro">امکانات</span><ul><li>حضوروغیاب نگهبان</li><li>تشخیص چهرهٔ ورودی</li><li>یک تا چند دوربین</li><li>هشدار ورود غیرمجاز</li></ul></div>
+        <div class="card-col cons"><span class="tag tag-con">ملاحظات</span><ul><li>بدون نیاز به زیرساخت سنگین</li><li>استقرار سریع و کم‌هزینه</li></ul></div>
+      </div><div class="card">
+        <div class="card-head"><div class="card-title">پنل سازمانی</div><div class="card-sub">شرکت‌ها و مجتمع‌های اداری</div></div>
+        <p class="card-desc">برای مدیریت کارکنان، چند طبقه و چند زون با کنترل دسترسی.</p>
+        <div class="card-col pros"><span class="tag tag-pro">امکانات</span><ul><li>زون‌بندی و کنترل تردد</li><li>مکان‌یابی نیروها</li><li>تحلیل رفتاری</li><li>گزارش کارکرد کارکنان</li></ul></div>
+        <div class="card-col cons"><span class="tag tag-con">ملاحظات</span><ul><li>نیاز به زیرساخت متوسط</li><li>قابل توسعه و یکپارچه‌سازی</li></ul></div>
+      </div><div class="card">
+        <div class="card-head"><div class="card-title">پنل حفاظتی پیشرفته</div><div class="card-sub">مراکز حساس و نظامی</div></div>
+        <p class="card-desc">برای زیرساخت‌های حیاتی با بالاترین سطح امنیت و حاکمیت داده.</p>
+        <div class="card-col pros"><span class="tag tag-pro">امکانات</span><ul><li>استقرار کاملاً درون‌سازمانی</li><li>احراز هویت دوعاملی</li><li>RTLS دقیق چندطبقه</li><li>بدون وابستگی خارجی</li></ul></div>
+        <div class="card-col cons"><span class="tag tag-con">ملاحظات</span><ul><li>نیاز به زیرساخت اختصاصی</li><li>پیکربندی و امنیت سفارشی</li></ul></div>
+      </div></div>
+<p>این معماریِ پلکانی به شما امکان می‌دهد از سطح پایه آغاز کنید و با رشد نیاز، بدون تغییر بستر، به سطوح بالاتر ارتقا یابید.</p></div>
+  </section>
+<section class="content-page" id="timeline">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>زمان‌بندی اجرای پروژه</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>هیچ پروژه‌ای بدون زمان‌بندی دقیق به سرانجام نمی‌رسد. زمان‌بندی زیر، در مرحلهٔ مطالعهٔ پروپوزال و بر اساس پلان پیشنهادی، تخمینی است؛ پس از عقد قرارداد و در نرم‌افزار مدیریت پروژه به‌صورت واقعی درج و کنترل می‌شود. این زمان‌بندی برای سبک‌سنگین کردن پارامترهای اصلی پروژه (هزینه، محدوده، کیفیت، زمان و ریسک) بسیار ضروری است.</p>
+<div class="table-wrap"><table class="grid"><thead><tr><th style="width:12%">فاز</th><th style="width:64%">عنوان</th><th style="width:24%">زمان تخمینی</th></tr></thead><tbody><tr><td>۱</td><td>مطالعهٔ طرح، تکمیل پرسش‌نامه و عقد قرارداد</td><td>۱۰ روز</td></tr><tr><td>۲</td><td>دریافت اطلاعات، نقشهٔ محیط و طراحی معماری</td><td>۱۵ روز</td></tr><tr><td>۳</td><td>طراحی رابط کاربری اپلیکیشن و داشبورد</td><td>۴۵ روز</td></tr><tr><td>۴</td><td>توسعهٔ سامانه و موتور تشخیص چهره</td><td>۱۸۰ روز</td></tr><tr><td>۵</td><td>یکپارچه‌سازی سخت‌افزار (دوربین، تگ، اسکنر)</td><td>۴۵ روز</td></tr><tr><td>۶</td><td>تست، شبیه‌سازی و بهینه‌سازی</td><td>۴۰ روز</td></tr><tr><td>۷</td><td>نصب در محل و آموزش کارشناسان</td><td>۳۰ روز</td></tr><tr><td>۸</td><td>انتشار نهایی و تحویل</td><td>۵ روز</td></tr></tbody></table></div>
+<div class="note">مجموع تخمینی: حدود ۳۷۰ روز کاری. این برنامه بر اساس بستهٔ پیشنهادیِ پایه است و نسبت به حجم و پیچیدگی پروژه تغییر خواهد کرد.</div></div>
+  </section>
+<section class="content-page" id="nda">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>حفظ محرمانگی و عدم افشای اطلاعات</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>رعایت حفظ محرمانگیِ داده‌ها، نقشه‌ها، چیدمان امنیتی و کلیهٔ اطلاعات کسب‌وکار شما — در حین اجرا و پس از اتمام کار — مهم‌ترین بخش از فعالیت حرفه‌ای ماست که کاملاً به آن مقیّدیم. در یک پروژهٔ امنیتی، این تعهد دوچندان اهمیت دارد.</p>
+<p>ما پس از عقد قرارداد، کلیهٔ تعهدنامه‌های عدم افشای اطلاعات (NDA) را مهر و امضا کرده و خود را ملتزم به رعایت آن می‌دانیم؛ زیرا باور داریم اگر اعتمادی از سوی مشتری نباشد، هیچ کاری به‌درستی پیش نمی‌رود. این تعهد شامل هر نوع داده، نقشهٔ محیط، چیدمان دوربین، مشخصات فنی، اسناد قراردادی، اطلاعات پرسنلی و به‌ویژه دادهٔ زیست‌سنجشی (چهره و اثر انگشت) می‌شود؛ مگر مواردی که غیرمحرمانه‌بودن آن صراحتاً ذکر گردد.</p>
+<div class="note">دادهٔ زیست‌سنجشی با رمزنگاری نگهداری می‌شود و در صورت انتخاب استقرار درون‌سازمانی، هرگز از محیط شما خارج نمی‌شود.</div></div>
+  </section>
+<section class="content-page" id="ip">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>مالکیت مادی و معنوی</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>مالکیت معنوی سامانه بر اساس قانون حمایت از حقوق پدیدآورندگان نرم‌افزارهای رایانه‌ای تنظیم می‌شود. در صورت انعقاد قرارداد، حقوق مادیِ مربوط به حق استفاده، تغییر و توسعهٔ نسخهٔ تحویلی متعلق به کارفرما خواهد بود و حقوق معنویِ ناشی از تولید نرم‌افزار، مطابق قانون، همواره متعلق به پدیدآورنده باقی می‌ماند؛ مگر آنکه ترتیب دیگری توافق شده باشد.</p>
+<p>این چارچوب تضمین می‌کند که شما از حق کامل بهره‌برداری و توسعهٔ سامانهٔ خود برخوردارید، در حالی که اصالت و پدیدآورندگیِ اثر نیز محفوظ می‌ماند.</p></div>
+  </section>
+<section class="content-page" id="tech">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>تکنولوژی‌های مورد استفاده در نگاهبان</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>بدون همراهی با سرعت تغییرات فناوری، هر سامانه‌ای محکوم به کهنگی است؛ به‌ویژه در حوزهٔ امنیت که تهدیدها دائماً نو می‌شوند. ما همواره می‌کوشیم با آخرین فناوری‌های روز هم‌راستا باشیم. فناوری‌های به‌کاررفته در هر حوزه به شرح زیر است:</p>
+<div class="table-wrap"><table class="grid"><thead><tr><th style="width:10%">ردیف</th><th style="width:34%">حوزه</th><th style="width:56%">فناوری‌ها و ابزارها</th></tr></thead><tbody><tr><td>۱</td><td>طراحی رابط کاربری</td><td>Figma, Adobe XD</td></tr><tr><td>۲</td><td>اپلیکیشن موبایل</td><td>Flutter, Dart</td></tr><tr><td>۳</td><td>بک‌اند و سرویس‌ها</td><td>Go (Golang), gRPC, REST</td></tr><tr><td>۴</td><td>هوش مصنوعی و بینایی ماشین</td><td>Python, PyTorch/TensorFlow, OpenCV</td></tr><tr><td>۵</td><td>پایگاه‌داده و حافظهٔ نهان</td><td>PostgreSQL, Redis</td></tr><tr><td>۶</td><td>زیرساخت و استقرار</td><td>Docker, Kubernetes</td></tr><tr><td>۷</td><td>مکان‌یابی و تگ</td><td>BLE / UWB (RTLS)</td></tr><tr><td>۸</td><td>اتصال دوربین</td><td>ONVIF / RTSP</td></tr><tr><td>۹</td><td>مانیتورینگ و رصد</td><td>Grafana, Prometheus</td></tr><tr><td>۱۰</td><td>مدیریت کد و مستندات</td><td>GitLab, Notion</td></tr></tbody></table></div></div>
+  </section>
+<section class="content-page" id="monitoring">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>نظارت و کنترل بهبود خدمات</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>ما به‌عنوان تیم پشتیبانی و توسعهٔ نگاهبان، به کیفیت و بهبود مداوم خدمات‌مان متعهدیم. این بخش از سامانه با اهداف زیر شکل گرفته است:</p>
+<ul class="bullets"><li>مانیتورینگ و تجزیه‌وتحلیل: رصد دقیق عملکرد سامانه با ابزارهای حرفه‌ای و رفع نقاط ضعف.</li><li>بازخورد کاربران: ارزش‌گذاری بر نظرات و پیشنهادهای شما و اعمال آن‌ها در بهبودها.</li><li>به‌روزرسانی‌های دوره‌ای: افزودن قابلیت‌های جدید و افزایش کارایی به‌صورت منظم.</li><li>امنیت و حفاظت از اطلاعات: تمهیدات امنیتی و به‌روزرسانی‌های منظم برای حفاظت کامل از دادهٔ کاربران.</li><li>ارتقاء تجربهٔ کاربری: بهبود مستمر سهولت و سرعت کار با سامانه.</li></ul>
+<p>با تکیه بر این اصول، ما در کنار شما در مسیر امنیتی بهتر گام برمی‌داریم و مطمئن باشید که دائماً به دنبال بهبود خدمات خود هستیم.</p></div>
+  </section>
+<section class="content-page" id="risks">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>ریسک‌های پروژه</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>توسعه و اجرای سامانهٔ نگاهبان همراه با چالش‌ها و ریسک‌های خاص خود است که با تجربه و برنامه‌ریزی مناسب، آن‌ها را مدیریت می‌کنیم. مهم‌ترین ریسک‌ها عبارت‌اند از:</p>
+<ul class="bullets"><li>تأخیر در زمان‌بندی: با برنامه‌ریزی دقیق و نظارت مستمر، از تأخیرات احتمالی پیشگیری می‌کنیم.</li><li>دقت تشخیص چهره در شرایط دشوار: با آموزش مدل و تنظیم سخت‌افزار نوری مناسب، دقت را بهینه می‌کنیم.</li><li>مشکلات امنیتی و حریم خصوصی: با رمزنگاری، کنترل دسترسی و استقرار درون‌سازمانی، ریسک افشا را به حداقل می‌رسانیم.</li><li>وابستگی به کیفیت زیرساخت محیط: با ارزیابی اولیه و توصیهٔ تجهیزات مناسب، پایداری را تضمین می‌کنیم.</li><li>تغییر نیازمندی‌ها: با تعامل مستمر با کارفرما، تغییرات را به‌بهترین شکل مدیریت می‌کنیم.</li></ul></div>
+  </section>
+<section class="content-page" id="post">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل یک — دربارۀ ما</div><h2>خدمات قابل ارائه پس از اجرای پروژه</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>ما با افتخار اعلام می‌کنیم که پس از اجرای پروژه و استقرار نگاهبان، پشتیبانی و خدمات برتری ارائه خواهیم داد و به رفاه و رضایت شما پایبندیم:</p>
+<ul class="bullets"><li>پشتیبانی آنلاین: تیم پشتیبانی برای پاسخ به سؤالات و رفع مشکلات فنی در دسترس شماست.</li><li>به‌روزرسانی و ارتقا: ارائهٔ دوره‌ای به‌روزرسانی‌ها برای بهره‌مندی از آخرین قابلیت‌ها.</li><li>محتوای آموزشی: ویدئوها و راهنماهای اختصاصی برای استفادهٔ بهینه از سامانه.</li><li>گارانتی سرویس: گارانتی کیفیت و پشتیبانی طبق قرارداد.</li></ul>
+<p>با تکیه بر این خدمات، شما به یک تجربهٔ یکپارچه از آغاز تا تداومِ امنیت دسترسی دارید.</p></div>
+  </section>
+<section class="chapter-divider">
+        <div class="cd-inner"><div class="cd-mark"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></div><div class="cd-num">فصل دوم</div><div class="cd-title">بوم مدل کسب‌وکار</div></div>
+      </section><section class="content-page" id="bmc">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل دوم — بوم مدل کسب‌وکار</div><h2>بوم مدل کسب‌وکار پلتفرم نگاهبان</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>بوم مدل کسب‌وکار، تصویری یکپارچه از اجزای اصلی کسب‌وکار نگاهبان به دست می‌دهد:</p>
+<table class="kv"><tbody><tr><th>بخش‌های مشتریان</th><td>ساختمان‌های مسکونی، شرکت‌ها و ادارات، مجتمع‌های تجاری، کارخانه‌ها و انبارها، شرکت‌های حفاظتی، مراکز حساس و نظامی</td></tr><tr><th>ارزش‌های پیشنهادی</th><td>امنیت یکپارچه و هوشمند، شفافیت کامل عملکرد نیروها، تشخیص آنی تهدید، حاکمیت داده و راهکار بومی</td></tr><tr><th>فعالیت‌های اصلی</th><td>توسعهٔ نرم‌افزار، توسعهٔ هوش مصنوعی، نصب و یکپارچه‌سازی، پشتیبانی و آموزش</td></tr><tr><th>منابع اصلی</th><td>تیم متخصص، موتور هوش مصنوعی، زیرساخت سرور، برند نگاهبان</td></tr><tr><th>ارتباط با مشتریان</th><td>پشتیبانی تلفنی و آنلاین، آموزش، قرارداد سطح خدمات (SLA)</td></tr><tr><th>کانال‌های توزیع</th><td>تیم فروش مستقیم، شرکای نصاب، وب‌سایت و دموی محصول</td></tr><tr><th>شرکای کلیدی</th><td>تأمین‌کنندگان دوربین و تگ، مراکز داده، شرکت‌های حفاظتی و نصاب</td></tr><tr><th>ساختار هزینه</th><td>توسعه و نیروی انسانی، زیرساخت و سرور، سخت‌افزار، بازاریابی</td></tr><tr><th>جریان‌های درآمدی</th><td>فروش لایسنس، اشتراک نرم‌افزار، فروش/اجارهٔ سخت‌افزار، نصب و پشتیبانی</td></tr></tbody></table></div>
+  </section>
+<section class="content-page" id="swot">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل دوم — بوم مدل کسب‌وکار</div><h2>فرصت‌ها و تهدیدها</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><h3>فرصت‌ها (Opportunities)</h3>
+<ol class="numbers"><li>افزایش تقاضای امنیت: رشد نگرانی‌های امنیتی در ساختمان‌ها، صنایع و زیرساخت‌ها، بازار بزرگی ایجاد کرده است.</li><li>خلأ راهکار بومی: نیاز به جایگزین داخلی و مطمئن برای سامانه‌های خارجی، فرصتی استراتژیک است؛ به‌ویژه برای مراکز حساس.</li><li>گسترش اینترنت اشیا و هوش مصنوعی: بلوغ فناوری دوربین هوشمند و مکان‌یابی، بستر را فراهم کرده است.</li><li>تنوع مشتری: قابلیت فروش از لابی مسکونی تا مراکز نظامی، دامنهٔ بازار را بسیار وسیع می‌کند.</li></ol>
+<h3>تهدیدها (Threats)</h3>
+<ol class="numbers"><li>رقبا و ورود تازه‌واردان: رقبای داخلی و خارجی ممکن است رقابت را تشدید کنند.</li><li>حساسیت حریم خصوصی و مقررات: استفاده از دادهٔ زیست‌سنجشی نیازمند رعایت دقیق چارچوب‌های حقوقی است.</li><li>امنیت سایبری: سامانهٔ امنیتی، خود باید در برابر حملات سایبری مقاوم باشد.</li><li>وابستگی سخت‌افزاری: تأمین پایدار دوربین و تگ، نیازمند مدیریت زنجیرهٔ تأمین است.</li></ol>
+<div class="note">تحلیل SWOT ابزاری برای ارزیابی موقعیت کسب‌وکار است که بر اساس آن، استراتژی‌های بهره‌برداری از فرصت‌ها و مدیریت تهدیدها تدوین می‌شود.</div></div>
+  </section>
+<section class="content-page" id="audience">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل دوم — بوم مدل کسب‌وکار</div><h2>مخاطبان هدف</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>مخاطبان هدف نگاهبان، طیف گسترده‌ای از افراد و سازمان‌هایی هستند که به امنیت فیزیکی و مدیریت شفافِ نیروی حفاظتی نیاز دارند:</p>
+<ol class="numbers"><li>مدیران ساختمان‌های مسکونی و مجتمع‌ها: برای کنترل تردد و نظارت بر نگهبان لابی.</li><li>شرکت‌ها و سازمان‌ها: برای مدیریت حضور کارکنان، کنترل دسترسی و حفاظت از طبقات و زون‌ها.</li><li>کارخانه‌ها، انبارها و مراکز لجستیک: برای پایش محوطه‌های وسیع و نقاط حساس.</li><li>شرکت‌های خدمات حفاظتی و نگهبانی: به‌عنوان ابزاری برای مدیریت و گزارش‌دهی به کارفرمایان.</li><li>مراکز حساس، دولتی و نظامی: برای بالاترین سطح امنیت با حاکمیت کامل داده.</li><li>مراکز درمانی، آموزشی و تجاری پرتردد: برای مدیریت ورود و خروج و ایمنی افراد.</li></ol></div>
+  </section>
+<section class="content-page" id="market-need">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل دوم — بوم مدل کسب‌وکار</div><h2>نیاز موجود در بازار</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><ol class="numbers"><li>یکپارچگی: بسیاری از مجموعه‌ها دوربین، حضوروغیاب و نگهبانی را در سامانه‌های جدا دارند و به یک بستر واحد نیاز دارند.</li><li>شفافیت و پاسخگویی: کارفرمایان خواهان اطمینان از حضور و عملکرد واقعی نیروها هستند.</li><li>پیشگیری به‌جای واکنش: نیاز به تشخیص آنیِ تهدید پیش از وقوع حادثه، نه صرفاً ضبط برای بازبینی بعدی.</li><li>راهکار بومی و مطمئن: تقاضای رو به رشد برای سامانه‌ای داخلی با تضمین حریم خصوصی و عدم وابستگی خارجی.</li><li>مقیاس‌پذیری اقتصادی: نیاز به راهکاری که هم برای یک ساختمان کوچک و هم برای یک مرکز بزرگ مقرون‌به‌صرفه باشد.</li></ol></div>
+  </section>
+<section class="content-page" id="marketing">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل دوم — بوم مدل کسب‌وکار</div><h2>بازاریابی و تبلیغات</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>استراتژی بازاریابی نگاهبان بر معرفی ارزش‌های کلیدی (یکپارچگی، هوشمندی و بومی‌بودن) به مخاطبان هدف استوار است. مهم‌ترین کانال‌ها:</p>
+<ol class="numbers"><li>فروش مستقیم سازمانی (B2B): ارتباط با مدیران ساختمان، شرکت‌ها و سازمان‌ها و ارائهٔ دموی اختصاصی.</li><li>شبکهٔ شرکای نصاب: همکاری با شرکت‌های حفاظتی و نصابان سیستم‌های امنیتی.</li><li>تبلیغات آنلاین و محتوا: تولید محتوای تخصصی، سئو، و تبلیغ هدفمند در پلتفرم‌های حرفه‌ای.</li><li>حضور در نمایشگاه‌ها: نمایشگاه‌های امنیت، ساختمان و فناوری برای معرفی محصول.</li><li>نمونهٔ موفق (Case Study): انتشار نتایج استقرار در پروژه‌های واقعی به‌عنوان مرجع.</li></ol>
+<div class="note">هزینه‌های بازاریابی بسته به مقیاس و بازار هدف متغیر است و بر اساس استراتژی فروش سازمانی، در سال نخست به‌صورت تخمینی در محدودهٔ مشخصی برآورد و تنظیم می‌شود.</div></div>
+  </section>
+<section class="content-page" id="final-features">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل دوم — بوم مدل کسب‌وکار</div><h2>امکانات نهایی</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>فهرست جامع قابلیت‌هایی که نگاهبان در اختیار مشتری قرار می‌دهد:</p>
+<ul class="bullets"><li>حضوروغیاب زیست‌سنجشی نگهبان (چهره و اثر انگشت) مقیّد به زمان و لوکیشن شیفت</li><li>پایش زندهٔ موقعیت نیرو روی نقشه، در طبقات و اتاق‌ها، و بازپخش مسیر گذشته</li><li>تعریف محدودهٔ عملیاتی و هشدار آنیِ خروج نیرو از آن</li><li>زون‌بندی محیط، کنترل دسترسی تردد، ثبت ورود مجاز و اعلام ورود غیرمجاز</li><li>تشخیص چهرهٔ افراد مجاز/غیرمجاز با هوش مصنوعی و گزارش و هشدار آنی</li><li>تحلیل الگوی رفتاری نیرو و کشف جایگزینی پنهان</li><li>مکان‌یابی دقیق با تگ امنیتی و احراز هویت دوعاملی (تگ + چهره)</li><li>گزارش کامل تایم‌بندی و میزان کارکرد از روی ورود/خروج</li><li>اتصال زندهٔ دوربین‌ها و ضبط رویدادهای مهم</li><li>انتخاب نوع پنل و مجموعهٔ خدمات توسط مشتری و مقیاس‌پذیری از لابی تا مراکز حساس</li><li>داشبورد مدیریتی، اعلان چندکاناله و خروجی گزارش استاندارد</li></ul></div>
+  </section>
+<section class="content-page" id="biz-model">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل دوم — بوم مدل کسب‌وکار</div><h2>مدل تجاری</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>مدل تجاری نگاهبان بر چند منبع درآمدیِ مکمل استوار است:</p>
+<ul class="bullets"><li>فروش لایسنس سامانه: ارائهٔ نسخهٔ نرم‌افزار به‌صورت لایسنس دائمی برای استقرار درون‌سازمانی.</li><li>اشتراک نرم‌افزاری (SaaS): اشتراک ماهانه/سالانه برای دسترسی به سامانه و به‌روزرسانی‌ها، به‌ویژه در مدل ابری.</li><li>فروش و اجارهٔ سخت‌افزار: تأمین دوربین، تگ امنیتی و دستگاه اسکنر متناسب با پروژه.</li><li>خدمات نصب، آموزش و پشتیبانی: درآمد پایدار از قراردادهای پشتیبانی و سطح خدمات (SLA).</li></ul>
+<h3>استراتژی قیمت‌گذاری</h3>
+<ul class="bullets"><li>قیمت‌گذاری پلکانی بر اساس نوع پنل (پایه، سازمانی، پیشرفته).</li><li>قیمت متغیر بر اساس تعداد دوربین، تگ و زون.</li><li>اشتراک‌های دوره‌ای با سطوح خدمات متفاوت.</li><li>قراردادهای سفارشی برای مراکز حساس با الزامات ویژه.</li></ul></div>
+  </section>
+<section class="content-page" id="cost">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل دوم — بوم مدل کسب‌وکار</div><h2>ساختار هزینه</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>برای ایجاد و اجرای نگاهبان، به منابع مختلفی نیاز است: سرور و زیرساخت پردازش هوش مصنوعی، توسعه‌دهندگان، سخت‌افزار میدانی (دوربین، تگ، اسکنر)، تجهیزات شبکه و منابع پشتیبانی. برآورد هزینه به مقیاس و نیازهای خاص پروژه بستگی دارد. جدول زیر، نمونه‌ای از تناسب سخت‌افزار سرور با مقیاس همزمانیِ دوربین/کاربر را نشان می‌دهد:</p>
+<div class="table-wrap"><table class="grid"><thead><tr><th style="width:34%">مقیاس</th><th style="width:66%">نمونهٔ پیکربندی سرور پردازش</th></tr></thead><tbody><tr><td>تا ۱۶ دوربین</td><td>۸ هسته CPU، ۳۲ گیگ RAM، GPU سطح ورودی، ۲ ترابایت ذخیره‌سازی</td></tr><tr><td>تا ۶۴ دوربین</td><td>۱۶ هسته CPU، ۶۴ گیگ RAM، GPU میان‌رده، ۸ ترابایت ذخیره‌سازی</td></tr><tr><td>تا ۱۲۸ دوربین</td><td>۳۲ هسته CPU، ۱۲۸ گیگ RAM، GPU حرفه‌ای، ۲۰ ترابایت ذخیره‌سازی</td></tr><tr><td>مراکز بزرگ/حساس</td><td>کلاستر چندسروره، چند GPU، ذخیره‌سازی سازمانی و افزونگی کامل</td></tr></tbody></table></div>
+<h3>سرفصل‌های اصلی هزینه</h3>
+<ol class="numbers"><li>سرور و زیرساخت شبکه (اجاره یا خرید، متناسب با مقیاس).</li><li>توسعه‌دهندگان نرم‌افزار و متخصصان هوش مصنوعی.</li><li>سخت‌افزار میدانی: دوربین، تگ امنیتی و دستگاه اسکنر.</li><li>نرم‌افزارهای توسعه و مدیریت پروژه.</li><li>تیم پشتیبانی و نگهداری.</li><li>هزینه‌های مالی، حقوقی، بیمه و لایسنس.</li></ol>
+<div class="note">ارقام دقیق ریالی پس از تعیین مقیاس و دامنهٔ پروژه و در قالب پیوست مالی ارائه می‌شود و با رشد پروژه به‌تدریج تنظیم می‌گردد.</div></div>
+  </section>
+<section class="content-page" id="specialists">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل دوم — بوم مدل کسب‌وکار</div><h2>ساختار کامل متخصصان و تخصص‌های مورد نیاز</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>ساختار اجرایی پروژه از چند لایهٔ تخصصی تشکیل شده است:</p>
+<ol class="numbers"><li>زیرساخت سخت‌افزاری و شبکه: سرورها، تجهیزات شبکه، ارتباطات و امنیت شبکه.</li><li>زیرساخت نرم‌افزاری: بک‌اند و سرویس‌ها، رابط کاربری (Frontend)، پایگاه‌داده و امنیت نرم‌افزاری.</li><li>هوش مصنوعی و بینایی ماشین: توسعهٔ مدل تشخیص چهره و تحلیل ویدئو.</li><li>تخصص امنیت فیزیکی: طراحی چیدمان دوربین، زون‌بندی و مکان‌یابی.</li><li>تکنولوژی‌ها و ابزارها: ابزارهای توسعه، استقرار و مدیریت نرم‌افزار.</li></ol></div>
+  </section>
+<section class="content-page" id="workforce">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل دوم — بوم مدل کسب‌وکار</div><h2>رسته‌های نیروی کار</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>رسته‌های اصلی نیروی کار پروژه و دسته‌بندی آن‌ها:</p>
+<div class="table-wrap"><table class="grid"><thead><tr><th style="width:32%">رسته</th><th style="width:68%">نمونهٔ تخصص‌ها</th></tr></thead><tbody><tr><td>فنی و تکنولوژی (Technology)</td><td>توسعه‌دهندهٔ بک‌اند، موبایل، DevOps، مدیر پایگاه‌داده، مهندس شبکه، متخصص امنیت</td></tr><tr><td>هوش مصنوعی (AI)</td><td>متخصص یادگیری ماشین، مهندس داده، متخصص بینایی ماشین</td></tr><tr><td>مدیریت (Management)</td><td>مدیر پروژه، سرپرست تیم، مدیر بخش</td></tr><tr><td>محصول (Product)</td><td>مدیر محصول، طراح UI، پژوهشگر UX</td></tr><tr><td>عملیات و نصب (Operations)</td><td>کارشناس نصب میدانی، پشتیبانی فنی، تأمین</td></tr><tr><td>تجاری و بازاریابی (Commercial)</td><td>فروش سازمانی، بازاریابی دیجیتال، مدیر برند</td></tr><tr><td>حقوقی (Legal)</td><td>مشاور حقوقی، کارشناس قرارداد و انطباق</td></tr></tbody></table></div></div>
+  </section>
+<section class="content-page" id="architecture">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل دوم — بوم مدل کسب‌وکار</div><h2>معماری سیستم و زیرساخت</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>نگاهبان بر پایهٔ معماری میکروسرویس و کلاستر Kubernetes طراحی می‌شود تا پایداری، مقیاس‌پذیری و بهره‌وری بالا تضمین گردد. سرویس‌های اصلی عبارت‌اند از:</p>
+<ul class="bullets"><li>API Gateway — دروازهٔ ورودی و مسیریابی درخواست‌ها</li><li>Auth Service — احراز هویت و مدیریت دسترسی</li><li>User &amp; Personnel Service — مدیریت نیروها و کاربران</li><li>Face Recognition Service — تشخیص و تطبیق چهره</li><li>Video Stream Service — دریافت و پردازش جریان دوربین</li><li>Tracking / RTLS Service — مکان‌یابی و موقعیت نیروها</li><li>Zone &amp; Access Service — زون‌بندی و کنترل تردد</li><li>Behavior Analytics Service — تحلیل الگوی رفتاری</li><li>Alert &amp; Notification Service — هشدار و اعلان چندکاناله</li><li>Attendance Service — حضوروغیاب و کارکرد</li><li>Data &amp; File Storage Service — ذخیره‌سازی داده و آرشیو ویدئو</li><li>Reporting Service — گزارش‌سازی و خروجی</li><li>Map Service — نقشهٔ تعاملی محیط و طبقات</li></ul></div>
+  </section>
+<section class="content-page" id="revenue">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل دوم — بوم مدل کسب‌وکار</div><h2>منابع درآمدی</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>تنوع منابع درآمدی، پایداری مالی پروژه را تضمین می‌کند:</p>
+<ol class="numbers"><li>فروش لایسنس و استقرار درون‌سازمانی.</li><li>اشتراک ماهانه/سالانهٔ نرم‌افزار (SaaS).</li><li>فروش و اجارهٔ سخت‌افزار (دوربین، تگ، اسکنر).</li><li>خدمات نصب، یکپارچه‌سازی و راه‌اندازی.</li><li>قراردادهای پشتیبانی و سطح خدمات (SLA).</li><li>ماژول‌ها و خدمات سفارشی برای مراکز حساس.</li></ol>
+<div class="note">برآورد دقیق درآمد به تعداد مشتری، مقیاس استقرار و ترکیب منابع بستگی دارد و در پیوست مالی، با تحلیل بازار ارائه می‌شود.</div></div>
+  </section>
+<section class="content-page" id="conclusion">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل دوم — بوم مدل کسب‌وکار</div><h2>نتیجه‌گیری</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>با افتخار اعلام می‌کنیم که «نگاهبان» یک پلتفرم جذاب و قدرتمند در عرصهٔ امنیت هوشمند و حفاظت فیزیکی خواهد بود. این سامانه با یکپارچه‌سازی نیروی انسانی، دوربین هوشمند و مکان‌یابی، توان ارتقای امنیت، شفافیت عملکرد و آرامش خاطر را به ارمغان می‌آورد.</p>
+<p>نگاهبان نه‌تنها یک ابزار نظارتی، بلکه نمادی از توانمندی بومی در فناوری‌های حساس است؛ سامانه‌ای که از یک لابی کوچک تا یک مرکز نظامی، در هر مقیاسی پاسخگوست و وابستگی به راهکارهای خارجی را از میان برمی‌دارد.</p>
+<blockquote>این پروژه می‌تواند به ابزاری کلان در ارتقای امنیت، اشتغال و فناوری بومی تبدیل شود و فرصتی منحصربه‌فرد برای تمامی افراد و نهادها فراهم آورد.</blockquote></div>
+  </section>
+<section class="chapter-divider">
+        <div class="cd-inner"><div class="cd-mark"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></div><div class="cd-num">فصل سوم</div><div class="cd-title">هویت بصری</div></div>
+      </section><section class="content-page" id="identity-story">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل سوم — هویت بصری</div><h2>اینگونه شکل گرفت</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>با توجه به اهداف این پروژه و ماهیت آن، هویت بصری باید به شکلی منحصربه‌فرد و مرتبط طراحی می‌شد. پس از روزها تفکر و جست‌وجو برای انتخاب بهترین نماد، به ترکیبی رسیدیم که دو رکن اصلی محصول را در خود دارد: «سپر» به‌نشانهٔ محافظت و امنیت، و «چشم» به‌نشانهٔ بینایی هوشمند و نظارت.</p>
+<p>نماد را تا حد ممکن ساده کردیم؛ چرا که زیبایی در سادگی‌ست و سادگی، حرکت به‌سوی دنیای مدرن و هوشمند است. خطوط رادار و نشانه‌های اسکن در اطراف چشم، لایهٔ هوش مصنوعی و حساسیتِ همیشه‌بیدارِ سامانه را روایت می‌کنند. حاصل کار، نشانه‌ای است که در یک نگاه می‌گوید: «نگهبانی که می‌بیند».</p></div>
+  </section>
+<section class="content-page" id="colors">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل سوم — هویت بصری</div><h2>رنگ‌های انتخابی ما</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>انتخاب رنگ برای یک برند امنیتی، انتخابی مهم و دشوار بود. ما به سراغ زبانِ جهانیِ امنیت رفتیم: سرمه‌ایِ شب برای اقتدار و اعتماد، فیروزه‌ای برای هوشمندی و فناوری، و دو رنگ سبز و قرمز که زبان آشنای دسترسی‌اند — مجاز و غیرمجاز.</p>
+<div class="palette"><div class="swatch"><div class="chip" style="background:#0F2A4A"><span class="hex">#0F2A4A</span></div><div class="sw-name">سرمه‌ای شب (Midnight)</div><div class="sw-note">رنگ اصلی برند؛ نماد اقتدار، اعتماد، پایداری و امنیت. آرامشِ مطمئنِ یک نگهبانیِ بیدار.</div></div><div class="swatch"><div class="chip" style="background:#15B5CB"><span class="hex">#15B5CB</span></div><div class="sw-name">فیروزه‌ای (Cyan)</div><div class="sw-note">رنگ مکمل و فناورانه؛ نماد هوشمندی، اسکن و چشمِ هوش مصنوعی.</div></div><div class="swatch"><div class="chip" style="background:#23A65B"><span class="hex">#23A65B</span></div><div class="sw-name">سبز مجاز (Authorized)</div><div class="sw-note">نشانهٔ تردد مجاز، حضور تأییدشده و وضعیت ایمن.</div></div><div class="swatch"><div class="chip" style="background:#E23B3B"><span class="hex">#E23B3B</span></div><div class="sw-name">قرمز هشدار (Alert)</div><div class="sw-note">نشانهٔ ورود غیرمجاز، خطر و رویداد نیازمند توجه فوری.</div></div><div class="swatch"><div class="chip" style="background:#16202B"><span class="hex">#16202B</span></div><div class="sw-name">ذغالی (Ink)</div><div class="sw-note">رنگ متن و عناصر اصلی؛ خوانا و حرفه‌ای.</div></div></div></div>
+  </section>
+<section class="content-page" id="why-cyan">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل سوم — هویت بصری</div><h2>چرا فیروزه‌ای؟</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>پایهٔ نگاهبان سرمه‌ای است؛ اما در سراسر این هویت، رنگ فیروزه‌ای نقشی کلیدی دارد. شاید برایتان سؤال پیش بیاید که چرا فیروزه‌ای؟</p>
+<p>فیروزه‌ای، رنگِ مرزِ میان امنیت و فناوری‌ست. این رنگ، حسِ یک پرتوِ اسکن، یک خطِ رادار و یک چشمِ همیشه‌بیدار را تداعی می‌کند؛ دقیقاً همان لایه‌ای که نگاهبان را از یک سامانهٔ معمولیِ نظارتی متمایز می‌کند. سرمه‌ای، اعتماد و اقتدار را می‌گوید و فیروزه‌ای، هوشمندی و دقت را. ترکیب این دو، روحِ نگاهبان است: «محافظتی که می‌اندیشد».</p></div>
+  </section>
+<section class="content-page" id="logo-font">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل سوم — هویت بصری</div><h2>مدل‌های لوگو و فونت</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>نشانهٔ نگاهبان در نسخه‌های افقی، عمودی و تک‌رنگ قابل استفاده است تا در هر بستری — از داشبورد تا تابلوی ورودی — به‌درستی دیده شود. در نسخهٔ تک‌رنگ، سپر و چشم با یک رنگ (سرمه‌ای یا سفید) نمایش داده می‌شوند.</p>
+<h3>فونت استفاده‌شده</h3>
+<p>فونت اصلیِ متن و عناوین، خانوادهٔ «وزیرمتن» با وزن‌های نازک تا بسیار ضخیم است؛ فونتی مدرن، خوانا و کاملاً سازگار با فضای فارسی که با شخصیتِ حرفه‌ای و فناورانهٔ نگاهبان هم‌خوانی دارد.</p></div>
+  </section>
+<section class="content-page" id="preview">
+    <div class="run-head"><span class="rh-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></span><span class="rh-title">پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان</span><span class="rh-rule"></span></div>
+    <div class="sec-head"><div class="eyebrow">فصل سوم — هویت بصری</div><h2>پیش‌نمایش اپلیکیشن و داشبورد</h2><span class="sec-underline"></span></div>
+    <div class="sec-body"><p>در این بخش، تصویری کلی از صفحات اصلی سامانه ترسیم شده تا با تجربهٔ کاربری نگاهبان آشنا شوید. (نمونهٔ صفحات نهایی در مرحلهٔ طراحی، با رنگ‌بندی برند ارائه می‌شود.)</p>
+<ul class="bullets"><li>داشبورد زنده: نقشهٔ محیط، موقعیت نیروها و رویدادهای جاری</li><li>صفحهٔ نگهبان: ثبت ورود/خروج با چهره و اثر انگشت، وضعیت شیفت و محدوده</li><li>مدیریت زون‌ها: تعریف زون، سطح دسترسی و قواعد هشدار</li><li>رویدادها و هشدارها: فهرست تشخیص چهره و ورودهای غیرمجاز</li><li>گزارش کارکرد: تایم‌بندی، حضور و بازپخش مسیر نیروها</li><li>تنظیمات و سطوح دسترسی: مدیریت کاربران و نقش‌ها</li></ul></div>
+  </section>
+<section class="sheet closing-sheet">
+    <div class="closing-mark"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></div>
+    <h2 class="closing-title">و در پایان …</h2>
+    <p>ما در «نگاهبان» با افتخار این مسیر را با شما آغاز کرده‌ایم. اینجاست که به دنبال ساختن محیط‌هایی امن‌تر، شفاف‌تر و هوشمندتر هستیم.</p><p>نگاهبان نه‌تنها یک سامانهٔ نظارتی، بلکه نمادِ باور ما به توانمندی بومی در حساس‌ترین حوزه‌هاست. ما با تکیه بر دانش داخلی رو به جلو حرکت می‌کنیم و آینده‌ای امن را برای فضاهای شما رقم می‌زنیم.</p><p>به ما بپیوندید و با «نگاهبان»، به سوی آرامشی پایدار و امنیتی هوشمند گام بردارید. اینجاست که ما با هم می‌توانیم!</p>
+    <div class="closing-sign">نگاهبان، چشمی همیشه بیدار برای امنیت شما.</div>
+  </section>
+<section class="sheet contact-sheet">
+    <div class="contact-inner">
+      <div class="contact-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+  <defs>
+    <linearGradient id="shieldG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient>
+    <linearGradient id="irisG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient>
+  </defs>
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#shieldG)" stroke="#19b6cd" stroke-width="3"/>
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <circle cx="66" cy="78" r="17" fill="url(#irisG)"/>
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg></div>
+      <div class="contact-name">شرکت فناوری امنیت هوشمند نگاهبان</div>
+      <div class="contact-rows">
+        <div>شمارهٔ ثبت: —</div>
+        <div>تلفن: ۰۲۱-۰۰۰۰۰۰۰۰</div>
+        <div>www.negahban.ir</div>
+      </div>
+      <div class="contact-slogan">«پیش به سوی امنیتی هوشمند»</div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
