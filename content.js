@@ -13,11 +13,14 @@ const meta = {
   slogan: "پیش به سوی امنیتی هوشمند",
   date: "خرداد ۱۴۰۵",
   website: "www.negahban.ir",
-  company: "شرکت فناوری امنیت هوشمند نگاهبان",
+  company: "شرکت راهکار پرداز فن آوران هوشمند",
+  companyOriginal: "شرکت راهکار پرداز فن آوران هوشمند",
   reg: "شمارهٔ ثبت: —",
-  phones: "۰۲۱-۰۰۰۰۰۰۰۰",
+  phones: "۰۹۰۵۸۴۳۲۴۵۲",
   companySite: "www.negahban.ir",
   runningTitle: "پروپوزال سامانهٔ هوشمند امنیت و نگهبانی نگاهبان",
+  copyright: "© ۱۴۰۵ شرکت راهکار پرداز فن آوران هوشمند. تمام حقوق محفوظ است.",
+  copyrightEng: "© 2026 Raahkaar Pardaaz Fanavar-e Hoshyaar. All rights reserved.",
 };
 
 /* صفحات مقدماتی ویژه (قبل از فصل‌ها) */

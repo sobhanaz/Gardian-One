@@ -31,6 +31,15 @@ https://sobhanaz.github.io/Gardian-One/
 
 Simply open `negahban-proposal.html` in your browser to view the proposal locally.
 
-## License
+## Company Information
 
-All rights reserved © 2024 Negahban Smart Security
+**Company Name:** شرکت راهکار پرداز فن آوران هوشمند
+**Phone:** ۰۹۰۵۸۴۳۲۴۵۲
+**Website:** www.negahban.ir
+
+## Copyright
+
+© ۱۴۰۵ شرکت راهکار پرداز فن آوران هوشمند. تمام حقوق محفوظ است.
+© 2026 Raahkaar Pardaaz Fanavar-e Hoshyaar. All rights reserved.
+
+This document is a proprietary proposal and intellectual property. Use and distribution are restricted to agreed-upon purposes only.
