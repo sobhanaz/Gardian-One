@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>گزارش کارکرد — نگاهبان</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(135deg, #0F2A4A 0%, #16202B 100%);
+            color: #16202B;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            font-size: 32px;
+            color: #0F2A4A;
+            margin-bottom: 8px;
+            font-weight: 900;
+        }
+        .header p {
+            color: #7B8FA3;
+            font-size: 16px;
+        }
+        .report-controls {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+        .control-input, .control-select {
+            padding: 10px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 14px;
+        }
+        .control-input:focus, .control-select:focus {
+            outline: none;
+            border-color: #15B5CB;
+            box-shadow: 0 0 0 3px rgba(21, 181, 203, 0.1);
+        }
+        .button {
+            padding: 10px 20px;
+            background: #15B5CB;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .button:hover {
+            background: #0f9db8;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 4px solid #15B5CB;
+        }
+        .stat-card h3 {
+            font-size: 14px;
+            color: #7B8FA3;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .stat-card .value {
+            font-size: 36px;
+            font-weight: 900;
+            color: #0F2A4A;
+            margin-bottom: 8px;
+        }
+        .stat-card .subtext {
+            font-size: 12px;
+            color: #7B8FA3;
+        }
+        .section {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .section h2 {
+            font-size: 20px;
+            color: #0F2A4A;
+            margin-bottom: 20px;
+            font-weight: 700;
+            border-bottom: 2px solid #15B5CB;
+            padding-bottom: 12px;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .table th {
+            background: #f0f3f8;
+            padding: 12px;
+            text-align: right;
+            font-weight: 700;
+            color: #0F2A4A;
+            border-bottom: 2px solid #15B5CB;
+        }
+        .table td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 14px;
+            color: #5B6B7A;
+        }
+        .table tr:hover {
+            background: #f9fafb;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .badge-active {
+            background: #d1f4ea;
+            color: #23A65B;
+        }
+        .badge-absent {
+            background: #fde8e8;
+            color: #E23B3B;
+        }
+        .badge-late {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        .chart-placeholder {
+            background: linear-gradient(135deg, #f0f3f8 0%, #e5e7eb 100%);
+            border-radius: 8px;
+            padding: 60px 20px;
+            text-align: center;
+            border: 2px dashed #15B5CB;
+            margin-bottom: 20px;
+        }
+        .chart-placeholder p {
+            color: #7B8FA3;
+            font-size: 14px;
+        }
+        .button-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .button-secondary {
+            background: #f0f3f8;
+            color: #0F2A4A;
+            border: 1px solid #e5e7eb;
+        }
+        .button-secondary:hover {
+            background: #e5e7eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 گزارش کارکرد</h1>
+            <p>تایم‌بندی، حضور و بازپخش مسیر نیروها</p>
+        </div>
+
+        <div class="report-controls">
+            <input type="date" class="control-input">
+            <input type="date" class="control-input">
+            <select class="control-select">
+                <option>همه نگهبان‌ها</option>
+                <option>محمد علی</option>
+                <option>علی احمدی</option>
+                <option>رضا کریمی</option>
+            </select>
+            <button class="button">📥 دانلود گزارش</button>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>۳۵ نیروی ثبت‌شده</h3>
+                <div class="value">245</div>
+                <div class="subtext">ورود در این دوره</div>
+            </div>
+            <div class="stat-card">
+                <h3>نرخ حضور</h3>
+                <div class="value">94.3%</div>
+                <div class="subtext">۲۳۰ حضور از ۲۴۴ نوبت</div>
+            </div>
+            <div class="stat-card">
+                <h3>میانگین تاخیر</h3>
+                <div class="value">5min</div>
+                <div class="subtext">۱۴ ورود تاخیرآمیز</div>
+            </div>
+            <div class="stat-card">
+                <h3>غیرحاضر</h3>
+                <div class="value">14</div>
+                <div class="subtext">۵.۷% از کل نوبت‌ها</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📈 نمودار حضور روزانه</h2>
+            <div class="chart-placeholder">
+                <p>📊 نمودار میله‌ای حضور روزانه</p>
+            </div>
+            <p style="color: #7B8FA3; font-size: 14px;">تمایل حضور در ۳۰ روز گذشته: ↑ رو به افزایش</p>
+        </div>
+
+        <div class="section">
+            <h2>📋 فهرست حضور و غیاب</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>نام نگهبان</th>
+                        <th>شیفت</th>
+                        <th>زمان ورود</th>
+                        <th>زمان خروج</th>
+                        <th>مدت حضور</th>
+                        <th>وضعیت</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>محمد علی</td>
+                        <td>صبح (۸-۱۶)</td>
+                        <td>۰۸:۰۲</td>
+                        <td>۱۶:۰۵</td>
+                        <td>۸:۳</td>
+                        <td><span class="badge badge-late">۲ دقیقه تاخیر</span></td>
+                    </tr>
+                    <tr>
+                        <td>علی احمدی</td>
+                        <td>صبح (۸-۱۶)</td>
+                        <td>۰۷:۵۸</td>
+                        <td>۱۶:۰۰</td>
+                        <td>۸:۲</td>
+                        <td><span class="badge badge-active">✓ به‌موقع</span></td>
+                    </tr>
+                    <tr>
+                        <td>رضا کریمی</td>
+                        <td>صبح (۸-۱۶)</td>
+                        <td>۰۸:۳۵</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td><span class="badge badge-absent">غیرحاضر</span></td>
+                    </tr>
+                    <tr>
+                        <td>فرهاد محمودی</td>
+                        <td>شب (۱۶-۰۰)</td>
+                        <td>۱۶:۰۰</td>
+                        <td>۲۳:۵۹</td>
+                        <td>۸:۰</td>
+                        <td><span class="badge badge-active">✓ به‌موقع</span></td>
+                    </tr>
+                    <tr>
+                        <td>حسن رسولی</td>
+                        <td>شب (۱۶-۰۰)</td>
+                        <td>۱۶:۲۰</td>
+                        <td>۲۳:۵۸</td>
+                        <td>۷:۳۸</td>
+                        <td><span class="badge badge-late">۲۰ دقیقه تاخیر</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>🗺️ بازپخش مسیر نیروها</h2>
+            <div class="chart-placeholder">
+                <p>🗺️ نقشهٔ تعاملی با مسیر حرکت نیروها</p>
+            </div>
+            <p style="color: #7B8FA3; font-size: 14px; margin-top: 12px;">برای مشاهدهٔ تفصیلی حرکت نیروی مشخص، روی نام او کلیک کنید</p>
+        </div>
+
+        <div class="button-group">
+            <button class="button">💾 ذخیره گزارش</button>
+            <button class="button button-secondary">🖨️ چاپ</button>
+            <button class="button button-secondary">📧 ارسال ایمیل</button>
+        </div>
+    </div>
+</body>
+</html>

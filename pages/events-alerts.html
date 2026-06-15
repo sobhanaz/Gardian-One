@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رویدادها و هشدارها — نگاهبان</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(135deg, #0F2A4A 0%, #16202B 100%);
+            color: #16202B;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            font-size: 32px;
+            color: #0F2A4A;
+            margin-bottom: 8px;
+            font-weight: 900;
+        }
+        .header p {
+            color: #7B8FA3;
+            font-size: 16px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-box {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .stat-number {
+            font-size: 36px;
+            font-weight: 900;
+            color: #15B5CB;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 14px;
+            color: #7B8FA3;
+            font-weight: 600;
+        }
+        .events-section {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .events-section h2 {
+            font-size: 24px;
+            color: #0F2A4A;
+            margin-bottom: 24px;
+            font-weight: 700;
+            border-bottom: 2px solid #15B5CB;
+            padding-bottom: 12px;
+        }
+        .filter-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .filter-input, .filter-select {
+            padding: 10px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 14px;
+        }
+        .filter-input:focus, .filter-select:focus {
+            outline: none;
+            border-color: #15B5CB;
+            box-shadow: 0 0 0 3px rgba(21, 181, 203, 0.1);
+        }
+        .events-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .event-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 16px;
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 16px;
+            align-items: flex-start;
+            transition: all 0.3s ease;
+        }
+        .event-card:hover {
+            background: #f9fafb;
+            border-color: #15B5CB;
+        }
+        .event-icon {
+            font-size: 32px;
+            text-align: center;
+            line-height: 1;
+        }
+        .event-content {
+            flex: 1;
+        }
+        .event-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            gap: 12px;
+        }
+        .event-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0F2A4A;
+        }
+        .event-time {
+            font-size: 12px;
+            color: #7B8FA3;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .event-type {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .type-success {
+            background: #d1f4ea;
+            color: #23A65B;
+        }
+        .type-warning {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        .type-error {
+            background: #fde8e8;
+            color: #E23B3B;
+        }
+        .type-info {
+            background: #dbeafe;
+            color: #0369a1;
+        }
+        .event-description {
+            font-size: 14px;
+            color: #5B6B7A;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+        .event-location {
+            font-size: 12px;
+            color: #7B8FA3;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #e5e7eb;
+        }
+        .pagination button {
+            padding: 8px 12px;
+            border: 1px solid #e5e7eb;
+            background: white;
+            color: #0F2A4A;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .pagination button:hover, .pagination button.active {
+            background: #15B5CB;
+            color: white;
+            border-color: #15B5CB;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚠️ رویدادها و هشدارها</h1>
+            <p>فهرست تشخیص چهره و ورودهای غیرمجاز</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number">245</div>
+                <div class="stat-label">رویدادهای امروز</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">12</div>
+                <div class="stat-label">ورودهای شناخت‌شده</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">3</div>
+                <div class="stat-label">ورودهای غیرمجاز</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">8</div>
+                <div class="stat-label">هشدارهای فعال</div>
+            </div>
+        </div>
+
+        <div class="events-section">
+            <h2>🔍 فهرست رویدادها</h2>
+
+            <div class="filter-bar">
+                <input type="text" class="filter-input" placeholder="جستجو در رویدادها...">
+                <select class="filter-select">
+                    <option>همه انواع</option>
+                    <option>ورود موفق</option>
+                    <option>ورود غیرمجاز</option>
+                    <option>هشدار</option>
+                </select>
+                <input type="date" class="filter-input">
+            </div>
+
+            <div class="events-list">
+                <div class="event-card">
+                    <div class="event-icon">✓</div>
+                    <div class="event-content">
+                        <div class="event-header">
+                            <div>
+                                <span class="event-type type-success">ورود موفق</span>
+                                <div class="event-title">تشخیص چهره — نیروی ۱</div>
+                            </div>
+                            <span class="event-time">۱۲:۳۴:۵۶</span>
+                        </div>
+                        <div class="event-description">محمد علی به‌طور موفق ورود کرد. میزان اطمینان: ۹۸.۵%</div>
+                        <div class="event-location">📍 ورودی اصلی - دوربین CAM-01</div>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-icon">❌</div>
+                    <div class="event-content">
+                        <div class="event-header">
+                            <div>
+                                <span class="event-type type-error">ورود غیرمجاز</span>
+                                <div class="event-title">ورود ناشناخته تشخیص‌داده‌شد</div>
+                            </div>
+                            <span class="event-time">۱۱:۲۲:۳۳</span>
+                        </div>
+                        <div class="event-description">فردی ناشناخته سعی کرد از درب ورودی فرعی وارد شود. میزان اطمینان: ۹۲.۳%</div>
+                        <div class="event-location">📍 ورودی فرعی - دوربین CAM-03</div>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-icon">⚠️</div>
+                    <div class="event-content">
+                        <div class="event-header">
+                            <div>
+                                <span class="event-type type-warning">هشدار</span>
+                                <div class="event-title">حرکت مشکوک در منطقهٔ محدود</div>
+                            </div>
+                            <span class="event-time">۱۰:۱۵:۲۲</span>
+                        </div>
+                        <div class="event-description">شخصی بدون سطح دسترسی کافی سعی کرد وارد بخش اداری شود. دسترسی رد شد.</div>
+                        <div class="event-location">📍 بخش اداری - دوربین CAM-07</div>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-icon">✓</div>
+                    <div class="event-content">
+                        <div class="event-header">
+                            <div>
+                                <span class="event-type type-success">ورود موفق</span>
+                                <div class="event-title">تشخیص چهره — نیروی ۲</div>
+                            </div>
+                            <span class="event-time">۰۹:۴۵:۱۲</span>
+                        </div>
+                        <div class="event-description">علی احمدی به‌طور موفق ورود کرد. میزان اطمینان: ۹۹.۱%</div>
+                        <div class="event-location">📍 ورودی اصلی - دوربین CAM-02</div>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-icon">❌</div>
+                    <div class="event-content">
+                        <div class="event-header">
+                            <div>
+                                <span class="event-type type-error">ورود غیرمجاز</span>
+                                <div class="event-title">سعی ورود در ساعت غیرمجاز</div>
+                            </div>
+                            <span class="event-time">۰۲:۳۰:۰۰</span>
+                        </div>
+                        <div class="event-description">فردی سعی کرد در ساعت‌های شب (۰۲:۳۰) وارد شود. دسترسی رد شد. سطح هشدار: بالا</div>
+                        <div class="event-location">📍 ورودی فرعی - دوربین CAM-04</div>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-icon">ℹ️</div>
+                    <div class="event-content">
+                        <div class="event-header">
+                            <div>
+                                <span class="event-type type-info">اطلاع</span>
+                                <div class="event-title">نگهبان خروج کرد</div>
+                            </div>
+                            <span class="event-time">۱۶:۰۰:۰۰</span>
+                        </div>
+                        <div class="event-description">محمد علی از محل کار خروج کرد. مدت حضور: ۸ ساعت و ۳۰ دقیقه</div>
+                        <div class="event-location">📍 ورودی اصلی - دوربین CAM-01</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <button class="active">1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>4</button>
+                <button>بعدی →</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

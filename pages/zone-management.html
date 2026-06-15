@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدیریت زون‌ها — نگاهبان</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(135deg, #0F2A4A 0%, #16202B 100%);
+            color: #16202B;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            font-size: 32px;
+            color: #0F2A4A;
+            margin-bottom: 8px;
+            font-weight: 900;
+        }
+        .header p {
+            color: #7B8FA3;
+            font-size: 16px;
+        }
+        .zones-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+        .zone-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-top: 4px solid #15B5CB;
+        }
+        .zone-header {
+            background: linear-gradient(135deg, #f0f3f8 0%, #e5e7eb 100%);
+            padding: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .zone-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0F2A4A;
+            margin-bottom: 4px;
+        }
+        .zone-id {
+            font-size: 12px;
+            color: #7B8FA3;
+            font-weight: 600;
+        }
+        .zone-body {
+            padding: 20px;
+        }
+        .zone-detail {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #f0f3f8;
+        }
+        .zone-detail:last-child {
+            border-bottom: none;
+        }
+        .zone-detail-label {
+            font-size: 12px;
+            color: #7B8FA3;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .zone-detail-value {
+            font-size: 14px;
+            color: #0F2A4A;
+            font-weight: 600;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .status-active {
+            background: #d1f4ea;
+            color: #23A65B;
+        }
+        .status-inactive {
+            background: #fde8e8;
+            color: #E23B3B;
+        }
+        .cameras-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .camera-badge {
+            background: #15B5CB;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .form-section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .form-section h2 {
+            font-size: 24px;
+            color: #0F2A4A;
+            margin-bottom: 24px;
+            font-weight: 700;
+            border-bottom: 2px solid #15B5CB;
+            padding-bottom: 12px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #0F2A4A;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 14px;
+            color: #16202B;
+        }
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #15B5CB;
+            box-shadow: 0 0 0 3px rgba(21, 181, 203, 0.1);
+        }
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 24px;
+        }
+        .button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .button-primary {
+            background: #15B5CB;
+            color: white;
+        }
+        .button-primary:hover {
+            background: #0f9db8;
+        }
+        .button-secondary {
+            background: #f0f3f8;
+            color: #0F2A4A;
+            border: 1px solid #e5e7eb;
+        }
+        .button-secondary:hover {
+            background: #e5e7eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📍 مدیریت زون‌ها</h1>
+            <p>تعریف زون، سطح دسترسی و قواعد هشدار</p>
+        </div>
+
+        <div class="zones-grid">
+            <div class="zone-card">
+                <div class="zone-header">
+                    <div class="zone-title">ورودی اصلی</div>
+                    <div class="zone-id">Zone-001</div>
+                </div>
+                <div class="zone-body">
+                    <div class="zone-detail">
+                        <span class="zone-detail-label">وضعیت:</span>
+                        <span class="status-badge status-active">✓ فعال</span>
+                    </div>
+                    <div class="zone-detail">
+                        <span class="zone-detail-label">سطح دسترسی:</span>
+                        <span class="zone-detail-value">5 (عمومی)</span>
+                    </div>
+                    <div class="zone-detail">
+                        <span class="zone-detail-label">تعداد دوربین:</span>
+                        <span class="zone-detail-value">12</span>
+                    </div>
+                    <div class="zone-detail">
+                        <span class="zone-detail-label">دوربین‌ها:</span>
+                        <div class="cameras-list">
+                            <span class="camera-badge">CAM-01</span>
+                            <span class="camera-badge">CAM-02</span>
+                            <span class="camera-badge">CAM-03</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="zone-card">
+                <div class="zone-header">
+                    <div class="zone-title">پارکینگ</div>
+                    <div class="zone-id">Zone-002</div>
+                </div>
+                <div class="zone-body">
+                    <div class="zone-detail">
+                        <span class="zone-detail-label">وضعیت:</span>
+                        <span class="status-badge status-active">✓ فعال</span>
+                    </div>
+                    <div class="zone-detail">
+                        <span class="zone-detail-label">سطح دسترسی:</span>
+                        <span class="zone-detail-value">3 (کارمندی)</span>
+                    </div>
+                    <div class="zone-detail">
+                        <span class="zone-detail-label">تعداد دوربین:</span>
+                        <span class="zone-detail-value">8</span>
+                    </div>
+                    <div class="zone-detail">
+                        <span class="zone-detail-label">دوربین‌ها:</span>
+                        <div class="cameras-list">
+                            <span class="camera-badge">CAM-04</span>
+                            <span class="camera-badge">CAM-05</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="zone-card">
+                <div class="zone-header">
+                    <div class="zone-title">بخش اداری</div>
+                    <div class="zone-id">Zone-003</div>
+                </div>
+                <div class="zone-body">
+                    <div class="zone-detail">
+                        <span class="zone-detail-label">وضعیت:</span>
+                        <span class="status-badge status-active">✓ فعال</span>
+                    </div>
+                    <div class="zone-detail">
+                        <span class="zone-detail-label">سطح دسترسی:</span>
+                        <span class="zone-detail-value">2 (مدیریت)</span>
+                    </div>
+                    <div class="zone-detail">
+                        <span class="zone-detail-label">تعداد دوربین:</span>
+                        <span class="zone-detail-value">6</span>
+                    </div>
+                    <div class="zone-detail">
+                        <span class="zone-detail-label">دوربین‌ها:</span>
+                        <div class="cameras-list">
+                            <span class="camera-badge">CAM-06</span>
+                            <span class="camera-badge">CAM-07</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>➕ ایجاد زون جدید</h2>
+
+            <div class="form-group">
+                <label class="form-label">نام زون:</label>
+                <input type="text" class="form-input" placeholder="مثال: فناوری و توسعه">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">شناسه (ID):</label>
+                <input type="text" class="form-input" placeholder="Zone-004" disabled value="Zone-004">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">سطح دسترسی:</label>
+                <select class="form-select">
+                    <option>5 - عمومی (همه)</option>
+                    <option>4 - کارمندی</option>
+                    <option>3 - مدیریتی</option>
+                    <option>2 - محدود</option>
+                    <option>1 - ممنوع</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">دوربین‌های مختص:</label>
+                <select class="form-select" multiple style="height: auto; padding: 8px;">
+                    <option selected>CAM-01</option>
+                    <option selected>CAM-02</option>
+                    <option>CAM-03</option>
+                    <option>CAM-04</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">قواعد هشدار:</label>
+                <div style="background: #f0f3f8; padding: 12px; border-radius: 8px; color: #7B8FA3; font-size: 14px; margin-bottom: 12px;">
+                    • هشدار در هنگام ورود غیرمجاز
+                    • ثبت ورود/خروج تمام افراد
+                    • ثبت حرکت‌های غیرعادی
+                </div>
+                <textarea class="form-textarea" placeholder="توصیفات اضافی و قواعد خصوصی این زون..."></textarea>
+            </div>
+
+            <div class="button-group">
+                <button class="button button-primary">ایجاد زون</button>
+                <button class="button button-secondary">لغو</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
