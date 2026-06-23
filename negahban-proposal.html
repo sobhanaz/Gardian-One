@@ -91,6 +91,21 @@ body{
 .toc-dots{flex:1}
 .toc-group li a:hover .toc-t{color:var(--cyan)}
 .toc-note{color:var(--muted);font-size:12.5px;margin-top:18px}
+/* صفحات تعاملی و مکمل */
+.related-wrap{margin-top:26px;border-top:3px solid var(--navy);padding-top:18px}
+.related-wrap .toc-chap{margin-bottom:14px}
+.related-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rel-card{display:flex;align-items:flex-start;gap:12px;text-decoration:none;
+  border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:#fbfdff;
+  transition:border-color .15s,box-shadow .15s,transform .15s}
+.rel-card:hover{border-color:var(--cyan);box-shadow:0 6px 18px rgba(15,42,74,.10);transform:translateY(-2px)}
+.rel-ic{width:40px;height:40px;flex:none;border-radius:10px;background:var(--cyan-soft);
+  display:flex;align-items:center;justify-content:center;font-size:20px}
+.rel-tx{min-width:0}
+.rel-tt{font-weight:800;color:var(--navy);font-size:14.5px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.rel-badge{font-size:10.5px;font-weight:700;color:#0E7E91;background:var(--cyan-soft);border-radius:20px;padding:1px 9px}
+.rel-ds{display:block;font-size:12px;color:var(--muted);margin-top:3px;line-height:1.65}
+@media (max-width:680px){.related-grid{grid-template-columns:1fr}}
 
 /* جداکنندهٔ فصل */
 .chapter-divider{min-height:760px;display:flex;align-items:center;justify-content:center;
@@ -322,7 +337,32 @@ table.kv td{padding:11px 14px;border-bottom:1px solid var(--line)}
   </g>
 </svg><h2>فهرست مطالب</h2></div>
     <div class="toc-group"><div class="toc-chap">فصل یک — دربارۀ ما</div><ul><li><a href="#about-us"><span class="toc-n">1</span><span class="toc-t">دربارۀ ما</span><span class="toc-dots"></span></a></li><li><a href="#about-doc"><span class="toc-n">2</span><span class="toc-t">دربارۀ این سند</span><span class="toc-dots"></span></a></li><li><a href="#need"><span class="toc-n">3</span><span class="toc-t">شرح نیاز</span><span class="toc-dots"></span></a></li><li><a href="#goal"><span class="toc-n">4</span><span class="toc-t">هدف از پلتفرم نگاهبان</span><span class="toc-dots"></span></a></li><li><a href="#scope"><span class="toc-n">5</span><span class="toc-t">اجرای پروژه در یک نگاه</span><span class="toc-dots"></span></a></li><li><a href="#delivery-models"><span class="toc-n">6</span><span class="toc-t">راهکارهای رایج عرضهٔ سامانه</span><span class="toc-dots"></span></a></li><li><a href="#stats"><span class="toc-n">7</span><span class="toc-t">آمارهای عددی</span><span class="toc-dots"></span></a></li><li><a href="#base-features"><span class="toc-n">8</span><span class="toc-t">ویژگی‌های پایهٔ سامانهٔ نگاهبان</span><span class="toc-dots"></span></a></li><li><a href="#workflow"><span class="toc-n">9</span><span class="toc-t">فرآیند انجام کار</span><span class="toc-dots"></span></a></li><li><a href="#hw"><span class="toc-n">10</span><span class="toc-t">پیش‌نیازهای سخت‌افزاری</span><span class="toc-dots"></span></a></li><li><a href="#sw"><span class="toc-n">11</span><span class="toc-t">پیش‌نیازهای نرم‌افزاری</span><span class="toc-dots"></span></a></li><li><a href="#data"><span class="toc-n">12</span><span class="toc-t">نگهداری داده‌ها و اطلاعات</span><span class="toc-dots"></span></a></li><li><a href="#advanced"><span class="toc-n">13</span><span class="toc-t">امکانات پیشرفتهٔ سامانهٔ نگاهبان</span><span class="toc-dots"></span></a></li><li><a href="#ai-face"><span class="toc-n">14</span><span class="toc-t">هوش مصنوعی و تشخیص چهره</span><span class="toc-dots"></span></a></li><li><a href="#zone"><span class="toc-n">15</span><span class="toc-t">زون‌بندی و کنترل تردد</span><span class="toc-dots"></span></a></li><li><a href="#tag"><span class="toc-n">16</span><span class="toc-t">تگ امنیتی و مکان‌یابی دقیق نگهبان</span><span class="toc-dots"></span></a></li><li><a href="#behavior"><span class="toc-n">17</span><span class="toc-t">تحلیل الگوی رفتاری و کشف جایگزینی</span><span class="toc-dots"></span></a></li><li><a href="#diagram"><span class="toc-n">18</span><span class="toc-t">دیاگرام تولید و چرخهٔ توسعه</span><span class="toc-dots"></span></a></li><li><a href="#ui-stages"><span class="toc-n">19</span><span class="toc-t">مراحل طراحی ظاهری اپلیکیشن و پنل</span><span class="toc-dots"></span></a></li><li><a href="#package"><span class="toc-n">20</span><span class="toc-t">بستهٔ پیشنهادی ما</span><span class="toc-dots"></span></a></li><li><a href="#scalability"><span class="toc-n">21</span><span class="toc-t">مقیاس‌پذیری و انواع پنل مشتری</span><span class="toc-dots"></span></a></li><li><a href="#timeline"><span class="toc-n">22</span><span class="toc-t">زمان‌بندی اجرای پروژه</span><span class="toc-dots"></span></a></li><li><a href="#nda"><span class="toc-n">23</span><span class="toc-t">حفظ محرمانگی و عدم افشای اطلاعات</span><span class="toc-dots"></span></a></li><li><a href="#ip"><span class="toc-n">24</span><span class="toc-t">مالکیت مادی و معنوی</span><span class="toc-dots"></span></a></li><li><a href="#tech"><span class="toc-n">25</span><span class="toc-t">تکنولوژی‌های مورد استفاده در نگاهبان</span><span class="toc-dots"></span></a></li><li><a href="#monitoring"><span class="toc-n">26</span><span class="toc-t">نظارت و کنترل بهبود خدمات</span><span class="toc-dots"></span></a></li><li><a href="#risks"><span class="toc-n">27</span><span class="toc-t">ریسک‌های پروژه</span><span class="toc-dots"></span></a></li><li><a href="#post"><span class="toc-n">28</span><span class="toc-t">خدمات قابل ارائه پس از اجرای پروژه</span><span class="toc-dots"></span></a></li></ul></div><div class="toc-group"><div class="toc-chap">فصل دوم — بوم مدل کسب‌وکار</div><ul><li><a href="#bmc"><span class="toc-n">29</span><span class="toc-t">بوم مدل کسب‌وکار پلتفرم نگاهبان</span><span class="toc-dots"></span></a></li><li><a href="#swot"><span class="toc-n">30</span><span class="toc-t">فرصت‌ها و تهدیدها</span><span class="toc-dots"></span></a></li><li><a href="#audience"><span class="toc-n">31</span><span class="toc-t">مخاطبان هدف</span><span class="toc-dots"></span></a></li><li><a href="#market-need"><span class="toc-n">32</span><span class="toc-t">نیاز موجود در بازار</span><span class="toc-dots"></span></a></li><li><a href="#marketing"><span class="toc-n">33</span><span class="toc-t">بازاریابی و تبلیغات</span><span class="toc-dots"></span></a></li><li><a href="#final-features"><span class="toc-n">34</span><span class="toc-t">امکانات نهایی</span><span class="toc-dots"></span></a></li><li><a href="#biz-model"><span class="toc-n">35</span><span class="toc-t">مدل تجاری</span><span class="toc-dots"></span></a></li><li><a href="#cost"><span class="toc-n">36</span><span class="toc-t">ساختار هزینه</span><span class="toc-dots"></span></a></li><li><a href="#specialists"><span class="toc-n">37</span><span class="toc-t">ساختار کامل متخصصان و تخصص‌های مورد نیاز</span><span class="toc-dots"></span></a></li><li><a href="#workforce"><span class="toc-n">38</span><span class="toc-t">رسته‌های نیروی کار</span><span class="toc-dots"></span></a></li><li><a href="#architecture"><span class="toc-n">39</span><span class="toc-t">معماری سیستم و زیرساخت</span><span class="toc-dots"></span></a></li><li><a href="#revenue"><span class="toc-n">40</span><span class="toc-t">منابع درآمدی</span><span class="toc-dots"></span></a></li><li><a href="#conclusion"><span class="toc-n">41</span><span class="toc-t">نتیجه‌گیری</span><span class="toc-dots"></span></a></li></ul></div><div class="toc-group"><div class="toc-chap">فصل سوم — هویت بصری</div><ul><li><a href="#identity-story"><span class="toc-n">42</span><span class="toc-t">اینگونه شکل گرفت</span><span class="toc-dots"></span></a></li><li><a href="#colors"><span class="toc-n">43</span><span class="toc-t">رنگ‌های انتخابی ما</span><span class="toc-dots"></span></a></li><li><a href="#why-cyan"><span class="toc-n">44</span><span class="toc-t">چرا فیروزه‌ای؟</span><span class="toc-dots"></span></a></li><li><a href="#logo-font"><span class="toc-n">45</span><span class="toc-t">مدل‌های لوگو و فونت</span><span class="toc-dots"></span></a></li><li><a href="#preview"><span class="toc-n">46</span><span class="toc-t">پیش‌نمایش اپلیکیشن و داشبورد</span><span class="toc-dots"></span></a></li></ul></div>
-    <p class="toc-note">شماره‌گذاری صفحات در نسخهٔ چاپی/PDF نمایش داده می‌شود.</p>
+    <div class="related-wrap">
+      <div class="toc-chap">صفحات تعاملی و مکمل (آنلاین)</div>
+      <div class="related-grid">
+        <a class="rel-card" href="negahban-cost-calculator.html" target="_blank" rel="noopener">
+          <span class="rel-ic">🧮</span>
+          <span class="rel-tx"><span class="rel-tt">ماشین‌حساب هزینه<span class="rel-badge">تعاملی</span></span><span class="rel-ds">برآورد زندهٔ هزینهٔ تجهیزات، نصب، توسعه و عملیات با اعداد قابل ویرایش.</span></span>
+        </a>
+        <a class="rel-card" href="negahban-roi.html" target="_blank" rel="noopener">
+          <span class="rel-ic">📈</span>
+          <span class="rel-tx"><span class="rel-tt">تحلیل بازگشت سرمایه (ROI)<span class="rel-badge">تعاملی</span></span><span class="rel-ds">نقطهٔ سربه‌سر و ارزش خالص در مقایسه با نگهبانی سنتی، با مفروضات قابل تنظیم.</span></span>
+        </a>
+        <a class="rel-card" href="negahban-technical-spec.html" target="_blank" rel="noopener">
+          <span class="rel-ic">📐</span>
+          <span class="rel-tx"><span class="rel-tt">مشخصات فنی</span><span class="rel-ds">جزئیات معماری، زیرساخت و پیکربندی فنی سامانهٔ نگاهبان.</span></span>
+        </a>
+        <a class="rel-card" href="negahban-supplement.html" target="_blank" rel="noopener">
+          <span class="rel-ic">📊</span>
+          <span class="rel-tx"><span class="rel-tt">سند تکمیلی</span><span class="rel-ds">تحلیل مالی، حساسیت، بوم کسب‌وکار، تکنولوژی‌ها و SWOT.</span></span>
+        </a>
+        <a class="rel-card" href="negahban-pitch.pptx">
+          <span class="rel-ic">📑</span>
+          <span class="rel-tx"><span class="rel-tt">ارائهٔ پاورپوینت<span class="rel-badge">دانلود</span></span><span class="rel-ds">فایل ارائهٔ pptx برای جلسات و معرفی پروژه.</span></span>
+        </a>
+      </div>
+    </div>
+    <p class="toc-note">شماره‌گذاری صفحات در نسخهٔ چاپی/PDF نمایش داده می‌شود. لینک‌های «صفحات تعاملی» در نسخهٔ آنلاین فعال‌اند.</p>
   </section>
 <section class="chapter-divider">
         <div class="cd-inner"><div class="cd-mark"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
