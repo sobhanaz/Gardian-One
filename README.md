@@ -6,9 +6,11 @@
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Status](https://img.shields.io/badge/status-Published-brightgreen.svg)
 ![Platform](https://img.shields.io/badge/platform-Web-blue.svg)
-![Language](https://img.shields.io/badge/language-Persian%20%2B%20English-informational.svg)
+![Language](https://img.shields.io/badge/language-English-green.svg)
 
 **🌐 [Live Project](https://sobhanaz.github.io/Gardian-One/) | 📖 [Full Proposal](https://sobhanaz.github.io/Gardian-One/negahban-proposal.html) | 🎯 [Business Case](https://sobhanaz.github.io/Gardian-One/negahban-why.html)**
+
+**📚 [فارسی](README.fa.md) | English**
 
 *The future of security is intelligent. Augmenting human expertise with AI-powered insights.*
 
@@ -73,6 +75,7 @@ Negahban/
 ├── favicon.svg                     # Project icon
 ├── negahban-proposal.pdf           # Exportable proposal (PDF)
 ├── negahban-proposal.docx          # Exportable proposal (Word)
+├── README.fa.md                    # Persian README
 └── README.md                       # This file
 ```
 
@@ -173,6 +176,7 @@ The development cost is one-time — a second building only needs the deployment
 ├── favicon.svg                     # Shared brand shield favicon
 ├── negahban-pitch.pptx             # Pitch deck
 ├── negahban-proposal.pdf / .docx   # Exported proposal
+├── README.fa.md                    # Persian README
 └── .github/workflows/deploy.yml    # GitHub Pages deployment
 ```
 
@@ -349,204 +353,16 @@ See [LICENSE](LICENSE) file for full terms.
 ---
 
 <br/>
-<br/>
-<br/>
+
+## 📝 Copyright & Attribution
+
+**Negahban Project** © 2026 [Sobhan Azimzadeh](https://github.com/sobhanaz)
+
+- **Author:** Sobhan Azimzadeh, CEO @ [TECSO Digital Agency](https://tecso.team/)
+- **Repository:** [GitHub - Gardian-One](https://github.com/sobhanaz/Gardian-One)
+- **License:** MIT (See [LICENSE](LICENSE) file)
+- **Available in:** [English](README.md) | [فارسی](README.fa.md)
 
 ---
 
-# نگاهبان — سامانهٔ هوشمند امنیت و نگهبانی
-
-<div dir="rtl">
-
-## 📋 مرور کلی
-
-**نگاهبان** یک سامانهٔ جامع **انسان + ماشین** است که امنیت فیزیکی را با تقویت تیم نگهبانی در محل (نه جایگزینی) متحول می‌کند.
-
-### مسئله
-امنیت سنتی متکی بر:
-- ❌ نظارت دستی که در معرض خستگی و اشتباه انسانی است
-- ❌ پاسخ واکنشی به حوادث
-- ❌ قابلیت ردیابی محدود در زمان واقعی
-- ❌ ثبت‌سازی نامنسجم و غیرقابل‌اعتماد
-
-### راهکار
-نگاهبان تکنولوژی‌های روز جهان را با شیوه‌های اثبات‌شدهٔ امنیت ترکیب می‌کند:
-
-- 🧠 **تشخیص چهره هوشمند** — تشخیص فوری مجاز/غیرمجاز با هشدار آنی
-- 👤 **تأیید هویت نگهبان** — تحلیل رفتار برای اطمینان از حضور شخص صحیح
-- 📍 **موقعیت‌یابی درونی زنده (RTLS)** — ردیابی نگهبان و دارایی‌ها
-- 🚪 **کنترل دسترسی هوشمند** — احراز هویت چندسطحی و مناطق حفاظت‌شده
-- 📊 **گزارش‌دهی ممیز** — ثبت تمام حوادث با زمان، مکان و تصویر
-- 🏛️ **حاکمیت داده** — استقرار ۱۰۰٪ درون‌محلی؛ داده‌های بیومتریک هرگز خارج نمی‌شوند
-
----
-
-## 🎯 قابلیت‌های اساسی
-
-| قابلیت | توصیف | منفعت |
-|--------|-------|-------|
-| **تشخیص چهره** | شناسایی بیومتریک مبتنی بر هوش مصنوعی | تشخیص تهدید فوری |
-| **تحلیل رفتار** | تأیید شیفت و تشخیص ناهنجاری | جلوگیری از جعل هویت |
-| **ردیابی زنده** | موقعیت‌یابی RTLS با نقشهٔ کف | بهینه‌سازی زمان پاسخ |
-| **کنترل دسترسی** | احراز هویت چندسطحی و مدیریت مناطق | امنیت جامع |
-| **گزارش‌دهی هوشمند** | ثبت خودکار حوادث و تجزیه‌وتحلیل | انطباق و بصیرت |
-| **آمادگی پذیریش** | پشتیبانی از دستگاه‌های دوربین و IoT | اکوسیستم مقیاس‌پذیر |
-
----
-
-## 📁 ساختار سند
-
-```
-نگاهبان/
-├── index.html                      # مرکز فرودگاهی
-├── negahban-proposal.html          # پروپوزال کامل
-├── negahban-why.html               # توجیه ارزش و موارد تجاری
-├── negahban-onepager.html          # خلاصهٔ مدیریتی
-├── negahban-cost-calculator.html   # ماشین‌حساب هزینه تعاملی
-├── negahban-roi.html               # تحلیل ROI و بازگشت سرمایه
-├── negahban-technical-spec.html    # مشخصات فنی معماری
-├── negahban-tech-stack.html        # تکنولوژی‌ها و فرآیند توسعه
-├── negahban-supplement.html        # تحلیل مالی و فنی گسترده
-├── negahban-commercial.html        # مدل‌های قیمت‌گذاری و قرارداد
-├── negahban-pilot.html             # پیشنهاد POC
-├── negahban-compliance.html        # حریم خصوصی، انطباق و پرسش‌های رایج
-├── logo-preview.html               # نمایشگاه هویت برند
-├── content.js                      # محتوای اشتراک‌گذاری شده
-├── favicon.svg                     # نماد پروژه
-└── README.md                       # این فایل
-```
-
----
-
-## 📚 مجموعهٔ اسناد کامل
-
-تمام اسناد **زنده، تعاملی و آماده‌ای برای چاپ** هستند:
-
-### اسناد اصلی
-| سند | هدف |
-|------|------|
-| **[پروپوزال کامل](https://sobhanaz.github.io/Gardian-One/negahban-proposal.html)** | طراحی کامل سیستم و مدل کسب‌وکار |
-| **[موارد تجاری](https://sobhanaz.github.io/Gardian-One/negahban-why.html)** | توجیه ارزش و بازگشت سرمایه |
-| **[خلاصهٔ یک‌صفحه‌ای](https://sobhanaz.github.io/Gardian-One/negahban-onepager.html)** | مرور کوتاه برای تصمیم‌گیران |
-
-### ابزارهای تعاملی
-| ابزار | کاربرد |
-|------|--------|
-| **[ماشین‌حساب هزینه](https://sobhanaz.github.io/Gardian-One/negahban-cost-calculator.html)** | مدل‌سازی بودجهٔ زنده |
-| **[تحلیل ROI](https://sobhanaz.github.io/Gardian-One/negahban-roi.html)** | مدل‌سازی سربه‌سر |
-
-### اسناد فنی و انطباق
-| سند | جزئیات |
-|------|---------|
-| **[مشخصات فنی](https://sobhanaz.github.io/Gardian-One/negahban-technical-spec.html)** | معماری سیستم و یکپارچگی‌ها |
-| **[تکنولوژی‌ها](https://sobhanaz.github.io/Gardian-One/negahban-tech-stack.html)** | انتخاب‌های فن‌آوری و فرآیند |
-| **[انطباق](https://sobhanaz.github.io/Gardian-One/negahban-compliance.html)** | حریم خصوصی و حفاظت داده |
-| **[تحلیل گسترده](https://sobhanaz.github.io/Gardian-One/negahban-supplement.html)** | تفکیک‌شدهٔ هزینه و زمان‌بندی |
-
-### کیت تجاری و اجرا
-| سند | محتوا |
-|------|--------|
-| **[کیت تجاری](https://sobhanaz.github.io/Gardian-One/negahban-commercial.html)** | مدل‌های قیمت‌گذاری و توافق‌نامه |
-| **[برنامهٔ آزمایشی](https://sobhanaz.github.io/Gardian-One/negahban-pilot.html)** | پیشنهاد و معیارهای موفقیت POC |
-
----
-
-## 🛠️ پشته‌ی فن‌آوری
-
-### توصیف محصول پیشنهادی
-سامانهٔ نگاهبان با تکنولوژی‌های سطح سازمانی طراحی شده است:
-
-**خدمات و پردازش‌**
-- **Go** — خدمات backend با کارایی بالا
-- **Python** — خط‌لوله هوش مصنوعی با OpenCV
-- **ONNX Runtime** — استنتاج بهینه‌شدهٔ TensorRT
-
-**رابط و کلاینت**
-- **React + TypeScript** — داشبوردِ وب مدرن
-- **Flutter** — برنامه‌های iOS/Android بومی
-- **HTML5/CSS3** — رابط کاربری استاندارد
-
-**داده و ذخیره‌سازی**
-- **PostgreSQL** — پایگاه داده رابطه‌ای اصلی
-- **TimescaleDB** — بهینه‌سازی سری زمانی
-- **MinIO** — ذخیره‌سازی شی سازگار با S3
-- **Redis** — حافظهٔ موقت و ردیابی حضور
-
-**یکپارچگی و پیام‌رسانی**
-- **NATS JetStream** — ریل پیام قابل‌اطمینان
-- **GStreamer / FFmpeg** — پردازش ویدیو
-
-**زیرساخت و رصد**
-- **Docker + Kubernetes** — هماهنگ‌سازی و مقیاس‌بندی
-- **Prometheus + Grafana** — متریک و تجسم
-- **Loki** — ورود توزیع‌شدهٔ
-- **OpenTelemetry** — ردیابی جامع
-
----
-
-## 🚀 شروع سریع
-
-### مشاهدهٔ آنلاین
-به [https://sobhanaz.github.io/Gardian-One/](https://sobhanaz.github.io/Gardian-One/) مراجعه کنید.
-
-### توسعهٔ محلی
-```bash
-git clone https://github.com/sobhanaz/Gardian-One.git
-cd Gardian-One
-# هیچ وابستگی نمی‌خواهد — فایل‌های HTML را مستقیماً باز کنید
-```
-
----
-
-## 📊 استقرار مرجع
-
-| معیار | مقدار |
-|--------|-------|
-| نوع ساختمان | تاسیسات ایمنی و شغلی |
-| کارمندان | 500 |
-| بازدیدکنندگان روزانه | 200 |
-| طبقات | 11 |
-| دوربین | ~110 |
-| ترمینال بیومتریک | 18 |
-| دوار ورودی | 4 |
-
----
-
-## 📄 مجوز
-
-این پروژه تحت **مجوز MIT** منتشر می‌شود.
-
-© 2026 سهان عظیم‌زاده — Sobhan Azimzadeh
-
-تمام حقوق برای استفاده، تغییر، و توزیع مجدد محفوظ است.
-
-برای شرایط کامل به فایل [LICENSE](LICENSE) مراجعه کنید.
-
----
-
-## 🔗 پیوندها و منابع
-
-- **سایت زنده:** https://sobhanaz.github.io/Gardian-One/
-- **مخزن:** https://github.com/sobhanaz/Gardian-One
-- **نویسنده:** [سهان عظیم‌زاده](https://github.com/sobhanaz)
-- **ارتباط:** [تلگرام](https://t.me/sobhanazimzadeh) | [لینکدین](https://www.linkedin.com/in/sobhan-azimzadeh-b956aa234)
-
----
-
-## 🎯 وضعیت پروژه
-
-| جنبه | وضعیت |
-|------|--------|
-| مستندات | ✅ تکمیل |
-| استقرار وب | ✅ زنده در GitHub Pages |
-| ابزارهای تعاملی | ✅ عملیاتی |
-| پشتیبانی فارسی | ✅ پشتیبانی کامل RTL |
-| سازگاری موبایل | ✅ بهینه‌شدهٔ |
-
----
-
-</div>
-
-<br/>
-
-**Built with ❤️ by [Sobhan Azimzadeh](https://sobhanaz.github.io/Gardian-One/) | CEO @ [TECSO](https://tecso.team/)**
+**Built with ❤️ by [Sobhan Azimzadeh](https://github.com/sobhanaz) | CEO @ [TECSO](https://tecso.team/)**
