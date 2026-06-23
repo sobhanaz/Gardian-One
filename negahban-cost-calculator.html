@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ماشین‌حساب و ساختار هزینهٔ پروژهٔ نگاهبان</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --navy:#0F2A4A;--navy-deep:#081B30;--cyan:#15B5CB;--cyan-d:#0E7E91;--cyan-soft:#e8f8fb;
+  --green:#23A65B;--green-soft:#e9f7ef;--red:#E23B3B;--amber:#E8A317;
+  --ink:#16202B;--muted:#5B6B7A;--line:#E2E8EF;--bg:#EEF2F7;--surface:#fff;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Vazirmatn',Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:1.95;font-size:15px}
+.doc{max-width:1080px;margin:0 auto;background:var(--surface)}
+/* cover */
+.cover{background:radial-gradient(900px 360px at 80% -10%,#1c4a7a,var(--navy) 55%,var(--navy-deep));color:#fff;padding:30px 34px;display:flex;align-items:center;gap:22px}
+.cover svg{width:64px;height:74px;flex:none}
+.cover .kick{color:var(--cyan);font-weight:700;font-size:13px;margin-bottom:4px}
+.cover h1{margin:0;font-size:25px;font-weight:900}
+.cover .sub{color:#bdd6ee;font-size:14px;margin-top:5px}
+/* controls */
+.controls{position:sticky;top:0;z-index:30;background:#0c2138;color:#fff;padding:12px 24px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.ctrl{display:flex;align-items:center;gap:8px}
+.ctrl label{font-size:13px;color:#bdd6ee;font-weight:600}
+.ctrl input{width:120px;background:#16324f;border:1px solid #2c557e;color:#fff;border-radius:8px;padding:7px 10px;font-family:inherit;font-size:14px;text-align:left;font-weight:700}
+.ctrl input.pct{width:64px}
+.ctrl input:focus{outline:none;border-color:var(--cyan)}
+.btns{margin-inline-start:auto;display:flex;gap:8px}
+.btn{background:var(--cyan);color:#06222e;border:0;border-radius:8px;padding:8px 14px;font-family:inherit;font-weight:800;font-size:13px;cursor:pointer}
+.btn.ghost{background:transparent;color:#bdd6ee;border:1px solid #2c557e}
+/* body */
+.body{padding:26px 34px}
+section{padding:18px 0;border-bottom:1px solid var(--line)}
+h2{font-size:21px;color:var(--navy);font-weight:900;margin:4px 0 6px;display:flex;align-items:center;gap:10px}
+h2 .sn{width:30px;height:30px;border-radius:9px;background:var(--navy);color:#fff;font-size:15px;display:flex;align-items:center;justify-content:center;flex:none}
+.eyebrow{color:var(--cyan-d);font-weight:800;font-size:12px;letter-spacing:.4px;margin-bottom:2px}
+p{margin:0 0 10px;text-align:justify}
+.muted{color:var(--muted);font-size:13px}
+/* summary cards */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:6px 0 18px}
+.card{border:1px solid var(--line);border-radius:14px;padding:16px;background:linear-gradient(180deg,#fff,#f7fbfd)}
+.card .t{color:var(--muted);font-size:13px;font-weight:600;margin-bottom:6px}
+.card .v{font-size:23px;font-weight:900;color:var(--navy);line-height:1.3}
+.card .v.cyan{color:var(--cyan-d)}
+.card .u{font-size:12px;color:var(--muted)}
+.card.big{grid-column:span 2;background:linear-gradient(120deg,var(--navy),#163a63);color:#fff;border:0}
+.card.big .t{color:#bdd6ee}.card.big .v{color:#fff}.card.big .u{color:#9ec4e6}
+.grid2{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:start}
+.chart-box{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff}
+.chart-box h4{margin:0 0 8px;font-size:14px;color:var(--navy);font-weight:800}
+/* tables */
+.tw{overflow-x:auto;margin:10px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{background:var(--navy);color:#fff;padding:9px 10px;text-align:right;font-weight:700;white-space:nowrap}
+td{padding:6px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr.cat td{background:#dff0f5;color:var(--navy);font-weight:800}
+tr.sub td{background:#eef6f9;font-weight:800}
+tr.tot td{background:var(--navy);color:#fff;font-weight:800}
+.num{text-align:center;white-space:nowrap}
+.calc{width:88px;border:1px solid #cfdbe7;border-radius:7px;padding:5px 7px;font-family:inherit;font-size:13.5px;text-align:center;background:#fcfdff}
+.calc.u{width:96px}
+.calc:focus{outline:none;border-color:var(--cyan);background:#fff;box-shadow:0 0 0 2px var(--cyan-soft)}
+.cyan-v{color:var(--green);font-weight:700}
+.usd-v{color:#0b3a52;font-weight:600}
+/* spec list */
+.specs{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:8px 0}
+.spec{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fbfdff}
+.spec b{color:var(--navy)}
+.note{background:var(--cyan-soft);border-right:4px solid var(--cyan);border-radius:10px;padding:11px 15px;margin:12px 0;font-size:14px}
+.minic{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;background:#f4f9fb;border:1px solid #d4ebf0;border-radius:12px;padding:14px;margin:10px 0}
+.minic .f{display:flex;flex-direction:column;gap:4px}
+.minic .f label{font-size:12px;color:var(--muted);font-weight:600}
+.minic .f input{width:90px;border:1px solid #cfdbe7;border-radius:7px;padding:6px 8px;font-family:inherit;text-align:center}
+.minic .out{margin-inline-start:auto;text-align:left}
+.minic .out .big{font-size:22px;font-weight:900;color:var(--navy)}
+/* gantt */
+.gantt{overflow-x:auto;margin:10px 0}
+.gantt table{font-size:12px}
+.gantt td.m{padding:0;height:26px}
+.bar{height:18px;border-radius:4px;margin:0 1px}
+.bar.dev{background:var(--cyan)}
+.bar.ops{background:#9AD9E3}
+/* footer note */
+.foot{padding:16px 34px 40px;color:var(--muted);font-size:12.5px}
+.foot ul{margin:6px 0;padding-right:20px}
+@media (max-width:820px){
+  .cards{grid-template-columns:1fr 1fr}.card.big{grid-column:span 2}.grid2{grid-template-columns:1fr}
+  .body{padding:20px}
+}
+@media print{
+  .controls{position:static;box-shadow:none}.btns{display:none}
+  .calc,.ctrl input{border:0;background:transparent;color:#000;font-weight:700;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .ctrl input{color:#fff}
+  body{background:#fff}section{break-inside:avoid}
+  @page{size:A4 landscape;margin:10mm}
+}
+</style>
+</head>
+<body>
+<div class="doc">
+<header class="cover">
+  <svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient><linearGradient id="ir" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient></defs><path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#sh)" stroke="#19b6cd" stroke-width="3"/><path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/><path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/><circle cx="66" cy="78" r="17" fill="url(#ir)"/><circle cx="66" cy="78" r="7.5" fill="#0b2742"/><circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/><g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85"><line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/><line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/></g></svg>
+  <div>
+    <div class="kick">نگاهبان • ماشین‌حساب هزینه (قابل ویرایش)</div>
+    <h1>ساختار هزینهٔ پروژه — ساختمان ۱۱ طبقهٔ ایمنی کار</h1>
+    <div class="sub">۵۰۰ کارمند + ۲۰۰ مراجعه‌کننده • همهٔ اعداد قابل کم و زیاد کردن • جمع‌ها و نمودارها زنده به‌روز می‌شوند</div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="ctrl"><label>نرخ دلار (تومان)</label><input id="rate" type="number" value="180000" step="1000"></div>
+  <div class="ctrl"><label>ضریب احتیاط ٪</label><input id="cont" class="pct" type="number" value="10" step="1"></div>
+  <div class="ctrl"><label>گمرک/ترخیص ٪</label><input id="cust" class="pct" type="number" value="15" step="1"></div>
+  <div class="btns">
+    <button class="btn" onclick="window.print()">چاپ / ذخیرهٔ PDF</button>
+    <button class="btn ghost" onclick="resetAll()">بازنشانی</button>
+  </div>
+</div>
+
+<div class="body">
+
+<!-- خلاصه -->
+<section>
+  <div class="eyebrow">داشبورد زنده</div>
+  <h2><span class="sn">۱</span>خلاصهٔ هزینه</h2>
+  <div class="cards">
+    <div class="card big"><div class="t">جمع کل (استقرار + توسعه)</div><div class="v"><span id="sGrand">—</span> <span style="font-size:14px">تومان</span></div><div class="u"><span id="sGrandMld">—</span> میلیارد تومان • معادل <span id="sGrandUsd">—</span> دلار</div></div>
+    <div class="card"><div class="t">هزینهٔ استقرار این ساختمان</div><div class="v cyan"><span id="sDeploy">—</span></div><div class="u">تومان • <span id="sDeployUsd">—</span> دلار</div></div>
+    <div class="card"><div class="t">هزینهٔ توسعهٔ پلتفرم (یک‌بار)</div><div class="v"><span id="sDev">—</span></div><div class="u">تومان • <span id="sDevUsd">—</span> دلار</div></div>
+  </div>
+  <div class="grid2">
+    <div class="chart-box"><h4>توزیع هزینه بر حسب سرفصل</h4><canvas id="chDist" height="190"></canvas></div>
+    <div class="chart-box"><h4>سهم اجزای تجهیزات (میلیون تومان)</h4><canvas id="chHw" height="190"></canvas></div>
+  </div>
+</section>
+
+<!-- مشخصات زیرساخت -->
+<section>
+  <div class="eyebrow">طراحی فنی</div>
+  <h2><span class="sn">۲</span>مشخصات دقیق زیرساخت لازم</h2>
+  <div class="specs">
+    <div class="spec"><b>دوربین‌ها:</b> ~۱۱۰ عدد؛ ۳۵ دوربین تشخیص‌چهره ۴–۸MP با اپتیک و IR در ورودی‌ها و لابی هر طبقه، ۷۵ دوربین نظارتی عمومی PoE در راهروها/پله‌ها/پارکینگ.</div>
+    <div class="spec"><b>سرور پردازش هوش مصنوعی:</b> ۳۲ هسته CPU، ۱۲۸GB RAM، GPU حرفه‌ای (RTX A4000/A5000)، استنتاج با TensorRT-FP16 برای پوشش تا ۱۲۸ دوربین.</div>
+    <div class="spec"><b>سرور اپلیکیشن/پایگاه‌داده:</b> رک‌مونت با PostgreSQL+pgvector، Redis و گذرگاه پیام؛ افزونگی با replica.</div>
+    <div class="spec"><b>ذخیره‌سازی:</b> آرشیو ۳۰ روزه؛ ۱۲× هارد Surveillance ۱۸TB در RAID؛ ظرفیت با ماشین‌حساب پایین قابل برآورد است.</div>
+    <div class="spec"><b>مکان‌یابی (RTLS):</b> مدل اقتصادی BLE با ۳۰ گیت‌وی (≈ ۳ در هر طبقه) و ۳۰ تگ؛ قابل ارتقا به UWB برای دقت ۱۰–۳۰cm.</div>
+    <div class="spec"><b>کنترل تردد:</b> ۴ گیت Turnstile در لابی اصلی، ۱۸ ترمینال چهره+اثرانگشت در ورودی طبقات/زون‌ها، ۲۰ درب کنترلی برقی.</div>
+    <div class="spec"><b>شبکه:</b> ۴ سوئیچ PoE+ ۴۸ پورت + سوئیچ Core؛ بک‌بون فیبر بین طبقات؛ VLAN ایزولهٔ دوربین‌ها.</div>
+    <div class="spec"><b>برق و پایداری:</b> UPS آنلاین ۶kVA برای اتاق سرور + UPS کوچک کلوزت‌ها؛ بار تخمینی پیوسته ~۳–۴ کیلووات.</div>
+  </div>
+  <div class="note"><b>ماشین‌حساب ظرفیت ذخیره‌سازی ویدئو</b> — با تغییر ورودی‌ها، فضای موردنیاز برآورد می‌شود:</div>
+  <div class="minic">
+    <div class="f"><label>تعداد دوربین</label><input id="stCam" type="number" value="110"></div>
+    <div class="f"><label>بیت‌ریت هر دوربین (Mbps)</label><input id="stBr" type="number" value="4"></div>
+    <div class="f"><label>روز نگهداری</label><input id="stDays" type="number" value="30"></div>
+    <div class="f"><label>ضریب ضبط (۰ تا ۱)</label><input id="stMo" type="number" value="0.7" step="0.05"></div>
+    <div class="out"><div class="muted">فضای مفید موردنیاز</div><div class="big"><span id="stTB">—</span> ترابایت</div><div class="muted">با سربار RAID (~۴۰٪): <span id="stRaw">—</span> ترابایت خام</div></div>
+  </div>
+</section>
+
+<!-- تجهیزات -->
+<section>
+  <div class="eyebrow">ریز هزینه — قابل ویرایش</div>
+  <h2><span class="sn">۳</span>تجهیزات و زیرساخت فیزیکی</h2>
+  <p class="muted">تعداد و قیمت واحد (دلار) هر قلم قابل تغییر است. جمع تومانی با نرخ دلارِ بالای صفحه محاسبه می‌شود.</p>
+  <div class="tw"><table id="hwTable"><thead><tr><th>شرح قلم</th><th>مشخصات / برند نمونه</th><th>تعداد</th><th>قیمت واحد ($)</th><th>جمع ($)</th><th>جمع (تومان)</th></tr></thead><tbody id="hwBody"></tbody></table></div>
+</section>
+
+<!-- نصب -->
+<section>
+  <div class="eyebrow">ریز هزینه — قابل ویرایش</div>
+  <h2><span class="sn">۴</span>نصب، کابل‌کشی و راه‌اندازی فیزیکی</h2>
+  <div class="tw"><table><thead><tr><th>شرح</th><th>واحد</th><th>تعداد</th><th>نرخ (تومان)</th><th>جمع (تومان)</th></tr></thead><tbody id="instBody"></tbody></table></div>
+</section>
+
+<!-- تیم توسعه -->
+<section>
+  <div class="eyebrow">منابع انسانی — قابل ویرایش</div>
+  <h2><span class="sn">۵</span>ساختار تیم فنی و توسعه</h2>
+  <p class="muted">هزینهٔ توسعه یک‌بار است و قابل سرشکن بین چند پروژه. تعداد نفر، مدت و نرخ ماهانه قابل تغییر است.</p>
+  <div class="grid2">
+    <div class="tw"><table><thead><tr><th>نقش</th><th>نفر</th><th>ماه</th><th>نرخ ماهانه (تومان)</th><th>نفر-ماه</th><th>جمع (تومان)</th></tr></thead><tbody id="teamBody"></tbody></table></div>
+    <div class="chart-box"><h4>سهم هزینهٔ هر نقش (میلیون تومان)</h4><canvas id="chTeam" height="240"></canvas></div>
+  </div>
+</section>
+
+<!-- عملیات -->
+<section>
+  <div class="eyebrow">ریز هزینه — قابل ویرایش</div>
+  <h2><span class="sn">۶</span>عملیات و سرویس سال اول</h2>
+  <div class="tw"><table><thead><tr><th>شرح</th><th>تعداد/ماه</th><th>نرخ (تومان)</th><th>جمع (تومان)</th></tr></thead><tbody id="opsBody"></tbody></table></div>
+</section>
+
+<!-- جانبی -->
+<section>
+  <div class="eyebrow">ریز هزینه — قابل ویرایش</div>
+  <h2><span class="sn">۷</span>هزینه‌های جانبی</h2>
+  <div class="tw"><table><thead><tr><th>شرح</th><th>مبلغ (تومان)</th></tr></thead><tbody id="miscBody"></tbody></table></div>
+</section>
+
+<!-- جمع‌بندی -->
+<section>
+  <div class="eyebrow">جمع‌بندی</div>
+  <h2><span class="sn">۸</span>ساختار نهایی هزینه</h2>
+  <div class="tw"><table id="grandTable"><thead><tr><th>شرح</th><th>جمع (تومان)</th><th>معادل (دلار)</th><th>سهم</th></tr></thead><tbody id="grandBody"></tbody></table></div>
+</section>
+
+<!-- زمان‌بندی -->
+<section>
+  <div class="eyebrow">برنامه</div>
+  <h2><span class="sn">۹</span>ساختار زمان‌بندی (ماهانه)</h2>
+  <div class="gantt"><table id="ganttTable"></table></div>
+  <p class="muted">نوار فیروزه‌ای: کار توسعه/تحویل • نوار روشن: خرید/نصب/بهره‌برداری. ماه‌ها تخمینی‌اند.</p>
+</section>
+
+</div>
+
+<div class="foot">
+  <b>یادداشت‌ها و مفروضات قیمت‌گذاری</b>
+  <ul>
+    <li>قیمت تجهیزات تخمینی و وابسته به برند/فروشنده/نرخ ارز است؛ پیش از خرید استعلام بگیرید.</li>
+    <li>هزینهٔ توسعه یک‌بار است؛ برای ساختمان بعدی فقط بخش استقرار (سخت‌افزار + نصب + راه‌اندازی) لازم است.</li>
+    <li>RTLS روی مدل اقتصادی BLE فرض شده؛ ارتقا به UWB هزینهٔ تگ/گیت‌وی را چند برابر می‌کند.</li>
+    <li>حقوق و نرخ نیروی کار، تخمینیِ بازار است و باید با شرایط واقعی به‌روز شود.</li>
+    <li>تغییرات شما به‌صورت خودکار در همین مرورگر ذخیره می‌شود؛ دکمهٔ «بازنشانی» مقادیر را به پیش‌فرض برمی‌گرداند.</li>
+  </ul>
+</div>
+</div>
+
+<script>
+const PAL=['#0F2A4A','#15B5CB','#23A65B','#E8A317','#7C5CFC','#E23B3B','#4dd7e6','#0E7E91','#9AD9E3','#1E8E4E'];
+const fa=s=>String(s).replace(/[0-9]/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+const fmt=n=>fa(Math.round(n||0).toLocaleString('en-US'));
+const mld=n=>fa(((n||0)/1e9).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}));
+
+const DEFAULT={
+ rate:180000, cont:10, cust:15,
+ hw:[
+  {cat:'دوربین و تصویربرداری',items:[
+    {n:'دوربین تشخیص چهره (۴–۸MP، IR)',s:'Hikvision/Dahua DeepInView',q:35,u:200},
+    {n:'دوربین نظارتی عمومی (PoE)',s:'Hikvision/Dahua/Uniview',q:75,u:90},
+    {n:'هوزینگ/پایه/لوازم دوربین خاص',s:'—',q:20,u:25}]},
+  {cat:'سرور و پردازش',items:[
+    {n:'سرور هوش مصنوعی (۳۲C/۱۲۸GB + GPU)',s:'Supermicro + RTX A4000/A5000',q:1,u:9000},
+    {n:'GPU حرفه‌ای اضافی',s:'RTX A4000/L4',q:1,u:2500},
+    {n:'سرور اپلیکیشن و پایگاه‌داده',s:'Dell/HP رک‌مونت',q:1,u:3500}]},
+  {cat:'ذخیره‌سازی (آرشیو ۳۰ روز)',items:[
+    {n:'شاسی ذخیره‌سازی / NVR سازمانی',s:'Synology/QNAP/Server',q:1,u:2800},
+    {n:'هارد Surveillance ۱۸TB',s:'WD Purple Pro / SkyHawk',q:12,u:300}]},
+  {cat:'مکان‌یابی داخلی RTLS (BLE)',items:[
+    {n:'گیت‌وی/بیکن BLE',s:'—',q:30,u:90},
+    {n:'تگ امنیتی مکان‌یاب',s:'—',q:30,u:35}]},
+  {cat:'کنترل تردد و بیومتریک',items:[
+    {n:'ترمینال اسکنر چهره + اثر انگشت',s:'ZKTeco/Hikvision',q:18,u:300},
+    {n:'گیت تردد (Turnstile)',s:'ZKTeco/Came',q:4,u:2000},
+    {n:'کنترلر درب + قفل برقی + ریدر',s:'—',q:20,u:150}]},
+  {cat:'شبکه و برق',items:[
+    {n:'سوئیچ PoE+ ۴۸ پورت مدیریتی',s:'Cisco/Mikrotik/HP',q:4,u:800},
+    {n:'سوئیچ Core',s:'Cisco/Mikrotik',q:1,u:1000},
+    {n:'رک سرور ۴۲U + PDU',s:'—',q:1,u:1200},
+    {n:'رک/پچ‌پنل طبقات',s:'—',q:11,u:120},
+    {n:'UPS آنلاین سرور (۶kVA)',s:'APC/Eaton',q:1,u:2500},
+    {n:'UPS کوچک کلوزت شبکه',s:'—',q:5,u:300}]},
+  {cat:'کابل و متعلقات نصب',items:[
+    {n:'کابل Cat6 + داکت + کانکتور (کل پروژه)',s:'متریال',q:1,u:10000},
+    {n:'فیبر نوری بین طبقات (متریال)',s:'—',q:1,u:1500},
+    {n:'متعلقات نصب (براکت، تغذیه، لیبل)',s:'—',q:1,u:2500}]},
+  {cat:'اتاق کنترل و پایش',items:[
+    {n:'ورک‌استیشن پایش + ۲ مانیتور',s:'—',q:2,u:1250},
+    {n:'نمایشگر دیواری اتاق کنترل',s:'—',q:1,u:1500}]},
+ ],
+ inst:[
+  {n:'کابل‌کشی، ترمینیشن و پچ',unit:'نفر-روز',q:100,r:4500000},
+  {n:'نصب دوربین/اسکنر/گیت‌وی/گیت',unit:'نفر-روز',q:60,r:5000000},
+  {n:'برق‌کاری، UPS و رک',unit:'نفر-روز',q:25,r:6000000},
+  {n:'پیکربندی شبکه و سرور (میدانی)',unit:'نفر-روز',q:30,r:8000000},
+  {n:'کالیبراسیون دوربین/RTLS و تست',unit:'نفر-روز',q:25,r:8000000},
+  {n:'حمل و نقل و جابجایی تجهیزات',unit:'مقطوع',q:1,r:120000000},
+  {n:'سرپرستی و مدیریت نصب',unit:'نفر-روز',q:40,r:7000000},
+ ],
+ team:[
+  {role:'مدیر پروژه (PM)',c:1,m:12,r:100000000},
+  {role:'توسعه‌دهندهٔ Backend — Go',c:2,m:12,r:90000000},
+  {role:'مهندس هوش مصنوعی/بینایی ماشین',c:1,m:10,r:120000000},
+  {role:'توسعه‌دهندهٔ موبایل (Flutter)',c:1,m:8,r:80000000},
+  {role:'توسعه‌دهندهٔ Frontend (React)',c:1,m:8,r:75000000},
+  {role:'مهندس DevOps',c:1,m:9,r:90000000},
+  {role:'طراح UI/UX',c:1,m:4,r:60000000},
+  {role:'کارشناس تست (QA)',c:1,m:8,r:60000000},
+  {role:'کارشناس امنیت (مشاوره)',c:1,m:3,r:110000000},
+ ],
+ ops:[
+  {n:'اینترنت/لینک اختصاصی',q:12,r:6000000},
+  {n:'برق مصرفی (سرور+دوربین+شبکه)',q:12,r:9000000},
+  {n:'پشتیبانی و نگهداری (تیم)',q:12,r:60000000},
+  {n:'سرویس پیامک هشدار',q:12,r:2500000},
+  {n:'پشتیبان‌گیری/فضای ابری (اختیاری)',q:12,r:3000000},
+  {n:'دامنه و گواهی SSL (سالانه)',q:1,r:6000000},
+ ],
+ misc:[
+  {n:'حقوقی، قرارداد و NDA',a:120000000},
+  {n:'بیمه',a:90000000},
+  {n:'آموزش کاربران و راهبران',a:90000000},
+  {n:'مستندسازی و تحویل پروژه',a:70000000},
+  {n:'برندینگ و اقلام راهنما/تابلو',a:60000000},
+  {n:'اقلام مصرفی و متفرقه',a:100000000},
+ ],
+};
+let M=load()||clone(DEFAULT);
+function clone(o){return JSON.parse(JSON.stringify(o));}
+function save(){try{localStorage.setItem('negahban_cost',JSON.stringify(M));}catch(e){}}
+function load(){try{const s=localStorage.getItem('negahban_cost');return s?JSON.parse(s):null;}catch(e){return null;}}
+function resetAll(){M=clone(DEFAULT);syncControls();renderAll();recalc();save();}
+
+/* ---------- render editable tables ---------- */
+function inp(val,attrs){return '<input class="calc'+(attrs.cls||'')+'" type="number" value="'+val+'" '+(attrs.step?'step="'+attrs.step+'"':'')+' data-t="'+attrs.t+'" data-i="'+attrs.i+'" '+(attrs.j!=null?'data-j="'+attrs.j+'"':'')+' data-f="'+attrs.f+'">';}
+function renderHw(){
+  let h='';
+  M.hw.forEach((c,ci)=>{
+    h+='<tr class="cat"><td colspan="6">'+c.cat+'</td></tr>';
+    c.items.forEach((it,ii)=>{
+      h+='<tr><td>'+it.n+'</td><td class="muted">'+it.s+'</td>'+
+        '<td class="num">'+inp(it.q,{t:'hw',i:ci,j:ii,f:'q'})+'</td>'+
+        '<td class="num">'+inp(it.u,{t:'hw',i:ci,j:ii,f:'u',cls:' u'})+'</td>'+
+        '<td class="num usd-v" id="hwd_'+ci+'_'+ii+'">—</td>'+
+        '<td class="num cyan-v" id="hwt_'+ci+'_'+ii+'">—</td></tr>';
+    });
+    h+='<tr class="sub"><td colspan="4">زیرجمع — '+c.cat+'</td><td class="num" id="hsubd_'+ci+'">—</td><td class="num" id="hsubt_'+ci+'">—</td></tr>';
+  });
+  h+='<tr class="tot"><td colspan="4">جمع کل تجهیزات</td><td class="num" id="hwGrandD">—</td><td class="num" id="hwGrandT">—</td></tr>';
+  document.getElementById('hwBody').innerHTML=h;
+}
+function renderInst(){
+  let h='';M.inst.forEach((it,i)=>{
+    h+='<tr><td>'+it.n+'</td><td class="muted num">'+it.unit+'</td>'+
+      '<td class="num">'+inp(it.q,{t:'inst',i:i,f:'q'})+'</td>'+
+      '<td class="num">'+inp(it.r,{t:'inst',i:i,f:'r',cls:' u'})+'</td>'+
+      '<td class="num cyan-v" id="insum_'+i+'">—</td></tr>';
+  });
+  h+='<tr class="tot"><td colspan="4">جمع کل نصب و اجرا</td><td class="num" id="instTot">—</td></tr>';
+  document.getElementById('instBody').innerHTML=h;
+}
+function renderTeam(){
+  let h='';M.team.forEach((it,i)=>{
+    h+='<tr><td>'+it.role+'</td>'+
+      '<td class="num">'+inp(it.c,{t:'team',i:i,f:'c'})+'</td>'+
+      '<td class="num">'+inp(it.m,{t:'team',i:i,f:'m'})+'</td>'+
+      '<td class="num">'+inp(it.r,{t:'team',i:i,f:'r',cls:' u'})+'</td>'+
+      '<td class="num" id="tpm_'+i+'">—</td>'+
+      '<td class="num cyan-v" id="tsum_'+i+'">—</td></tr>';
+  });
+  h+='<tr class="tot"><td colspan="5">جمع کل توسعه</td><td class="num" id="teamTot">—</td></tr>';
+  document.getElementById('teamBody').innerHTML=h;
+}
+function renderOps(){
+  let h='';M.ops.forEach((it,i)=>{
+    h+='<tr><td>'+it.n+'</td>'+
+      '<td class="num">'+inp(it.q,{t:'ops',i:i,f:'q'})+'</td>'+
+      '<td class="num">'+inp(it.r,{t:'ops',i:i,f:'r',cls:' u'})+'</td>'+
+      '<td class="num cyan-v" id="opsum_'+i+'">—</td></tr>';
+  });
+  h+='<tr><td>قطعات یدکی و تعویض (۵٪ تجهیزات)</td><td class="num muted">—</td><td class="num muted">۵٪</td><td class="num cyan-v" id="opSpares">—</td></tr>';
+  h+='<tr class="tot"><td colspan="3">جمع کل عملیات سال اول</td><td class="num" id="opsTot">—</td></tr>';
+  document.getElementById('opsBody').innerHTML=h;
+}
+function renderMisc(){
+  let h='';M.misc.forEach((it,i)=>{
+    h+='<tr><td>'+it.n+'</td><td class="num">'+inp(it.a,{t:'misc',i:i,f:'a',cls:' u'})+'</td></tr>';
+  });
+  h+='<tr class="tot"><td>جمع کل جانبی</td><td class="num" id="miscTot">—</td></tr>';
+  document.getElementById('miscBody').innerHTML=h;
+}
+function renderGantt(){
+  const months=13;
+  const ph=[['۰','پی‌ریزی: Repo، CI/CD، Auth',1,1,'dev'],['۱','هستهٔ افراد و حضور + اپ نگهبان',2,4,'dev'],
+   ['۲','ویدئو و تشخیص چهره (MVP)',2,6,'dev'],['۳','مکان‌یابی/زون + داشبورد نقشه',4,8,'dev'],
+   ['۴','هوش رفتاری و کشف جایگزینی',7,10,'dev'],['خرید','تأمین و خرید تجهیزات',3,6,'ops'],
+   ['نصب','کابل‌کشی، نصب و راه‌اندازی',6,10,'ops'],['۵','تست، سخت‌سازی، آموزش و تحویل',10,12,'dev'],
+   ['بهره‌برداری','پشتیبانی و عملیات سال اول',13,13,'ops']];
+  let h='<thead><tr><th>فاز</th><th>عنوان</th>';
+  for(let m=1;m<=months;m++) h+='<th class="num">م'+fa(m)+'</th>';
+  h+='</tr></thead><tbody>';
+  ph.forEach(p=>{
+    h+='<tr><td class="num">'+p[0]+'</td><td>'+p[1]+'</td>';
+    for(let m=1;m<=months;m++){
+      const on=m>=p[2]&&m<=p[3];
+      h+='<td class="m">'+(on?'<div class="bar '+p[4]+'"></div>':'')+'</td>';
+    }
+    h+='</tr>';
+  });
+  h+='</tbody>';
+  document.getElementById('ganttTable').innerHTML=h;
+}
+function renderAll(){renderHw();renderInst();renderTeam();renderOps();renderMisc();renderGantt();bindInputs();}
+
+/* ---------- inputs ---------- */
+function bindInputs(){
+  document.querySelectorAll('input.calc').forEach(el=>{
+    el.addEventListener('input',()=>{
+      const t=el.dataset.t,i=+el.dataset.i,j=el.dataset.j!=null?+el.dataset.j:null,f=el.dataset.f,v=parseFloat(el.value)||0;
+      if(t==='hw')M.hw[i].items[j][f]=v; else M[t][i][f]=v;
+      recalc();save();
+    });
+  });
+}
+['rate','cont','cust'].forEach(id=>{
+  document.getElementById(id).addEventListener('input',e=>{M[id]=parseFloat(e.target.value)||0;recalc();save();});
+});
+['stCam','stBr','stDays','stMo'].forEach(id=>document.getElementById(id).addEventListener('input',storageCalc));
+function syncControls(){document.getElementById('rate').value=M.rate;document.getElementById('cont').value=M.cont;document.getElementById('cust').value=M.cust;}
+
+/* ---------- charts ---------- */
+let chDist,chHw,chTeam;
+function initCharts(){
+  chDist=new Chart(document.getElementById('chDist'),{type:'doughnut',
+    data:{labels:['تجهیزات','نصب','گمرک','عملیات','جانبی','احتیاط','توسعه'],datasets:[{data:[1,1,1,1,1,1,1],backgroundColor:PAL,borderWidth:2,borderColor:'#fff'}]},
+    options:{plugins:{legend:{position:'bottom',labels:{font:{family:'Vazirmatn',size:11},padding:8}}},cutout:'58%'}});
+  chHw=new Chart(document.getElementById('chHw'),{type:'bar',
+    data:{labels:M.hw.map(c=>c.cat),datasets:[{data:M.hw.map(()=>0),backgroundColor:'#15B5CB'}]},
+    options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{ticks:{font:{family:'Vazirmatn',size:10}}},y:{ticks:{font:{family:'Vazirmatn',size:10}}}}}});
+  chTeam=new Chart(document.getElementById('chTeam'),{type:'bar',
+    data:{labels:M.team.map(t=>t.role),datasets:[{data:M.team.map(()=>0),backgroundColor:'#0F2A4A'}]},
+    options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{ticks:{font:{family:'Vazirmatn',size:9}}},y:{ticks:{font:{family:'Vazirmatn',size:9}}}}}});
+}
+
+/* ---------- recalc ---------- */
+function setT(id,v){const e=document.getElementById(id);if(e)e.textContent=fmt(v);}
+function recalc(){
+  const rate=M.rate||0;
+  let hwUsd=0;const catTot=[];
+  M.hw.forEach((c,ci)=>{
+    let cd=0;
+    c.items.forEach((it,ii)=>{
+      const d=it.q*it.u; cd+=d;
+      setT('hwd_'+ci+'_'+ii,d); setT('hwt_'+ci+'_'+ii,d*rate);
+    });
+    setT('hsubd_'+ci,cd); setT('hsubt_'+ci,cd*rate); catTot.push(cd*rate); hwUsd+=cd;
+  });
+  const hwT=hwUsd*rate;
+  setT('hwGrandD',hwUsd); setT('hwGrandT',hwT);
+  let inst=0;M.inst.forEach((it,i)=>{const s=it.q*it.r;inst+=s;setT('insum_'+i,s);});setT('instTot',inst);
+  let team=0;M.team.forEach((it,i)=>{const pm=it.c*it.m;const s=pm*it.r;team+=s;setT('tpm_'+i,pm);setT('tsum_'+i,s);});setT('teamTot',team);
+  let ops=0;M.ops.forEach((it,i)=>{const s=it.q*it.r;ops+=s;setT('opsum_'+i,s);});
+  const spares=0.05*hwT;setT('opSpares',spares);ops+=spares;setT('opsTot',ops);
+  let misc=0;M.misc.forEach(it=>misc+=it.a);setT('miscTot',misc);
+  const cust=hwT*((M.cust||0)/100);
+  const subtotal=hwT+inst+cust+ops+misc;
+  const cont=subtotal*((M.cont||0)/100);
+  const deploy=subtotal+cont;
+  const grand=deploy+team;
+  // summary cards
+  setT('sGrand',grand);document.getElementById('sGrandMld').textContent=mld(grand);setT('sGrandUsd',grand/rate);
+  setT('sDeploy',deploy);setT('sDeployUsd',deploy/rate);
+  setT('sDev',team);setT('sDevUsd',team/rate);
+  // grand table
+  const rows=[['تجهیزات و زیرساخت فیزیکی',hwT],['نصب، کابل‌کشی و اجرا',inst],['ترخیص، گمرک و حمل (واردات)',cust],
+    ['عملیات و سرویس سال اول',ops],['هزینه‌های جانبی',misc],['__sub','زیرجمع هزینهٔ استقرار',subtotal],
+    ['ذخیرهٔ احتیاط',cont],['__tot','جمع هزینهٔ استقرار این ساختمان',deploy],
+    ['هزینهٔ توسعهٔ پلتفرم (یک‌بار)',team],['__grand','جمع کل (استقرار + توسعه)',grand]];
+  let gh='';rows.forEach(r=>{
+    let cls='',label,val;
+    if(r[0]==='__sub'){cls='sub';label=r[1];val=r[2];}
+    else if(r[0]==='__tot'){cls='sub';label=r[1];val=r[2];}
+    else if(r[0]==='__grand'){cls='tot';label=r[1];val=r[2];}
+    else{label=r[0];val=r[1];}
+    const share=grand>0?(val/grand*100):0;
+    gh+='<tr class="'+cls+'"><td>'+label+'</td><td class="num">'+fmt(val)+'</td><td class="num">'+fmt(val/rate)+' $</td><td class="num">'+(cls==='sub'?'':fa(share.toFixed(0))+'٪')+'</td></tr>';
+  });
+  document.getElementById('grandBody').innerHTML=gh;
+  // charts
+  if(chDist){chDist.data.datasets[0].data=[hwT,inst,cust,ops,misc,cont,team];chDist.update();}
+  if(chHw){chHw.data.datasets[0].data=catTot.map(v=>v/1e6);chHw.update();}
+  if(chTeam){chTeam.data.datasets[0].data=M.team.map(it=>it.c*it.m*it.r/1e6);chTeam.update();}
+}
+function storageCalc(){
+  const cam=+document.getElementById('stCam').value||0,br=+document.getElementById('stBr').value||0,
+    days=+document.getElementById('stDays').value||0,mo=+document.getElementById('stMo').value||1;
+  const bytes=br*1e6/8*86400*days*cam*mo; const tb=bytes/1e12;
+  document.getElementById('stTB').textContent=fa(tb.toFixed(1));
+  document.getElementById('stRaw').textContent=fa((tb*1.4).toFixed(1));
+}
+/* ---------- init ---------- */
+syncControls();renderAll();initCharts();recalc();storageCalc();
+</script>
+</body>
+</html>
