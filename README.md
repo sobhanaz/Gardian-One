@@ -44,7 +44,6 @@ table of contents.
 | 📝 Commercial kit (quote, payment plan, contract, SLA, warranty) | `negahban-commercial.html` | [open](https://sobhanaz.github.io/Gardian-One/negahban-commercial.html) |
 | 🚀 Pilot / POC proposal | `negahban-pilot.html` | [open](https://sobhanaz.github.io/Gardian-One/negahban-pilot.html) |
 | 🔏 Privacy, compliance & FAQ | `negahban-compliance.html` | [open](https://sobhanaz.github.io/Gardian-One/negahban-compliance.html) |
-| 🏢 Company, team & portfolio (template) | `negahban-company.html` | [open](https://sobhanaz.github.io/Gardian-One/negahban-company.html) |
 
 Also in the repo: `negahban-proposal.pdf` / `.docx` (exported proposal), `logo-preview.html`
 (brand/logo models), `favicon.svg` (shared brand shield), and `content.js` (see below).
