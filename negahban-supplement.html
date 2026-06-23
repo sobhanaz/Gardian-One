@@ -4,6 +4,14 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>نگاهبان — سند تکمیلی (مالی، فنی و کسب‌وکار)</title>
+<meta name="description" content="سند تکمیلی نگاهبان: نرخ تبدیل، تحلیل حساسیت، بوم کسب‌وکار، تکنولوژی‌ها، پیش‌نیازها و تحلیل SWOT."/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="نگاهبان — سند تکمیلی (مالی، فنی و کسب‌وکار)"/>
+<meta property="og:description" content="نرخ تبدیل، تحلیل حساسیت، بوم کسب‌وکار، تکنولوژی‌ها و SWOT."/>
+<meta property="og:url" content="https://sobhanaz.github.io/Gardian-One/negahban-supplement.html"/>
+<meta property="og:image" content="https://sobhanaz.github.io/Gardian-One/favicon.svg"/>
+<meta property="og:locale" content="fa_IR"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
@@ -87,10 +95,14 @@ ul.bul li::before{content:"";position:absolute;right:2px;top:9px;width:7px;heigh
 .diagram{margin:12px 0;border:1px solid var(--line);border-radius:13px;background:#f8fafc;padding:8px}
 .foot{max-width:1180px;margin:6px auto 36px;padding:0 18px;color:var(--muted);font-size:12px;text-align:center}
 @media (max-width:900px){.wrap{grid-template-columns:1fr}.toc{position:static;max-height:none;order:-1}.bmc{grid-template-columns:1fr 1fr}.bmc .vp,.bmc .cost,.bmc .rev,.bmc .span2{grid-column:auto;grid-row:auto}.swot,.cards,.two{grid-template-columns:1fr}}
-@media print{.toc{display:none}.wrap{display:block}.content{border:0}section{break-inside:avoid}@page{size:A4;margin:12mm}}
+.topbar{background:#0c2138;color:#fff;padding:10px 24px;display:flex;align-items:center;gap:10px;font-size:13px;font-family:'Vazirmatn',Tahoma,sans-serif}
+.topbar a{color:#4dd7e6;text-decoration:none;font-weight:700}
+.topbar a:hover{text-decoration:underline}
+@media print{.toc,.topbar{display:none}.wrap{display:block}.content{border:0}section{break-inside:avoid}@page{size:A4;margin:12mm}}
 </style>
 </head>
 <body>
+<div class="topbar"><span>◀</span><a href="negahban-proposal.html">بازگشت به پروپوزال اصلی نگاهبان</a></div>
 <header class="cover"><div class="cover-in">
   <svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient><linearGradient id="ir" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient></defs><path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#sh)" stroke="#19b6cd" stroke-width="3"/><path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/><path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/><circle cx="66" cy="78" r="17" fill="url(#ir)"/><circle cx="66" cy="78" r="7.5" fill="#0b2742"/><circle cx="60" cy="72" r="3" fill="#eafaff"/><g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85"><line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/><line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/></g></svg>
   <div><div class="k">نگاهبان • سند تکمیلی</div><h1>تحلیل مالی، فنی و کسب‌وکار</h1>
@@ -117,11 +129,11 @@ ul.bul li::before{content:"";position:absolute;right:2px;top:9px;width:7px;heigh
   <p>هزینهٔ بخش وارداتی پروژه (سخت‌افزار: <b>$۸۴٬۵۲۰</b>) با نرخ دلار تغییر می‌کند؛ هزینه‌های ریالی (نصب، توسعه، عملیات، جانبی) ثابت‌اند. جدول زیر، جمع‌ها را در نرخ‌های مختلف نشان می‌دهد. مبدّل پایین هم برای تبدیل سریع است.</p>
   <div class="conv">
     <div class="f"><label>مبلغ (دلار)</label><input id="cvUsd" type="number" value="84520"></div>
-    <div class="f"><label>نرخ دلار (تومان)</label><input id="cvRate" type="number" value="180000" step="1000"></div>
+    <div class="f"><label>نرخ دلار (تومان)</label><input id="cvRate" type="number" value="160000" step="1000"></div>
     <div class="out"><div class="muted">معادل تومانی</div><div class="big"><span id="cvOut">—</span> تومان</div></div>
   </div>
   <div class="tw"><table><thead><tr><th>نرخ دلار (تومان)</th><th>سخت‌افزار (تومان)</th><th>هزینهٔ استقرار (تومان)</th><th>جمع کل پروژه (تومان)</th><th>جمع کل (معادل دلار)</th></tr></thead><tbody id="rateBody"></tbody></table></div>
-  <div class="note">سطر برجسته، نرخ پایه (۱۸۰٬۰۰۰ تومان) است. با افزایش نرخ دلار، فقط بخش سخت‌افزار و اقلام وابسته (گمرک ۱۵٪، یدکی ۵٪) رشد می‌کنند.</div>
+  <div class="note">سطر برجسته، نرخ پایه (۱۶۰٬۰۰۰ تومان) است. با افزایش نرخ دلار، فقط بخش سخت‌افزار و اقلام وابسته (گمرک ۱۵٪، یدکی ۵٪) رشد می‌کنند.</div>
 </section>
 
 <!-- 2 SENSITIVITY -->
@@ -247,7 +259,7 @@ ul.bul li::before{content:"";position:absolute;right:2px;top:9px;width:7px;heigh
 
 </main>
 </div>
-<div class="foot">ارقام مالی تخمینی و هماهنگ با فایل ساختار هزینه‌اند (دلار = ۱۸۰٬۰۰۰ تومان). برای محاسبهٔ کامل و ویرایش، از فایل ماشین‌حساب هزینه استفاده کنید.</div>
+<div class="foot">ارقام مالی تخمینی و هماهنگ با فایل ساختار هزینه‌اند (دلار = ۱۶۰٬۰۰۰ تومان). برای محاسبهٔ کامل و ویرایش، از فایل ماشین‌حساب هزینه استفاده کنید.</div>
 
 <script>
 const fa=s=>String(s).replace(/[0-9]/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
@@ -266,16 +278,16 @@ function conv(){const u=+document.getElementById('cvUsd').value||0,r=+document.g
 ['cvUsd','cvRate'].forEach(id=>document.getElementById(id).addEventListener('input',conv));
 const rates=[150000,160000,170000,180000,190000,200000,210000,220000];
 document.getElementById('rateBody').innerHTML=rates.map(r=>{
-  const t=totals(r);const base=r===180000;
+  const t=totals(r);const base=r===160000;
   return `<tr class="${base?'base':''}"><td>${fmt(r)}</td><td>${fmt(t.hwT)}</td><td>${fmt(t.deploy)}</td><td>${fmt(t.grand)}</td><td>$${fmt(t.grand/r)}</td></tr>`;
 }).join('');
 // 2 sensitivity
-const baseG=totals(180000).grand;
+const baseG=totals(160000).grand;
 const drivers=[
-  {n:'نرخ دلار',f:p=>totals(180000*(1+p)).grand},
-  {n:'هزینهٔ سخت‌افزار',f:p=>totals(180000,HW_USD*(1+p)).grand},
-  {n:'هزینهٔ توسعه',f:p=>totals(180000,HW_USD,DEV*(1+p)).grand},
-  {n:'ضریب احتیاط',f:p=>totals(180000,HW_USD,DEV,CONT*(1+p)).grand},
+  {n:'نرخ دلار',f:p=>totals(160000*(1+p)).grand},
+  {n:'هزینهٔ سخت‌افزار',f:p=>totals(160000,HW_USD*(1+p)).grand},
+  {n:'هزینهٔ توسعه',f:p=>totals(160000,HW_USD,DEV*(1+p)).grand},
+  {n:'ضریب احتیاط',f:p=>totals(160000,HW_USD,DEV,CONT*(1+p)).grand},
 ];
 const ps=[-0.2,-0.1,0,0.1,0.2];
 document.getElementById('sensBody').innerHTML=drivers.map(d=>{

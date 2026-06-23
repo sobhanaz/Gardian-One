@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>نگاهبان — خلاصهٔ مدیریتی</title>
+<meta name="description" content="خلاصهٔ مدیریتی یک‌صفحه‌ای نگاهبان: مسئله، راهکار، قابلیت‌های کلیدی، ساختار سرمایه‌گذاری و زمان‌بندی."/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="نگاهبان — خلاصهٔ مدیریتی"/>
+<meta property="og:description" content="مسئله، راهکار، قابلیت‌های کلیدی، ساختار سرمایه‌گذاری و زمان‌بندی در یک صفحه."/>
+<meta property="og:url" content="https://sobhanaz.github.io/Gardian-One/negahban-onepager.html"/>
+<meta property="og:image" content="https://sobhanaz.github.io/Gardian-One/favicon.svg"/>
+<meta property="og:locale" content="fa_IR"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0F2A4A;--deep:#081B30;--cyan:#15B5CB;--cyanB:#4DD7E6;--green:#23A65B;--red:#E23B3B;--amber:#E8A317;--ink:#16202B;--muted:#5B6B7A;--line:#E2E8EF;--soft:#E8F8FB;--navysoft:#EAF1F8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Vazirmatn',Tahoma,sans-serif;color:var(--ink);background:#dde4ec;line-height:1.7;font-size:13px}
+.page{width:210mm;min-height:297mm;margin:14px auto;background:#fff;padding:0 0 12mm;box-shadow:0 10px 30px rgba(15,42,74,.16)}
+.hd{background:radial-gradient(600px 240px at 85% -20%,#1c4a7a,var(--navy) 60%,var(--deep));color:#fff;padding:14mm 14mm 9mm;display:flex;align-items:center;gap:14px}
+.hd svg{width:52px;height:60px;flex:none}
+.hd .k{color:var(--cyan);font-weight:700;font-size:11px;letter-spacing:.5px}
+.hd h1{font-size:21px;font-weight:900;margin-top:2px}
+.hd .s{color:#bdd6ee;font-size:12px;margin-top:3px}
+.hd .badge{margin-inline-start:auto;text-align:left;font-size:11px;color:#9ec4e6}
+.wrap{padding:7mm 14mm 0}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:7mm;margin-bottom:6mm}
+.box{border:1px solid var(--line);border-radius:11px;padding:11px 13px}
+.box h3{font-size:13px;color:var(--navy);font-weight:800;margin-bottom:6px;display:flex;align-items:center;gap:7px}
+.dot{width:8px;height:8px;background:var(--cyan);transform:rotate(45deg);border-radius:1px;flex:none}
+.box.prob h3 .dot{background:var(--red)}
+ul{list-style:none}
+li{position:relative;padding-right:16px;margin-bottom:4px;font-size:12px;color:#33485c}
+li::before{content:"";position:absolute;right:2px;top:8px;width:6px;height:6px;background:var(--cyan);transform:rotate(45deg)}
+.prob li::before{background:var(--red)}
+.sec-t{font-size:12px;font-weight:800;color:var(--cyan);margin:1mm 0 3mm;letter-spacing:.3px}
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:5mm;margin-bottom:6mm}
+.feat{background:var(--navysoft);border-radius:10px;padding:9px 11px}
+.feat b{color:var(--navy);font-size:12.5px}
+.feat span{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.stats{display:grid;grid-template-columns:repeat(6,1fr);gap:3mm;margin-bottom:6mm}
+.stat{background:var(--soft);border-radius:9px;padding:8px 4px;text-align:center}
+.stat .v{font-size:19px;font-weight:900;color:var(--navy)}
+.stat .l{font-size:10px;color:var(--muted)}
+.cost{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5mm;margin-bottom:6mm}
+.cc{border-radius:10px;padding:10px 12px;border:1px solid var(--line)}
+.cc.g{background:var(--navy);border:0}
+.cc .t{font-size:11px;color:var(--muted)}
+.cc.g .t{color:#bdd6ee}
+.cc .n{font-size:17px;font-weight:900;color:var(--navy);margin-top:2px}
+.cc.g .n{color:var(--cyanB)}
+.tl{display:flex;gap:4px;margin-bottom:5mm}
+.tl .p{flex:1;background:#f4f8fb;border:1px solid var(--line);border-radius:8px;padding:7px 6px;text-align:center}
+.tl .p b{display:block;color:var(--cyan);font-size:10px}
+.tl .p span{font-size:11px;color:var(--navy);font-weight:700}
+.tl .p i{display:block;font-style:normal;font-size:10px;color:var(--muted)}
+.cta{background:linear-gradient(120deg,var(--navy),#163a63);color:#fff;border-radius:12px;padding:11px 16px;display:flex;align-items:center;gap:12px}
+.cta b{font-size:14px}.cta span{color:#bdd6ee;font-size:12px}
+.cta .pill{margin-inline-start:auto;background:var(--cyan);color:var(--deep);font-weight:800;padding:7px 14px;border-radius:20px;font-size:12px;white-space:nowrap}
+.foot{text-align:center;color:var(--muted);font-size:10.5px;margin-top:5mm}
+.topbar{max-width:210mm;margin:14px auto 0;background:#0c2138;color:#fff;padding:9px 18px;display:flex;align-items:center;gap:10px;font-size:12.5px;border-radius:8px}
+.topbar a{color:#4dd7e6;text-decoration:none;font-weight:700}
+.topbar a:hover{text-decoration:underline}
+@media print{body{background:#fff}.page{margin:0;box-shadow:none;width:auto}.topbar{display:none}@page{size:A4;margin:0}}
+</style>
+</head>
+<body>
+<div class="topbar"><span>◀</span><a href="negahban-proposal.html">بازگشت به پروپوزال اصلی نگاهبان</a></div>
+<div class="page">
+  <div class="hd">
+    <svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient><linearGradient id="ir" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient></defs><path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#sh)" stroke="#19b6cd" stroke-width="3"/><path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/><path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/><circle cx="66" cy="78" r="17" fill="url(#ir)"/><circle cx="66" cy="78" r="7.5" fill="#0b2742"/><circle cx="60" cy="72" r="3" fill="#eafaff"/><g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85"><line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/><line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/></g></svg>
+    <div>
+      <div class="k">نگاهبان • خلاصهٔ مدیریتی</div>
+      <h1>سامانهٔ هوشمند امنیت و نگهبانی</h1>
+      <div class="s">یک پلتفرم واحد: نیروی انسانی، دوربین هوشمند و مکان‌یابی — «پیش به سوی امنیتی هوشمند»</div>
+    </div>
+    <div class="badge">نمونه: ساختمان ۱۱ طبقه<br>۵۰۰ کارمند • ۲۰۰ مراجعه</div>
+  </div>
+
+  <div class="wrap">
+    <div class="row">
+      <div class="box prob"><h3><span class="dot"></span>مسئله</h3>
+        <ul><li>نظارت ناقص و واکنش پس از حادثه</li><li>نبود اطمینان از حضور واقعی نگهبان</li><li>ثبت دستی و قابل دستکاری، بدون تأیید مکان</li><li>نبود گزارش قابل‌استناد برای تصمیم‌گیری</li></ul>
+      </div>
+      <div class="box"><h3><span class="dot"></span>راهکار نگاهبان</h3>
+        <ul><li>اپ نگهبان + داشبورد مدیریتی</li><li>دوربین هوشمند با تشخیص چهره (AI)</li><li>تگ امنیتی و مکان‌یابی دقیق (RTLS)</li><li>قابل استقرار درون‌سازمانی برای مراکز حساس</li></ul>
+      </div>
+    </div>
+
+    <div class="sec-t">قابلیت‌های کلیدی</div>
+    <div class="feats">
+      <div class="feat"><b>تشخیص چهره با AI</b><span>شناسایی افراد مجاز/غیرمجاز و هشدار آنی</span></div>
+      <div class="feat"><b>حضور زیست‌سنجشی</b><span>چهره+اثرانگشت، مقیّد به زمان و مکان</span></div>
+      <div class="feat"><b>موقعیت زندهٔ نیرو</b><span>نمایش روی نقشهٔ طبقات و بازپخش مسیر</span></div>
+      <div class="feat"><b>زون‌بندی و کنترل تردد</b><span>ثبت مجاز و هشدار ورود غیرمجاز</span></div>
+      <div class="feat"><b>تحلیل رفتار</b><span>کشف جایگزینی پنهان و ناهنجاری</span></div>
+      <div class="feat"><b>احراز هویت دوعاملی</b><span>ترکیب تگ و چهره، ضد حضور صوری</span></div>
+    </div>
+
+    <div class="sec-t">مقیاس نمونه — ساختمان ۱۱ طبقه</div>
+    <div class="stats">
+      <div class="stat"><div class="v">۱۱</div><div class="l">طبقه</div></div>
+      <div class="stat"><div class="v">۵۰۰</div><div class="l">کارمند</div></div>
+      <div class="stat"><div class="v">۲۰۰</div><div class="l">مراجعه</div></div>
+      <div class="stat"><div class="v">~۱۱۰</div><div class="l">دوربین</div></div>
+      <div class="stat"><div class="v">۱۸</div><div class="l">اسکنر</div></div>
+      <div class="stat"><div class="v">۴</div><div class="l">گیت تردد</div></div>
+    </div>
+
+    <div class="sec-t">ساختار سرمایه‌گذاری (دلار = ۱۶۰٬۰۰۰ تومان، تخمینی)</div>
+    <div class="cost">
+      <div class="cc"><div class="t">هزینهٔ استقرار این ساختمان</div><div class="n">~۲۱٫۴ میلیارد تومان</div></div>
+      <div class="cc"><div class="t">توسعهٔ پلتفرم (یک‌بار)</div><div class="n">~۷٫۷ میلیارد تومان</div></div>
+      <div class="cc g"><div class="t">جمع کل</div><div class="n">~۲۹٫۱ میلیارد تومان</div></div>
+    </div>
+
+    <div class="sec-t">زمان‌بندی (تخمینی ~۱۲ ماه)</div>
+    <div class="tl">
+      <div class="p"><b>فاز ۱</b><span>پی‌ریزی</span><i>ماه ۱</i></div>
+      <div class="p"><b>فاز ۲</b><span>هسته و MVP</span><i>ماه ۲–۶</i></div>
+      <div class="p"><b>فاز ۳</b><span>مکان‌یابی/داشبورد</span><i>ماه ۴–۸</i></div>
+      <div class="p"><b>فاز ۴</b><span>نصب میدانی</span><i>ماه ۶–۱۰</i></div>
+      <div class="p"><b>فاز ۵</b><span>تست و تحویل</span><i>ماه ۱۰–۱۲</i></div>
+    </div>
+
+    <div class="cta">
+      <b>گام بعدی: پایلوت روی ۱–۲ طبقه</b>
+      <span>کم‌ترین ریسک برای تصمیم؛ نتیجه را در عمل ببینید، سپس کل ساختمان.</span>
+      <span class="pill">www.negahban.ir</span>
+    </div>
+    <div class="foot">ارقام تخمینی و قابل تنظیم در فایل ماشین‌حساب هزینه‌اند. این سند خلاصه است؛ جزئیات در پروپوزال و سند فنی.</div>
+  </div>
+</div>
+</body>
+</html>
