@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>نگاهبان — معماری فناوری، زبان‌ها و روند توسعه</title>
+<meta name="description" content="جزئیات کامل فناوری‌ها، زبان‌های برنامه‌نویسی، قابلیت‌های مهندسی و روند توسعهٔ سامانهٔ نگاهبان — از معماری و پشتهٔ فنی تا CI/CD، تست، MLOps و جریان دادهٔ زمان اجرا."/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="نگاهبان — معماری فناوری، زبان‌ها و روند توسعه"/>
+<meta property="og:description" content="پشتهٔ فنی، قابلیت‌های برنامه‌نویسی، روند توسعه (Agile/CI-CD)، چرخهٔ عمر مدل هوش مصنوعی و جریان دادهٔ زمان اجرا."/>
+<meta property="og:url" content="https://sobhanaz.github.io/Gardian-One/negahban-tech-stack.html"/>
+<meta property="og:image" content="https://sobhanaz.github.io/Gardian-One/favicon.svg"/>
+<meta property="og:locale" content="fa_IR"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0F2A4A;--navy-deep:#081B30;--navy-2:#163a63;--cyan:#15B5CB;--cyan-d:#0E7E91;--cyan-b:#4dd7e6;--cyan-soft:#e8f8fb;
+  --green:#1E8E4E;--green-soft:#e9f7ef;--red:#C62828;--red-soft:#fceaea;--amber:#B5790F;--amber-soft:#fdf4e3;
+  --ink:#16202B;--muted:#5B6B7A;--line:#E2E8EF;--bg:#EEF2F7;--surface:#fff;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Vazirmatn',Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:1.95;font-size:15px}
+code,.path{font-family:'JetBrains Mono',monospace;background:#eef3f8;color:#0b3a52;padding:1px 6px;border-radius:5px;font-size:12.5px;direction:ltr;display:inline-block}
+/* topbar */
+.topbar{background:#0c2138;color:#fff;padding:10px 24px;display:flex;align-items:center;gap:10px;font-size:13px}
+.topbar a{color:#4dd7e6;text-decoration:none;font-weight:700}
+.topbar a:hover{text-decoration:underline}
+/* cover */
+.cover{background:radial-gradient(900px 400px at 80% -10%,#1c4a7a,var(--navy) 55%,var(--navy-deep));color:#fff;padding:36px 24px;position:relative;overflow:hidden}
+.cover::before{content:"";position:absolute;inset:0;opacity:.13;background-image:radial-gradient(rgba(77,215,230,.6) 1px,transparent 1.4px);background-size:26px 26px}
+.cover-in{position:relative;z-index:2;max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:24px}
+.cv-logo{width:72px;height:83px;flex:none}
+.cv-kick{color:var(--cyan-b);font-weight:700;font-size:13px;letter-spacing:.4px;margin-bottom:6px}
+.cover h1{font-size:28px;font-weight:900}
+.cv-sub{color:#bdd6ee;margin-top:6px;font-size:14.5px;max-width:720px}
+.cv-tags{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+.cv-tags span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:3px 12px;border-radius:20px;font-size:12px}
+/* layout */
+.wrap{max-width:1180px;margin:24px auto;padding:0 20px;display:grid;grid-template-columns:250px 1fr;gap:26px;align-items:start}
+.toc{position:sticky;top:18px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;max-height:calc(100vh - 40px);overflow:auto}
+.toc-h{font-weight:800;color:var(--navy);padding:4px 8px 10px;border-bottom:2px solid var(--cyan);margin-bottom:8px}
+.toc a{display:flex;gap:9px;align-items:center;text-decoration:none;color:#33485c;font-size:13.5px;padding:7px 8px;border-radius:8px;line-height:1.6}
+.toc a:hover{background:var(--cyan-soft);color:var(--navy)}
+.toc a.on{background:var(--navy);color:#fff}.toc a.on .t-n{background:var(--cyan);color:var(--navy)}
+.t-n{flex:none;width:22px;height:22px;border-radius:6px;background:var(--cyan-soft);color:var(--navy);font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center}
+.content{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:30px 34px;min-width:0}
+section{padding:14px 0 26px;border-bottom:1px solid var(--line)}
+section:last-child{border-bottom:0}
+h2{display:flex;align-items:center;gap:12px;font-size:23px;color:var(--navy);font-weight:900;margin:8px 0 14px;scroll-margin-top:16px}
+.sn{flex:none;width:34px;height:34px;border-radius:10px;background:var(--navy);color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center}
+h3{font-size:17px;color:var(--navy);font-weight:800;margin:22px 0 10px;padding-right:13px;border-right:4px solid var(--cyan)}
+h4{font-size:14.5px;color:var(--cyan-d);font-weight:800;margin:16px 0 8px}
+p{margin:0 0 12px;text-align:justify}
+.lead{font-size:17px;font-weight:600;color:var(--navy)}
+.muted{color:var(--muted);font-size:13px}
+b{color:var(--navy)}
+ul,ol{margin:0 0 14px;padding-right:22px}
+li{margin-bottom:7px;text-align:justify}
+/* tables */
+.tw{overflow-x:auto;margin:14px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{background:var(--navy);color:#fff;padding:10px 12px;text-align:right;font-weight:700}
+td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:#f6f9fc}
+td code{font-size:12px}
+/* layer cards */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:10px 0}
+.cardx{border:1px solid var(--line);border-radius:13px;padding:14px 16px;background:#fbfdff}
+.cardx .h{display:flex;align-items:center;gap:9px;font-weight:800;color:var(--navy);font-size:15px;margin-bottom:7px}
+.cardx .ic{width:36px;height:36px;flex:none;border-radius:9px;background:var(--cyan-soft);display:flex;align-items:center;justify-content:center;font-size:18px}
+.cardx .tech{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}
+.cardx .tech span{background:#eef3f8;color:#0b3a52;border:1px solid #dbe6f0;border-radius:6px;padding:2px 8px;font-size:11.5px;font-family:'JetBrains Mono',monospace;direction:ltr}
+.cardx p{margin:4px 0 0;font-size:12.5px;color:#33485c}
+/* code blocks */
+.code{position:relative;margin:14px 0;border-radius:12px;overflow:hidden;border:1px solid #16324f}
+.code .lang{position:absolute;top:0;left:0;background:#15B5CB;color:#06222e;font-size:11px;font-weight:800;padding:3px 12px;border-bottom-right-radius:10px;font-family:'Vazirmatn',sans-serif;z-index:2}
+.code pre{margin:0;background:#0c2438;color:#dbe9f4;padding:34px 18px 18px;overflow-x:auto;font-size:12.5px;line-height:1.85;text-align:left;direction:ltr}
+.code .c{color:#7fa6c9}.code .k{color:#4dd7e6}.code .s{color:#9ad99a}
+/* notes */
+.note{border-radius:12px;padding:13px 16px;margin:16px 0;border-right:5px solid}
+.note-h{font-weight:800;margin-bottom:5px}
+.note.info{background:var(--cyan-soft);border-color:var(--cyan)}.note.info .note-h{color:var(--cyan-d)}
+.note.warn{background:var(--amber-soft);border-color:var(--amber)}.note.warn .note-h{color:var(--amber)}
+.note.ok{background:var(--green-soft);border-color:var(--green)}.note.ok .note-h{color:var(--green)}
+/* pipeline / flow */
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:14px 0}
+.flow .st{flex:1;min-width:120px;border:1px solid var(--line);border-radius:11px;padding:11px 12px;background:#fbfdff;position:relative}
+.flow .st .n{font-size:11px;font-weight:800;color:var(--cyan-d)}
+.flow .st .t{font-weight:800;color:var(--navy);font-size:13px;margin:3px 0}
+.flow .st .d{font-size:11.5px;color:var(--muted)}
+/* steps */
+.steps{counter-reset:s;margin:14px 0}
+.steps .row{display:flex;gap:13px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.steps .row:last-child{border-bottom:0}
+.steps .row::before{counter-increment:s;content:counter(s);flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+.steps .row .b{font-weight:800;color:var(--navy)}
+.steps .row .x{font-size:13px;color:#33485c}
+/* badges row */
+.pill{display:inline-block;background:var(--cyan-soft);color:var(--cyan-d);border-radius:20px;padding:2px 10px;font-size:11.5px;font-weight:700;margin:0 0 4px}
+.foot{max-width:1180px;margin:10px auto 40px;padding:0 20px;color:var(--muted);font-size:12.5px;text-align:center}
+@media (max-width:900px){.wrap{grid-template-columns:1fr}.toc{position:static;max-height:none;order:-1}.cover-in{flex-direction:column;text-align:center}.cards{grid-template-columns:1fr}}
+@media print{.topbar,.toc{display:none}.wrap{display:block;max-width:none;margin:0;padding:0}.content{border:0;border-radius:0;padding:0}body{background:#fff}section{break-inside:avoid}.code,.note,.tw{break-inside:avoid}@page{size:A4;margin:13mm}}
+</style>
+</head>
+<body>
+<div class="topbar"><span>◀</span><a href="negahban-proposal.html">بازگشت به پروپوزال اصلی نگاهبان</a></div>
+
+<header class="cover"><div class="cover-in">
+  <div class="cv-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%"><defs><linearGradient id="sh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient><linearGradient id="ir" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient></defs><path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#sh)" stroke="#19b6cd" stroke-width="3"/><path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/><path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/><circle cx="66" cy="78" r="17" fill="url(#ir)"/><circle cx="66" cy="78" r="7.5" fill="#0b2742"/><circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/><g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85"><line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/><line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/></g></svg></div>
+  <div>
+    <div class="cv-kick">نگاهبان • سند مهندسی</div>
+    <h1>معماری فناوری، زبان‌ها و روند توسعه</h1>
+    <div class="cv-sub">شرح کامل و ریزِ پشتهٔ فنی، قابلیت‌های برنامه‌نویسیِ هر لایه، روند توسعهٔ نرم‌افزار (Agile + CI/CD)، چرخهٔ عمر مدل هوش مصنوعی و جریان دادهٔ زمان اجرا.</div>
+    <div class="cv-tags"><span>Go</span><span>Python</span><span>Flutter</span><span>React/TS</span><span>Kubernetes</span><span>PostgreSQL+pgvector</span><span>TensorRT</span></div>
+  </div>
+</div></header>
+
+<div class="wrap">
+<nav class="toc"><div class="toc-h">فهرست</div>
+  <a href="#arch"><span class="t-n">۱</span>نمای کلی معماری</a>
+  <a href="#stack"><span class="t-n">۲</span>زبان‌ها و فناوری هر لایه</a>
+  <a href="#backend"><span class="t-n">۳</span>بک‌اند و سرویس‌ها (Go)</a>
+  <a href="#ai"><span class="t-n">۴</span>هوش مصنوعی و بینایی (Python)</a>
+  <a href="#mobile"><span class="t-n">۵</span>موبایل و فرانت‌اند</a>
+  <a href="#data"><span class="t-n">۶</span>داده، صف و ذخیره‌سازی</a>
+  <a href="#infra"><span class="t-n">۷</span>زیرساخت و DevOps</a>
+  <a href="#capab"><span class="t-n">۸</span>قابلیت‌های کلیدی برنامه‌نویسی</a>
+  <a href="#process"><span class="t-n">۹</span>روند توسعهٔ نرم‌افزار</a>
+  <a href="#cicd"><span class="t-n">۱۰</span>خط لولهٔ CI/CD</a>
+  <a href="#test"><span class="t-n">۱۱</span>استراتژی تست و کیفیت</a>
+  <a href="#mlops"><span class="t-n">۱۲</span>چرخهٔ عمر مدل هوش مصنوعی</a>
+  <a href="#flow"><span class="t-n">۱۳</span>جریان دادهٔ زمان اجرا</a>
+  <a href="#sec"><span class="t-n">۱۴</span>امنیت و حاکمیت کد</a>
+  <a href="#tools"><span class="t-n">۱۵</span>ابزارها و محیط توسعه</a>
+</nav>
+
+<main class="content">
+
+<!-- 1 ARCH -->
+<section id="arch">
+  <h2><span class="sn">۱</span>نمای کلی معماری</h2>
+  <p class="lead">نگاهبان یک سامانهٔ <b>رخدادمحور و میکروسرویسی</b> است که در پنج لایه طراحی شده تا هر بخش مستقل توسعه، تست، مقیاس و جایگزین شود.</p>
+  <div class="flow">
+    <div class="st"><div class="n">لایه ۱</div><div class="t">لبه (Edge)</div><div class="d">دوربین IP، اسکنر چهره/اثرانگشت، گیت تردد، تگ و گیت‌وی BLE</div></div>
+    <div class="st"><div class="n">لایه ۲</div><div class="t">دریافت (Ingestion)</div><div class="d">پردازش ویدئو، API Gateway، گیت‌وی RTLS</div></div>
+    <div class="st"><div class="n">لایه ۳</div><div class="t">پردازش (K8s)</div><div class="d">تشخیص چهره (GPU)، حضور/زون، هوش رفتاری، سرویس بلادرنگ</div></div>
+    <div class="st"><div class="n">لایه ۴</div><div class="t">داده</div><div class="d">PostgreSQL، pgvector، TimescaleDB، Redis، MinIO</div></div>
+    <div class="st"><div class="n">لایه ۵</div><div class="t">کلاینت</div><div class="d">اپ موبایل نگهبان، داشبورد وب مدیریتی</div></div>
+  </div>
+  <div class="note info"><div class="note-h">چرا میکروسرویس و رخدادمحور؟</div>هر قابلیت (تشخیص چهره، مکان‌یابی، حضور، هشدار) یک سرویس مستقل است که از طریق <b>گذرگاه پیام</b> با بقیه حرف می‌زند؛ خرابیِ یک سرویس کل سامانه را زمین نمی‌زند و هر سرویس جدا مقیاس می‌گیرد (مثلاً تشخیص چهره روی GPU، مستقل از داشبورد).</div>
+</section>
+
+<!-- 2 STACK -->
+<section id="stack">
+  <h2><span class="sn">۲</span>زبان‌ها و فناوری هر لایه</h2>
+  <div class="tw"><table>
+    <thead><tr><th>لایه</th><th>زبان / فناوری</th><th>نسخه</th><th>نقش</th></tr></thead>
+    <tbody>
+      <tr><td>بک‌اند سرویس‌ها</td><td><code>Go</code> + gRPC/REST</td><td>1.22+</td><td>سرویس‌های بلادرنگ، هم‌روندی بالا</td></tr>
+      <tr><td>هوش مصنوعی/بینایی</td><td><code>Python</code> + ONNX Runtime + TensorRT</td><td>3.11 / 1.17</td><td>تشخیص و تطبیق چهره، تحلیل رفتار</td></tr>
+      <tr><td>آموزش مدل</td><td><code>PyTorch</code> + OpenCV</td><td>2.x</td><td>آموزش و ارزیابی مدل‌ها</td></tr>
+      <tr><td>اپ موبایل</td><td><code>Flutter</code> / <code>Dart</code></td><td>3.22+</td><td>یک کد برای Android/iOS</td></tr>
+      <tr><td>داشبورد وب</td><td><code>React</code> + <code>TypeScript</code></td><td>18 / 5</td><td>نقشهٔ زنده، RBAC، بلادرنگ</td></tr>
+      <tr><td>پایگاه‌داده</td><td><code>PostgreSQL</code> + pgvector + TimescaleDB</td><td>16</td><td>رابطه‌ای + بردار چهره + سری‌زمانی</td></tr>
+      <tr><td>کش/حضور</td><td><code>Redis</code></td><td>7+</td><td>presence، geofence، pub/sub</td></tr>
+      <tr><td>گذرگاه پیام</td><td><code>NATS JetStream</code></td><td>2.10+</td><td>رخدادمحور، تأخیر پایین</td></tr>
+      <tr><td>پردازش ویدئو</td><td><code>GStreamer</code> / <code>FFmpeg</code></td><td>1.24 / 6</td><td>رمزگشایی سخت‌افزاری، نمونه‌گیری فریم</td></tr>
+      <tr><td>کانتینر/ارکستراسیون</td><td><code>Docker</code> + <code>Kubernetes</code></td><td>1.29+</td><td>مقیاس، زمان‌بندی GPU، rollout</td></tr>
+      <tr><td>شیء‌ذخیره</td><td><code>MinIO</code> (S3)</td><td>—</td><td>آرشیو ویدئو/کلیپ رخداد On‑Prem</td></tr>
+      <tr><td>مشاهده‌پذیری</td><td>Prometheus + Grafana + Loki + OpenTelemetry</td><td>—</td><td>متریک، لاگ و ردیابی</td></tr>
+      <tr><td>مدیریت اسرار</td><td><code>HashiCorp Vault</code></td><td>—</td><td>کلید، توکن و گواهی TLS</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 3 BACKEND -->
+<section id="backend">
+  <h2><span class="sn">۳</span>بک‌اند و سرویس‌ها — <code>Go</code></h2>
+  <p>چرا Go؟ به‌خاطر <b>هم‌روندی بومی (goroutine/channel)</b>، تأخیر پایین، باینریِ تک‌فایل و مصرف منابع کم — دقیقاً مناسب سرویس‌هایی که هزاران رخداد دوربین/حضور را در لحظه پردازش می‌کنند.</p>
+  <h4>قابلیت‌ها و کتابخانه‌ها</h4>
+  <ul>
+    <li><b>API:</b> REST با <code>Gin/Fiber</code> برای کلاینت‌ها و <code>gRPC</code> برای ارتباط سرویس‌به‌سرویس (کم‌حجم و سریع).</li>
+    <li><b>هم‌روندی:</b> goroutine و channel برای مصرف موازیِ رخدادها از NATS؛ context برای کنترل timeout و لغو.</li>
+    <li><b>داده:</b> <code>pgx</code> برای PostgreSQL، <code>go-redis</code> برای Redis، الگوی Repository.</li>
+    <li><b>احراز هویت:</b> JWT + RBAC، میدلورِ مجوز در سطح هر مسیر.</li>
+    <li><b>پایداری:</b> الگوهای retry، circuit-breaker و idempotency برای رخدادها.</li>
+  </ul>
+  <div class="code"><span class="lang">Go — مصرف‌کنندهٔ رخداد چهره</span><pre><span class="k">func</span> (s *AttendanceService) Consume(ctx context.Context) {
+  sub, _ := s.nats.Subscribe(<span class="s">"face.recognized"</span>, <span class="k">func</span>(m *nats.Msg) {
+    <span class="k">var</span> ev FaceEvent
+    json.Unmarshal(m.Data, &ev)
+    <span class="c">// تطبیق با زون مجاز و ثبت حضور</span>
+    <span class="k">if</span> s.zones.Allowed(ev.PersonID, ev.ZoneID) {
+      s.repo.MarkPresence(ctx, ev.PersonID, ev.ZoneID, ev.At)
+    } <span class="k">else</span> {
+      s.alerts.Raise(ctx, Alert{Type: <span class="s">"unauthorized_zone"</span>, Ref: ev})
+    }
+  })
+  &lt;-ctx.Done(); sub.Unsubscribe()
+}</pre></div>
+</section>
+
+<!-- 4 AI -->
+<section id="ai">
+  <h2><span class="sn">۴</span>هوش مصنوعی و بینایی — <code>Python</code></h2>
+  <p>سرویس‌های هوش مصنوعی با Python نوشته می‌شوند چون اکوسیستم بینایی ماشین در آن بالغ است؛ اما برای <b>استنتاج (inference)</b> مدل‌ها به فرمت بهینه تبدیل و روی GPU اجرا می‌شوند تا تأخیر حداقلی شود.</p>
+  <h4>اجزای اصلی</h4>
+  <ul>
+    <li><b>تشخیص چهره:</b> آشکارساز <code>RetinaFace/SCRFD</code> + مدل بازنمایی <code>ArcFace</code> که برای هر چهره یک «بردار ویژگی» تولید می‌کند.</li>
+    <li><b>تطبیق هویت:</b> بردار چهره با جست‌وجوی شباهت در <code>pgvector</code> با گالریِ افراد مجاز مقایسه می‌شود.</li>
+    <li><b>اجرای بهینه:</b> مدل‌ها به <code>ONNX</code> صادر و با <code>TensorRT (FP16/INT8)</code> روی GPU اجرا می‌شوند.</li>
+    <li><b>تحلیل رفتار:</b> مدل‌های دنباله‌ای/زمانی برای کشف ناهنجاری و «جایگزینی پنهان» نگهبان.</li>
+  </ul>
+  <div class="code"><span class="lang">Python — استنتاج و تطبیق چهره</span><pre><span class="k">import</span> onnxruntime <span class="k">as</span> ort, numpy <span class="k">as</span> np
+
+sess = ort.InferenceSession(<span class="s">"arcface.onnx"</span>,
+        providers=[<span class="s">"TensorrtExecutionProvider"</span>, <span class="s">"CUDAExecutionProvider"</span>])
+
+<span class="k">def</span> embed(face_img):
+    emb = sess.run(<span class="k">None</span>, {<span class="s">"input"</span>: preprocess(face_img)})[<span class="s">0</span>]
+    <span class="k">return</span> emb / np.linalg.norm(emb)   <span class="c"># نرمال‌سازی بردار</span>
+
+<span class="c"># جست‌وجوی نزدیک‌ترین هویت در pgvector</span>
+<span class="c"># SELECT person_id FROM gallery ORDER BY embedding &lt;=&gt; $1 LIMIT 1;</span></pre></div>
+  <div class="note warn"><div class="note-h">ملاحظهٔ صداقت</div>دقت تشخیص چهره در شرایط نوریِ خوب بسیار بالاست، اما هوش رفتاری برای بلوغ به دادهٔ واقعیِ انباشته نیاز دارد و در نسخهٔ اول به‌مرور تیون می‌شود.</div>
+</section>
+
+<!-- 5 MOBILE/FRONT -->
+<section id="mobile">
+  <h2><span class="sn">۵</span>موبایل و فرانت‌اند</h2>
+  <div class="cards">
+    <div class="cardx"><div class="h"><span class="ic">📱</span>اپ نگهبان — Flutter</div>
+      <div class="tech"><span>Flutter</span><span>Dart</span><span>BLE</span><span>Biometric</span><span>FCM</span></div>
+      <p>یک کد برای Android/iOS؛ دسترسی به دوربین، بلوتوث (تگ)، احراز هویت بیومتریک، اعلان فوری و حالت <b>offline-first</b> برای مناطق بدون شبکه.</p></div>
+    <div class="cardx"><div class="h"><span class="ic">🖥️</span>داشبورد — React + TS</div>
+      <div class="tech"><span>React 18</span><span>TypeScript</span><span>WebSocket</span><span>Leaflet/Mapbox</span><span>RBAC</span></div>
+      <p>نقشهٔ تعاملی طبقات، موقعیت زندهٔ نیرو، مدیریت هشدار، گزارش‌ها و کنترل دسترسی مبتنی بر نقش؛ به‌روزرسانی زنده با WebSocket.</p></div>
+  </div>
+  <h4>قابلیت‌های کلیدی کلاینت</h4>
+  <ul>
+    <li>به‌روزرسانی بلادرنگ رویدادها و موقعیت بدون رفرش (WebSocket/SSE).</li>
+    <li>احراز هویت دوعاملی (تگ + چهره) و نقش‌های تفکیک‌شده (مدیر، راهبر، نگهبان).</li>
+    <li>طراحی واکنش‌گرا (Responsive) و پشتیبانی کامل از RTL فارسی.</li>
+  </ul>
+</section>
+
+<!-- 6 DATA -->
+<section id="data">
+  <h2><span class="sn">۶</span>داده، صف و ذخیره‌سازی</h2>
+  <div class="tw"><table>
+    <thead><tr><th>مؤلفه</th><th>کاربرد دقیق در نگاهبان</th></tr></thead>
+    <tbody>
+      <tr><td><code>PostgreSQL 16</code></td><td>دادهٔ رابطه‌ای: افراد، نقش‌ها، زون‌ها، رخدادها، گزارش‌ها.</td></tr>
+      <tr><td><code>pgvector</code></td><td>ذخیره و جست‌وجوی شباهتِ <b>بردار چهره</b> (شناسایی هویت).</td></tr>
+      <tr><td><code>TimescaleDB</code></td><td>سری‌زمانیِ موقعیت‌ها و رخدادهای پرتعداد (RTLS، حضور).</td></tr>
+      <tr><td><code>Redis</code></td><td>وضعیت زندهٔ حضور (presence)، geofence، نرخ‌گذاری و pub/sub.</td></tr>
+      <tr><td><code>NATS JetStream</code></td><td>گذرگاه رخداد بین سرویس‌ها با تحویل تضمین‌شده و بازپخش.</td></tr>
+      <tr><td><code>MinIO (S3)</code></td><td>آرشیو ویدئو و کلیپِ رخداد، کاملاً درون‌سازمانی.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 7 INFRA -->
+<section id="infra">
+  <h2><span class="sn">۷</span>زیرساخت و DevOps</h2>
+  <ul>
+    <li><b>کانتینری‌سازی:</b> هر سرویس یک ایمیج <code>Docker</code> با چنددمرحله‌ای (multi-stage) و حجم کم.</li>
+    <li><b>ارکستراسیون:</b> <code>Kubernetes</code> با <b>زمان‌بندی GPU</b> برای سرویس چهره، مقیاس خودکار (HPA) و rollout تدریجی.</li>
+    <li><b>پیکربندی:</b> الگوی GitOps؛ مانیفست‌ها در Git، استقرار خودکار.</li>
+    <li><b>اسرار:</b> <code>Vault</code> برای کلید/توکن؛ هیچ رمزی در کد یا ایمیج نیست.</li>
+    <li><b>مشاهده‌پذیری:</b> متریک (Prometheus)، داشبورد (Grafana)، لاگ (Loki) و ردیابی توزیع‌شده (OpenTelemetry).</li>
+  </ul>
+  <div class="note ok"><div class="note-h">استقرار On‑Premise</div>کل این پشته می‌تواند به‌صورت <b>درون‌سازمانی</b> (روی سرورهای خود مشتری) مستقر شود تا دادهٔ بیومتریک هرگز از محیط خارج نشود — مناسب مراکز حساس.</div>
+</section>
+
+<!-- 8 CAPABILITIES -->
+<section id="capab">
+  <h2><span class="sn">۸</span>قابلیت‌های کلیدی برنامه‌نویسی</h2>
+  <div class="cards">
+    <div class="cardx"><div class="h"><span class="ic">⚡</span>بلادرنگ و رخدادمحور</div><p>پردازش جریانِ رخداد دوربین/حضور با تأخیر پایین از طریق صف پیام و WebSocket.</p></div>
+    <div class="cardx"><div class="h"><span class="ic">🧩</span>میکروسرویس</div><p>سرویس‌های مستقل، قابل‌استقرار و مقیاس‌پذیر جدا؛ نسخه‌بندی API.</p></div>
+    <div class="cardx"><div class="h"><span class="ic">🎮</span>استنتاج روی GPU</div><p>اجرای مدل با TensorRT و زمان‌بندی GPU در Kubernetes.</p></div>
+    <div class="cardx"><div class="h"><span class="ic">🔎</span>جست‌وجوی برداری</div><p>تطبیق هویت با شباهت بردار چهره در pgvector.</p></div>
+    <div class="cardx"><div class="h"><span class="ic">🔐</span>امنیت و RBAC</div><p>احراز هویت دوعاملی، کنترل دسترسی نقش‌محور و رمزنگاری در حال انتقال و سکون.</p></div>
+    <div class="cardx"><div class="h"><span class="ic">📴</span>Offline-first موبایل</div><p>کارکرد اپ در نبود شبکه و همگام‌سازی هنگام اتصال.</p></div>
+  </div>
+</section>
+
+<!-- 9 PROCESS -->
+<section id="process">
+  <h2><span class="sn">۹</span>روند توسعهٔ نرم‌افزار</h2>
+  <p>توسعه به‌روش <b>چابک (Agile/Scrum)</b> در اسپرینت‌های ۲ هفته‌ای انجام می‌شود تا کارفرما در پایان هر اسپرینت خروجی قابل‌مشاهده ببیند و بازخورد بدهد.</p>
+  <div class="steps">
+    <div class="row"><div><div class="b">کشف و تحلیل نیازمندی</div><div class="x">جمع‌آوری نیاز، نقشهٔ محیط، تعریف معیار پذیرش هر قابلیت.</div></div></div>
+    <div class="row"><div><div class="b">طراحی معماری و UI/UX</div><div class="x">طراحی سرویس‌ها، مدل داده، قرارداد API و نمونهٔ اولیهٔ رابط کاربری.</div></div></div>
+    <div class="row"><div><div class="b">توسعه در اسپرینت</div><div class="x">پیاده‌سازی روی شاخهٔ feature، استانداردهای کد، بازبینی هم‌تیمی (Code Review).</div></div></div>
+    <div class="row"><div><div class="b">یکپارچه‌سازی پیوسته</div><div class="x">هر Pull Request به‌صورت خودکار lint/test/build و اسکن امنیتی می‌شود.</div></div></div>
+    <div class="row"><div><div class="b">تست و تضمین کیفیت</div><div class="x">تست واحد، یکپارچه، E2E و بار؛ رفع نقص پیش از ادغام.</div></div></div>
+    <div class="row"><div><div class="b">استقرار و بازخورد</div><div class="x">انتشار در محیط staging، نمایش به کارفرما، سپس استقرار تولید.</div></div></div>
+    <div class="row"><div><div class="b">پایش و نگهداری</div><div class="x">مانیتورینگ، هشدار، رفع نقص و بهبود مستمر در دورهٔ عملیات.</div></div></div>
+  </div>
+  <h4>مدیریت نسخه و کد</h4>
+  <ul>
+    <li>گردش‌کار Git مبتنی بر شاخه‌ی feature و <code>Pull Request</code> با بازبینی اجباری.</li>
+    <li>پیام‌های Commit استاندارد (<code>Conventional Commits</code>) و نسخه‌بندی معنایی (<code>SemVer</code>).</li>
+    <li>شاخهٔ <code>main</code> محافظت‌شده؛ ادغام فقط پس از سبزشدن CI و تأیید بازبین.</li>
+  </ul>
+</section>
+
+<!-- 10 CICD -->
+<section id="cicd">
+  <h2><span class="sn">۱۰</span>خط لولهٔ CI/CD</h2>
+  <p>هر تغییر به‌صورت خودکار از این مراحل عبور می‌کند تا فقط کدِ تست‌شده و امن به تولید برسد:</p>
+  <div class="flow">
+    <div class="st"><div class="n">۱</div><div class="t">Lint</div><div class="d">قالب و کیفیت کد</div></div>
+    <div class="st"><div class="n">۲</div><div class="t">Test</div><div class="d">واحد + یکپارچه</div></div>
+    <div class="st"><div class="n">۳</div><div class="t">Build</div><div class="d">ایمیج Docker</div></div>
+    <div class="st"><div class="n">۴</div><div class="t">Scan</div><div class="d">آسیب‌پذیری و اسرار</div></div>
+    <div class="st"><div class="n">۵</div><div class="t">Registry</div><div class="d">ثبت ایمیج</div></div>
+    <div class="st"><div class="n">۶</div><div class="t">Deploy</div><div class="d">staging ← prod</div></div>
+  </div>
+  <div class="code"><span class="lang">CI — نمونهٔ گردش‌کار</span><pre><span class="k">jobs:</span>
+  build:
+    steps:
+      - run: golangci-lint run        <span class="c"># کیفیت کد Go</span>
+      - run: go test ./... -race      <span class="c"># تست واحد + رقابت داده</span>
+      - run: docker build -t app .    <span class="c"># ساخت ایمیج</span>
+      - run: trivy image app          <span class="c"># اسکن آسیب‌پذیری</span>
+      - run: kubectl rollout restart deploy/app  <span class="c"># استقرار تدریجی</span></pre></div>
+</section>
+
+<!-- 11 TEST -->
+<section id="test">
+  <h2><span class="sn">۱۱</span>استراتژی تست و کیفیت</h2>
+  <div class="tw"><table>
+    <thead><tr><th>سطح</th><th>هدف</th><th>ابزار نمونه</th></tr></thead>
+    <tbody>
+      <tr><td>واحد (Unit)</td><td>منطق هر تابع/ماژول</td><td><code>go test</code>، <code>pytest</code>، <code>Jest</code></td></tr>
+      <tr><td>یکپارچه (Integration)</td><td>تعامل سرویس‌ها و پایگاه‌داده</td><td>Testcontainers</td></tr>
+      <tr><td>سرتاسری (E2E)</td><td>سناریوی کامل کاربر</td><td><code>Playwright</code>، Flutter integration test</td></tr>
+      <tr><td>بار (Load)</td><td>پایداری تحت فشار</td><td><code>k6</code></td></tr>
+      <tr><td>امنیت</td><td>آسیب‌پذیری کد و وابستگی</td><td>SAST/DAST، Trivy</td></tr>
+    </tbody>
+  </table></div>
+  <p>کیفیت کد با <b>linter و formatter</b> اجباری تضمین می‌شود: <code>golangci-lint</code>/<code>gofmt</code> برای Go، <code>ruff</code>/<code>black</code> + <code>mypy</code> برای Python، <code>eslint</code>/<code>prettier</code> + <code>tsc</code> برای TypeScript.</p>
+</section>
+
+<!-- 12 MLOPS -->
+<section id="mlops">
+  <h2><span class="sn">۱۲</span>چرخهٔ عمر مدل هوش مصنوعی (MLOps)</h2>
+  <div class="steps">
+    <div class="row"><div><div class="b">جمع‌آوری و حاکمیت داده</div><div class="x">گردآوری تصویر از دوربین‌ها با رعایت محرمانگی؛ ذخیره در MinIO درون‌سازمانی.</div></div></div>
+    <div class="row"><div><div class="b">برچسب‌گذاری (Annotation)</div><div class="x">آماده‌سازی و برچسب دادهٔ آموزش.</div></div></div>
+    <div class="row"><div><div class="b">آموزش (Training)</div><div class="x">یادگیری انتقالی روی مدل‌های چهره با PyTorch؛ مدل‌های دنباله‌ای برای رفتار.</div></div></div>
+    <div class="row"><div><div class="b">ارزیابی (Evaluation)</div><div class="x">سنجش دقت/فراخوانی و نرخ خطای پذیرش/رد (FAR/FRR).</div></div></div>
+    <div class="row"><div><div class="b">بهینه‌سازی</div><div class="x">صدور به ONNX و کوانتایز با TensorRT (FP16/INT8) برای اجرای سریع روی GPU.</div></div></div>
+    <div class="row"><div><div class="b">استقرار</div><div class="x">ثبت در رجیستری مدل و عرضه به‌صورت سرویس استنتاج.</div></div></div>
+    <div class="row"><div><div class="b">پایش و بازآموزی</div><div class="x">رصد افت دقت/دریفت و بازآموزیِ دوره‌ای با دادهٔ تازه.</div></div></div>
+  </div>
+</section>
+
+<!-- 13 FLOW -->
+<section id="flow">
+  <h2><span class="sn">۱۳</span>جریان دادهٔ زمان اجرا</h2>
+  <p>مسیر یک رخداد، از فریم دوربین تا هشدار روی داشبورد و موبایل:</p>
+  <div class="steps">
+    <div class="row"><div><div class="b">دوربین IP</div><div class="x">جریان ویدئو با <code>RTSP/ONVIF</code>.</div></div></div>
+    <div class="row"><div><div class="b">سرویس دریافت ویدئو</div><div class="x">رمزگشایی سخت‌افزاری با GStreamer و نمونه‌گیری فریم.</div></div></div>
+    <div class="row"><div><div class="b">سرویس تشخیص چهره (GPU)</div><div class="x">آشکارسازی چهره و تولید بردار با TensorRT.</div></div></div>
+    <div class="row"><div><div class="b">تطبیق هویت</div><div class="x">جست‌وجوی شباهت در <code>pgvector</code> و تعیین فرد.</div></div></div>
+    <div class="row"><div><div class="b">انتشار رخداد</div><div class="x">ارسال رویداد به <code>NATS</code>.</div></div></div>
+    <div class="row"><div><div class="b">سرویس‌های مصرف‌کننده</div><div class="x">حضور/زون/هشدار رویداد را پردازش می‌کنند؛ presence در Redis.</div></div></div>
+    <div class="row"><div><div class="b">ماندگاری</div><div class="x">ثبت در PostgreSQL/Timescale و کلیپ رخداد در MinIO.</div></div></div>
+    <div class="row"><div><div class="b">اعلان به کلاینت</div><div class="x">push زنده به داشبورد (WebSocket) و موبایل (FCM).</div></div></div>
+  </div>
+</section>
+
+<!-- 14 SECURITY -->
+<section id="sec">
+  <h2><span class="sn">۱۴</span>امنیت و حاکمیت کد</h2>
+  <ul>
+    <li><b>رمزنگاری:</b> TLS برای انتقال، رمزنگاری در سکون برای دادهٔ حساس.</li>
+    <li><b>دسترسی:</b> RBAC، اصل کمترین امتیاز، ثبت ممیزی (audit log) همهٔ اقدامات حساس.</li>
+    <li><b>اسرار:</b> مدیریت متمرکز با Vault؛ بدون رمز در مخزن کد.</li>
+    <li><b>زنجیرهٔ تأمین:</b> اسکن وابستگی‌ها و ایمیج‌ها، امضای ایمیج، به‌روزرسانی منظم.</li>
+    <li><b>حریم خصوصی:</b> استقرار On‑Prem و عدم خروج دادهٔ بیومتریک از محیط مشتری.</li>
+  </ul>
+</section>
+
+<!-- 15 TOOLS -->
+<section id="tools">
+  <h2><span class="sn">۱۵</span>ابزارها و محیط توسعه</h2>
+  <div class="tw"><table>
+    <thead><tr><th>دسته</th><th>ابزار</th></tr></thead>
+    <tbody>
+      <tr><td>کنترل نسخه</td><td><code>Git</code> + مخزن مرکزی، Pull Request، بازبینی کد</td></tr>
+      <tr><td>مدیریت بسته</td><td><code>Go Modules</code>، <code>pip/poetry</code>، <code>pub</code>، <code>npm/pnpm</code></td></tr>
+      <tr><td>کیفیت کد</td><td>golangci-lint، ruff/black/mypy، eslint/prettier/tsc</td></tr>
+      <tr><td>کانتینر/رجیستری</td><td>Docker، رجیستری ایمیج خصوصی</td></tr>
+      <tr><td>مدیریت پروژه</td><td>برد چابک، ردیابی Issue و اسپرینت</td></tr>
+      <tr><td>مستندسازی</td><td>OpenAPI/Swagger برای API، README و سند معماری</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+</main>
+</div>
+
+<div class="foot">این سند مهندسی، مکملِ «سند فنی و راهنمای پیاده‌سازی» است و فناوری‌ها و روند توسعهٔ نگاهبان را به‌صورت خلاصه و دقیق شرح می‌دهد. جزئیات پیاده‌سازی پس از عقد قرارداد در مستندات فنی پروژه تکمیل می‌شود.</div>
+
+<script>
+(function(){var ls=[].slice.call(document.querySelectorAll('.toc a')),ss=ls.map(a=>document.querySelector(a.getAttribute('href')));
+function spy(){var y=scrollY+160,i=0;for(var k=0;k<ss.length;k++)if(ss[k]&&ss[k].offsetTop<=y)i=k;ls.forEach(l=>l.classList.remove('on'));if(ls[i])ls[i].classList.add('on');}
+addEventListener('scroll',spy,{passive:true});spy();})();
+</script>
+</body>
+</html>

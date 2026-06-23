@@ -38,6 +38,7 @@ table of contents.
 | 🧮 Cost calculator (interactive) | `negahban-cost-calculator.html` | [open](https://sobhanaz.github.io/Gardian-One/negahban-cost-calculator.html) |
 | 📈 ROI / break-even (interactive) | `negahban-roi.html` | [open](https://sobhanaz.github.io/Gardian-One/negahban-roi.html) |
 | 📐 Technical specification | `negahban-technical-spec.html` | [open](https://sobhanaz.github.io/Gardian-One/negahban-technical-spec.html) |
+| 🧩 Technology & development process | `negahban-tech-stack.html` | [open](https://sobhanaz.github.io/Gardian-One/negahban-tech-stack.html) |
 | 📊 Financial/technical/business supplement | `negahban-supplement.html` | [open](https://sobhanaz.github.io/Gardian-One/negahban-supplement.html) |
 | 📑 Pitch deck (PowerPoint) | `negahban-pitch.pptx` | [download](https://sobhanaz.github.io/Gardian-One/negahban-pitch.pptx) |
 
