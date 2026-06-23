@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>نگاهبان — سند تکمیلی (مالی، فنی و کسب‌وکار)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{--navy:#0F2A4A;--deep:#081B30;--cyan:#15B5CB;--cyanD:#0E7E91;--cyanB:#4DD7E6;--green:#1E8E4E;--greenS:#e9f7ef;--red:#C62828;--redS:#fceaea;--amber:#B5790F;--amberS:#fdf4e3;--ink:#16202B;--muted:#5B6B7A;--line:#E2E8EF;--bg:#EEF2F7;--surface:#fff;--soft:#E8F8FB;--navysoft:#EAF1F8}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Vazirmatn',Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:1.95;font-size:15px}
+code{font-family:'JetBrains Mono',monospace;background:#eef3f8;color:#0b3a52;padding:1px 6px;border-radius:5px;font-size:12.5px;direction:ltr;display:inline-block}
+.cover{background:radial-gradient(820px 360px at 82% -12%,#1c4a7a,var(--navy) 58%,var(--deep));color:#fff;padding:30px 26px}
+.cover-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:20px}
+.cover svg{width:64px;height:74px;flex:none}
+.cover .k{color:var(--cyan);font-weight:700;font-size:12.5px}
+.cover h1{font-size:26px;font-weight:900}
+.cover .s{color:#bdd6ee;font-size:14px;margin-top:5px}
+.wrap{max-width:1180px;margin:22px auto;padding:0 18px;display:grid;grid-template-columns:236px 1fr;gap:24px;align-items:start}
+.toc{position:sticky;top:16px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;max-height:calc(100vh-36px);overflow:auto}
+.toc-h{font-weight:800;color:var(--navy);padding:4px 8px 9px;border-bottom:2px solid var(--cyan);margin-bottom:7px}
+.toc a{display:flex;gap:8px;align-items:center;text-decoration:none;color:#33485c;font-size:13px;padding:7px 8px;border-radius:8px}
+.toc a:hover{background:var(--soft);color:var(--navy)}
+.toc a.on{background:var(--navy);color:#fff}.toc a.on .n{background:var(--cyan);color:var(--navy)}
+.toc .n{width:21px;height:21px;border-radius:6px;background:var(--soft);color:var(--navy);font-weight:800;font-size:11.5px;display:flex;align-items:center;justify-content:center;flex:none}
+.content{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px 30px;min-width:0}
+section{padding:14px 0 24px;border-bottom:1px solid var(--line)}
+section:last-child{border-bottom:0}
+h2{font-size:22px;color:var(--navy);font-weight:900;margin:6px 0 12px;display:flex;align-items:center;gap:11px;scroll-margin-top:14px}
+h2 .sn{width:33px;height:33px;border-radius:10px;background:var(--navy);color:#fff;font-size:15px;display:flex;align-items:center;justify-content:center;flex:none}
+h3{font-size:16px;color:var(--navy);font-weight:800;margin:18px 0 9px;padding-right:12px;border-right:4px solid var(--cyan)}
+p{margin:0 0 11px;text-align:justify}
+.muted{color:var(--muted);font-size:13px}
+b{color:var(--navy)}
+.tw{overflow-x:auto;margin:12px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{background:var(--navy);color:#fff;padding:9px 11px;text-align:right;font-weight:700;white-space:nowrap}
+td{padding:8px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:#f6f9fc}
+tr.base td{background:var(--soft);font-weight:800}
+.note{background:var(--soft);border-right:4px solid var(--cyan);border-radius:10px;padding:11px 15px;margin:13px 0;font-size:14px}
+.conv{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;background:#f4f9fb;border:1px solid #d4ebf0;border-radius:12px;padding:14px;margin:10px 0}
+.conv .f{display:flex;flex-direction:column;gap:4px}
+.conv label{font-size:12px;color:var(--muted);font-weight:600}
+.conv input{width:130px;border:1px solid #cfdbe7;border-radius:8px;padding:7px 9px;font-family:inherit;text-align:left;direction:ltr}
+.conv .out{margin-inline-start:auto;text-align:left}
+.conv .out .big{font-size:22px;font-weight:900;color:var(--navy)}
+.chart-box{border:1px solid var(--line);border-radius:13px;padding:14px;margin:12px 0;background:#fff}
+.chart-box h4{font-size:14px;color:var(--navy);font-weight:800;margin-bottom:8px}
+/* BMC */
+.bmc{display:grid;grid-template-columns:repeat(5,1fr);grid-auto-rows:minmax(70px,auto);gap:8px;margin:10px 0}
+.bmc .b{border:1px solid var(--line);border-radius:10px;padding:9px 11px;background:#fbfdff}
+.bmc .b h5{font-size:12.5px;color:var(--cyanD);font-weight:800;margin-bottom:5px}
+.bmc .b ul{margin:0;padding-right:15px}
+.bmc .b li{font-size:11.5px;margin-bottom:3px;color:#33485c}
+.bmc .vp{background:var(--navy);color:#fff}.bmc .vp h5{color:var(--cyanB)}.bmc .vp li{color:#dbe9f4}
+.bmc .span2{grid-row:span 2}
+.bmc .cost{grid-column:1/3}.bmc .rev{grid-column:3/6}
+.bmc .rev,.bmc .cost{background:var(--navysoft)}
+/* SWOT */
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0}
+.q{border-radius:12px;padding:13px 15px}
+.q h4{font-size:14px;font-weight:800;margin-bottom:7px}
+.q ul{margin:0;padding-right:17px}.q li{font-size:13px;margin-bottom:4px}
+.q.s{background:var(--greenS)}.q.s h4{color:var(--green)}
+.q.w{background:var(--amberS)}.q.w h4{color:var(--amber)}
+.q.o{background:var(--soft)}.q.o h4{color:var(--cyanD)}
+.q.t{background:var(--redS)}.q.t h4{color:var(--red)}
+/* compare cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0}
+.card{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.card .ch{color:#fff;padding:10px;text-align:center;font-weight:800}
+.card .cb{padding:10px 12px}
+.card .lab{font-size:11.5px;font-weight:800;border-radius:14px;padding:2px 9px;display:inline-block;margin:5px 0 3px}
+.lab.p{background:var(--greenS);color:var(--green)}.lab.c{background:var(--redS);color:var(--red)}
+.card ul{margin:0;padding-right:16px}.card li{font-size:12.5px;margin-bottom:3px}
+/* prereq */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.prebox{border:1px solid var(--line);border-radius:12px;padding:6px 14px 12px}
+.prebox h4{font-size:14px;color:var(--navy);font-weight:800;margin:10px 0 6px}
+ul.bul{list-style:none;margin:0 0 6px;padding:0}
+ul.bul li{position:relative;padding-right:17px;margin-bottom:5px;font-size:13px}
+ul.bul li::before{content:"";position:absolute;right:2px;top:9px;width:7px;height:7px;background:var(--cyan);transform:rotate(45deg)}
+.diagram{margin:12px 0;border:1px solid var(--line);border-radius:13px;background:#f8fafc;padding:8px}
+.foot{max-width:1180px;margin:6px auto 36px;padding:0 18px;color:var(--muted);font-size:12px;text-align:center}
+@media (max-width:900px){.wrap{grid-template-columns:1fr}.toc{position:static;max-height:none;order:-1}.bmc{grid-template-columns:1fr 1fr}.bmc .vp,.bmc .cost,.bmc .rev,.bmc .span2{grid-column:auto;grid-row:auto}.swot,.cards,.two{grid-template-columns:1fr}}
+@media print{.toc{display:none}.wrap{display:block}.content{border:0}section{break-inside:avoid}@page{size:A4;margin:12mm}}
+</style>
+</head>
+<body>
+<header class="cover"><div class="cover-in">
+  <svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient><linearGradient id="ir" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient></defs><path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#sh)" stroke="#19b6cd" stroke-width="3"/><path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/><path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/><circle cx="66" cy="78" r="17" fill="url(#ir)"/><circle cx="66" cy="78" r="7.5" fill="#0b2742"/><circle cx="60" cy="72" r="3" fill="#eafaff"/><g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85"><line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/><line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/></g></svg>
+  <div><div class="k">نگاهبان • سند تکمیلی</div><h1>تحلیل مالی، فنی و کسب‌وکار</h1>
+  <div class="s">نرخ تبدیل • حساسیت • بوم کسب‌وکار • تکنولوژی • راهکارها • پیش‌نیازها • دیاگرام تولید • SWOT و مدل تجاری</div></div>
+</div></header>
+
+<div class="wrap">
+<nav class="toc"><div class="toc-h">فهرست</div>
+  <a href="#rate"><span class="n">۱</span>جدول نرخ تبدیل</a>
+  <a href="#sens"><span class="n">۲</span>تحلیل حساسیت</a>
+  <a href="#bmc"><span class="n">۳</span>بوم کسب‌وکار</a>
+  <a href="#tech"><span class="n">۴</span>تکنولوژی‌ها</a>
+  <a href="#sol"><span class="n">۵</span>راهکارهای رایج</a>
+  <a href="#pre"><span class="n">۶</span>پیش‌نیازها</a>
+  <a href="#diag"><span class="n">۷</span>دیاگرام تولید</a>
+  <a href="#swot"><span class="n">۸</span>SWOT و مدل تجاری</a>
+</nav>
+
+<main class="content">
+
+<!-- 1 RATE -->
+<section id="rate">
+  <h2><span class="sn">۱</span>جدول نرخ تبدیل (دلار ← تومان)</h2>
+  <p>هزینهٔ بخش وارداتی پروژه (سخت‌افزار: <b>$۸۴٬۵۲۰</b>) با نرخ دلار تغییر می‌کند؛ هزینه‌های ریالی (نصب، توسعه، عملیات، جانبی) ثابت‌اند. جدول زیر، جمع‌ها را در نرخ‌های مختلف نشان می‌دهد. مبدّل پایین هم برای تبدیل سریع است.</p>
+  <div class="conv">
+    <div class="f"><label>مبلغ (دلار)</label><input id="cvUsd" type="number" value="84520"></div>
+    <div class="f"><label>نرخ دلار (تومان)</label><input id="cvRate" type="number" value="180000" step="1000"></div>
+    <div class="out"><div class="muted">معادل تومانی</div><div class="big"><span id="cvOut">—</span> تومان</div></div>
+  </div>
+  <div class="tw"><table><thead><tr><th>نرخ دلار (تومان)</th><th>سخت‌افزار (تومان)</th><th>هزینهٔ استقرار (تومان)</th><th>جمع کل پروژه (تومان)</th><th>جمع کل (معادل دلار)</th></tr></thead><tbody id="rateBody"></tbody></table></div>
+  <div class="note">سطر برجسته، نرخ پایه (۱۸۰٬۰۰۰ تومان) است. با افزایش نرخ دلار، فقط بخش سخت‌افزار و اقلام وابسته (گمرک ۱۵٪، یدکی ۵٪) رشد می‌کنند.</div>
+</section>
+
+<!-- 2 SENSITIVITY -->
+<section id="sens">
+  <h2><span class="sn">۲</span>تحلیل حساسیت (Sensitivity)</h2>
+  <p>این تحلیل نشان می‌دهد جمع کل پروژه نسبت به تغییر هر متغیر کلیدی چقدر حساس است (هر متغیر ±۲۰٪، بقیه ثابت). متغیری که بازهٔ بزرگ‌تری ایجاد می‌کند، ریسک بودجه‌ای بیشتری دارد.</p>
+  <div class="tw"><table><thead><tr><th>متغیر</th><th>۲۰٪−</th><th>۱۰٪−</th><th>پایه</th><th>۱۰٪+</th><th>۲۰٪+</th></tr></thead><tbody id="sensBody"></tbody></table></div>
+  <div class="chart-box"><h4>دامنهٔ جمع کل پروژه بر اساس هر متغیر (میلیارد تومان) — نمودار تورنادو</h4><canvas id="chSens" height="190"></canvas></div>
+  <div class="note">نتیجه: <b>نرخ دلار</b> و <b>هزینهٔ سخت‌افزار</b> بیشترین اثر را بر بودجه دارند؛ بنابراین قفل‌کردن نرخ و گرفتن استعلام واقعی، اولویت کاهش ریسک مالی است.</div>
+</section>
+
+<!-- 3 BMC -->
+<section id="bmc">
+  <h2><span class="sn">۳</span>بوم کسب‌وکار (Business Model Canvas)</h2>
+  <div class="bmc">
+    <div class="b span2"><h5>شرکای کلیدی</h5><ul><li>تأمین‌کنندهٔ دوربین/سخت‌افزار</li><li>مجری نصب و کابل‌کشی</li><li>ارائه‌دهندهٔ زیرساخت ابری/سرور</li><li>شرکای فروش و نمایندگان</li></ul></div>
+    <div class="b"><h5>فعالیت‌های کلیدی</h5><ul><li>توسعهٔ پلتفرم و هوش مصنوعی</li><li>یکپارچه‌سازی سخت‌افزار</li><li>استقرار و پشتیبانی</li></ul></div>
+    <div class="b vp span2"><h5>ارزش پیشنهادی</h5><ul><li>امنیت یکپارچهٔ انسان+ماشین</li><li>تشخیص چهره و کشف جایگزینی</li><li>حاکمیت کامل داده (On-Prem)</li><li>مقیاس‌پذیر از لابی تا مرکز نظامی</li><li>گزارش قابل‌استناد و شفاف</li></ul></div>
+    <div class="b"><h5>ارتباط با مشتری</h5><ul><li>پشتیبانی اختصاصی + SLA</li><li>آموزش و استقرار همراه</li></ul></div>
+    <div class="b span2"><h5>بخش‌های مشتری</h5><ul><li>ساختمان‌های مسکونی/تجاری</li><li>شرکت‌ها و سازمان‌ها</li><li>مراکز صنعتی و حساس/نظامی</li><li>مجتمع‌ها و انبارها</li></ul></div>
+    <div class="b"><h5>منابع کلیدی</h5><ul><li>تیم فنی و هوش مصنوعی</li><li>پلتفرم و کد اختصاصی</li><li>برند نگاهبان</li></ul></div>
+    <div class="b"><h5>کانال‌ها</h5><ul><li>فروش مستقیم B2B</li><li>نمایندگان و مناقصات</li><li>وب‌سایت و دموی محصول</li></ul></div>
+    <div class="b cost"><h5>ساختار هزینه</h5><ul><li>توسعه (یک‌بار) • سخت‌افزار • نصب • عملیات و پشتیبانی • فروش و بازاریابی</li></ul></div>
+    <div class="b rev"><h5>جریان‌های درآمد</h5><ul><li>فروش پروژه‌ای (سخت‌افزار + استقرار) • لایسنس/اشتراک نرم‌افزار • قرارداد پشتیبانی سالانه • سفارشی‌سازی • مدل SaaS برای مشتری کوچک</li></ul></div>
+  </div>
+</section>
+
+<!-- 4 TECH -->
+<section id="tech">
+  <h2><span class="sn">۴</span>تکنولوژی‌های مورد استفاده</h2>
+  <div class="tw"><table><thead><tr><th>لایه</th><th>فناوری</th><th>نسخه</th><th>کاربرد</th></tr></thead><tbody>
+    <tr><td>Backend سرویس‌ها</td><td><code>Go</code></td><td>1.22+</td><td>سرویس‌های بلادرنگ، هم‌روندی بالا</td></tr>
+    <tr><td>هوش مصنوعی/بینایی</td><td><code>Python</code> + <code>ONNX Runtime</code></td><td>3.11 / 1.17</td><td>تشخیص چهره، اجرا با TensorRT/CUDA</td></tr>
+    <tr><td>اپ موبایل</td><td><code>Flutter</code></td><td>3.22+</td><td>یک کد برای Android/iOS، دوربین/BLE/بیومتریک</td></tr>
+    <tr><td>داشبورد وب</td><td><code>React</code> + <code>TypeScript</code></td><td>18 / 5</td><td>نقشهٔ تعاملی، RBAC، به‌روزرسانی زنده</td></tr>
+    <tr><td>پایگاه‌داده</td><td><code>PostgreSQL</code> + pgvector + TimescaleDB</td><td>16</td><td>رابطه‌ای + بردار چهره + سری‌زمانی مکان</td></tr>
+    <tr><td>کش/حضور</td><td><code>Redis</code></td><td>7+</td><td>presence، geofence، نرخ‌گذاری، pub/sub</td></tr>
+    <tr><td>گذرگاه پیام</td><td><code>NATS JetStream</code></td><td>2.10+</td><td>رخدادمحور، تأخیر پایین</td></tr>
+    <tr><td>پردازش ویدئو</td><td><code>GStreamer</code> / <code>FFmpeg</code></td><td>1.24 / 6</td><td>رمزگشایی سخت‌افزاری، نمونه‌گیری فریم</td></tr>
+    <tr><td>استقرار</td><td><code>Docker</code> + <code>Kubernetes</code></td><td>1.29+</td><td>مقیاس‌پذیری، زمان‌بندی GPU، rollout</td></tr>
+    <tr><td>شیء‌ذخیره</td><td><code>MinIO</code> (S3)</td><td>—</td><td>آرشیو ویدئو/کلیپ رخداد، On-Prem</td></tr>
+    <tr><td>مشاهده‌پذیری</td><td>Prometheus + Grafana + Loki + OTel</td><td>—</td><td>متریک، لاگ و ردیابی</td></tr>
+  </tbody></table></div>
+</section>
+
+<!-- 5 SOLUTIONS -->
+<section id="sol">
+  <h2><span class="sn">۵</span>راهکارهای رایج استقرار</h2>
+  <p>سه معماری رایج برای استقرار سامانه وجود دارد که بسته به حساسیت داده، هزینه و امنیت انتخاب می‌شوند:</p>
+  <div class="cards">
+    <div class="card"><div class="ch" style="background:var(--navy)">درون‌سازمانی (On-Premise)</div><div class="cb">
+      <p class="muted" style="font-size:12.5px">همهٔ سرورها و داده‌ها در محل مشتری.</p>
+      <span class="lab p">مزایا</span><ul><li>بالاترین امنیت و کنترل داده</li><li>استقلال از اینترنت</li><li>مناسب مراکز حساس/نظامی</li></ul>
+      <span class="lab c">ملاحظات</span><ul><li>نیاز به زیرساخت محلی</li><li>هزینهٔ اولیهٔ بالاتر</li></ul></div></div>
+    <div class="card"><div class="ch" style="background:var(--cyanD)">ابری (Cloud)</div><div class="cb">
+      <p class="muted" style="font-size:12.5px">پردازش و ذخیره روی فضای ابری امن.</p>
+      <span class="lab p">مزایا</span><ul><li>راه‌اندازی سریع</li><li>هزینهٔ اولیهٔ پایین</li><li>مقیاس‌پذیری آسان</li></ul>
+      <span class="lab c">ملاحظات</span><ul><li>وابستگی به اینترنت</li><li>نامناسب برای داده فوق‌حساس</li></ul></div></div>
+    <div class="card"><div class="ch" style="background:var(--green)">ترکیبی (Hybrid)</div><div class="cb">
+      <p class="muted" style="font-size:12.5px">داده حساس محلی، بخش مقیاس‌پذیر روی ابر.</p>
+      <span class="lab p">مزایا</span><ul><li>تعادل امنیت و انعطاف</li><li>بهینه از نظر هزینه</li><li>انطباق با سیاست‌ها</li></ul>
+      <span class="lab c">ملاحظات</span><ul><li>پیچیدگی بیشتر در طراحی</li><li>نیاز به همگام‌سازی دقیق</li></ul></div></div>
+  </div>
+  <div class="note">برای ساختمان ۱۱ طبقهٔ نمونه، معماری <b>درون‌سازمانی</b> پیشنهاد می‌شود تا دادهٔ زیست‌سنجشی از محیط مشتری خارج نشود.</div>
+</section>
+
+<!-- 6 PREREQS -->
+<section id="pre">
+  <h2><span class="sn">۶</span>پیش‌نیازهای نرم‌افزاری و سخت‌افزاری</h2>
+  <div class="two">
+    <div class="prebox"><h4>پیش‌نیازهای سخت‌افزاری</h4>
+      <ul class="bul">
+        <li>سرور پردازش AI: ۳۲ هسته، ۱۲۸GB RAM، GPU حرفه‌ای (RTX A4000/A5000)</li>
+        <li>سرور اپلیکیشن/پایگاه‌داده رک‌مونت با افزونگی</li>
+        <li>ذخیره‌سازی: شاسی/NVR + هارد Surveillance برای آرشیو ۳۰ روز</li>
+        <li>دوربین‌های IP تحت شبکه با پشتیبانی ONVIF/RTSP</li>
+        <li>اسکنر چهره/اثرانگشت، گیت تردد، کنترلر درب</li>
+        <li>تگ و گیت‌وی BLE/UWB برای مکان‌یابی</li>
+        <li>شبکه: سوئیچ PoE+، سوئیچ Core، بک‌بون فیبر، VLAN ایزوله</li>
+        <li>برق پایدار: UPS آنلاین سرور + UPS کلوزت‌ها، رک و خنک‌کاری</li>
+      </ul>
+    </div>
+    <div class="prebox"><h4>پیش‌نیازهای نرم‌افزاری</h4>
+      <ul class="bul">
+        <li>سیستم‌عامل سرور: Linux (Ubuntu Server)</li>
+        <li>محیط اجرای کانتینری: Docker + Kubernetes (یا k3s)</li>
+        <li>درایور و کتابخانهٔ GPU: CUDA/cuDNN + TensorRT</li>
+        <li>PostgreSQL ۱۶ + افزونه‌های pgvector و TimescaleDB</li>
+        <li>Redis، گذرگاه پیام NATS، شیء‌ذخیرهٔ MinIO</li>
+        <li>گواهی TLS، مدیریت اسرار (Vault)، سامانهٔ مانیتورینگ</li>
+        <li>کلاینت‌ها: اپ موبایل (Android/iOS) و مرورگر مدرن برای داشبورد</li>
+        <li>خط لولهٔ CI/CD و رجیستری ایمیج (برای استقرار و به‌روزرسانی)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 7 PRODUCTION DIAGRAM -->
+<section id="diag">
+  <h2><span class="sn">۷</span>دیاگرام تولید (Production)</h2>
+  <p>چیدمان محیط تولید: از دستگاه‌های لبه تا کلاینت‌ها، همراه با خط لولهٔ استقرار (CI/CD).</p>
+  <div class="diagram" id="prodDiagram"></div>
+</section>
+
+<!-- 8 SWOT + BUSINESS MODEL -->
+<section id="swot">
+  <h2><span class="sn">۸</span>فرصت‌ها و تهدیدها (SWOT) و مدل تجاری</h2>
+  <div class="swot">
+    <div class="q s"><h4>قوت‌ها (Strengths)</h4><ul><li>راهکار بومی و مستقل از فناوری خارجی</li><li>هوش مصنوعی تشخیص چهره و کشف جایگزینی</li><li>حاکمیت کامل داده و استقرار On-Prem</li><li>مقیاس‌پذیری گسترده (لابی تا نظامی)</li></ul></div>
+    <div class="q w"><h4>ضعف‌ها (Weaknesses)</h4><ul><li>سرمایهٔ اولیهٔ بالا برای استقرار کامل</li><li>وابستگی به واردات بخشی از سخت‌افزار</li><li>نیاز به تیم فنی متخصص برای پشتیبانی</li></ul></div>
+    <div class="q o"><h4>فرصت‌ها (Opportunities)</h4><ul><li>تقاضای رو به رشد امنیت هوشمند داخلی</li><li>محدودیت دسترسی به راهکار خارجی (مزیت بومی)</li><li>بازار مراکز حساس، صنعتی و دولتی</li><li>گسترش به مدل SaaS برای مشتری کوچک</li></ul></div>
+    <div class="q t"><h4>تهدیدها (Threats)</h4><ul><li>نوسان نرخ ارز و قیمت سخت‌افزار</li><li>رقبای داخلی و خارجی</li><li>حساسیت‌های حقوقی دادهٔ بیومتریک</li><li>تغییر مقررات و تحریم زنجیرهٔ تأمین</li></ul></div>
+  </div>
+  <h3>مدل درآمد</h3>
+  <div class="tw"><table><thead><tr><th>جریان درآمد</th><th>توضیح</th><th>نوع</th></tr></thead><tbody>
+    <tr><td>فروش پروژه‌ای</td><td>سخت‌افزار + نصب + راه‌اندازی برای هر مشتری</td><td>یک‌بار</td></tr>
+    <tr><td>لایسنس نرم‌افزار</td><td>حق استفاده از پلتفرم به‌ازای هر استقرار</td><td>یک‌بار/سالانه</td></tr>
+    <tr><td>قرارداد پشتیبانی و SLA</td><td>نگهداری، به‌روزرسانی و پشتیبانی سالانه</td><td>تکرارشونده</td></tr>
+    <tr><td>سفارشی‌سازی و یکپارچه‌سازی</td><td>توسعهٔ ویژگی یا اتصال به سامانه‌های مشتری</td><td>پروژه‌ای</td></tr>
+    <tr><td>اشتراک SaaS</td><td>سرویس ابری برای مشتریان کوچک‌تر</td><td>ماهانه/تکرارشونده</td></tr>
+  </tbody></table></div>
+</section>
+
+</main>
+</div>
+<div class="foot">ارقام مالی تخمینی و هماهنگ با فایل ساختار هزینه‌اند (دلار = ۱۸۰٬۰۰۰ تومان). برای محاسبهٔ کامل و ویرایش، از فایل ماشین‌حساب هزینه استفاده کنید.</div>
+
+<script>
+const fa=s=>String(s).replace(/[0-9]/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+const fmt=n=>fa(Math.round(n||0).toLocaleString('en-US'));
+const mld=n=>fa(((n||0)/1e9).toLocaleString('en-US',{minimumFractionDigits:1,maximumFractionDigits:1}));
+// model
+const HW_USD=84520, INSTALL=1.74e9, MISC=0.53e9, OPS_FIX=0.972e9, DEV=7.66e9, CUST=0.15, CONT=0.10, SPARE=0.05;
+function totals(rate, hwUsd=HW_USD, dev=DEV, cont=CONT){
+  const hwT=hwUsd*rate, customs=CUST*hwT, ops=OPS_FIX+SPARE*hwT;
+  const sub=hwT+INSTALL+customs+ops+MISC, contg=cont*sub, deploy=sub+contg, grand=deploy+dev;
+  return {hwT,deploy,grand};
+}
+// 1 conversion
+function conv(){const u=+document.getElementById('cvUsd').value||0,r=+document.getElementById('cvRate').value||0;
+  document.getElementById('cvOut').textContent=fmt(u*r);}
+['cvUsd','cvRate'].forEach(id=>document.getElementById(id).addEventListener('input',conv));
+const rates=[150000,160000,170000,180000,190000,200000,210000,220000];
+document.getElementById('rateBody').innerHTML=rates.map(r=>{
+  const t=totals(r);const base=r===180000;
+  return `<tr class="${base?'base':''}"><td>${fmt(r)}</td><td>${fmt(t.hwT)}</td><td>${fmt(t.deploy)}</td><td>${fmt(t.grand)}</td><td>$${fmt(t.grand/r)}</td></tr>`;
+}).join('');
+// 2 sensitivity
+const baseG=totals(180000).grand;
+const drivers=[
+  {n:'نرخ دلار',f:p=>totals(180000*(1+p)).grand},
+  {n:'هزینهٔ سخت‌افزار',f:p=>totals(180000,HW_USD*(1+p)).grand},
+  {n:'هزینهٔ توسعه',f:p=>totals(180000,HW_USD,DEV*(1+p)).grand},
+  {n:'ضریب احتیاط',f:p=>totals(180000,HW_USD,DEV,CONT*(1+p)).grand},
+];
+const ps=[-0.2,-0.1,0,0.1,0.2];
+document.getElementById('sensBody').innerHTML=drivers.map(d=>{
+  const cells=ps.map(p=>`<td${p===0?' style="font-weight:800;background:#eef6f9"':''}>${fmt(d.f(p))}</td>`).join('');
+  return `<tr><td><b>${d.n}</b></td>${cells}</tr>`;
+}).join('');
+// tornado chart
+new Chart(document.getElementById('chSens'),{type:'bar',
+  data:{labels:drivers.map(d=>d.n),datasets:[{
+    data:drivers.map(d=>[d.f(-0.2)/1e9,d.f(0.2)/1e9]),
+    backgroundColor:'#15B5CB',borderColor:'#0F2A4A',borderWidth:1,borderSkipped:false}]},
+  options:{indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>'بازه: '+c.raw[0].toFixed(1)+' تا '+c.raw[1].toFixed(1)+' میلیارد'}}},
+    scales:{x:{title:{display:true,text:'میلیارد تومان',font:{family:'Vazirmatn'}},ticks:{font:{family:'Vazirmatn'}}},y:{ticks:{font:{family:'Vazirmatn'}}}}}});
+conv();
+// 7 production diagram (SVG)
+document.getElementById('prodDiagram').innerHTML=`
+<svg viewBox="0 0 1000 470" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+<style>
+ .L{fill:#0F2A4A}.lt{fill:#cdeef4;font:700 13px Vazirmatn}.bx{fill:#fff;stroke:#15B5CB;stroke-width:1.5}
+ .bt{fill:#16202B;font:600 12px Vazirmatn}.cap{fill:#0F2A4A;font:800 14px Vazirmatn}
+ .fl{stroke:#15B5CB;stroke-width:2.4;marker-end:url(#a)}.dn{fill:#9AD9E3;stroke:#0E7E91;stroke-width:1}
+</style>
+<defs><marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#15B5CB"/></marker></defs>
+<text x="500" y="22" text-anchor="middle" class="cap">محیط تولید نگاهبان</text>
+${prodCol(810,'لبه (Edge)',['دوربین IP','اسکنر/گیت','تگ + گیت‌وی'])}
+${prodCol(610,'دریافت',['Video Ingestion','API Gateway','RTLS Gateway'])}
+${prodCol(410,'کلاستر Kubernetes',['Face (GPU)','Zone / Attendance','Behavior / Alert','Realtime'])}
+${prodCol(210,'داده',['PostgreSQL','Redis / Timescale','MinIO (S3)'])}
+${prodCol(10,'کلاینت',['اپ موبایل','داشبورد وب'],true)}
+<line x1="808" y1="250" x2="792" y2="250" class="fl"/>
+<line x1="608" y1="250" x2="592" y2="250" class="fl"/>
+<line x1="408" y1="250" x2="392" y2="250" class="fl"/>
+<line x1="208" y1="250" x2="192" y2="250" class="fl"/>
+<rect x="120" y="392" width="760" height="56" rx="9" fill="#EAF1F8" stroke="#cfe0ef"/>
+<text x="860" y="416" text-anchor="end" class="bt" style="font-weight:800;fill:#0F2A4A">خط لولهٔ استقرار</text>
+${ciStep(700,'Git')}${ciArrow(700,610)}${ciStep(540,'CI/CD')}${ciArrow(540,450)}${ciStep(380,'Registry')}${ciArrow(380,290)}${ciStep(220,'Cluster')}
+</svg>`;
+function prodCol(x,title,items,client){
+  const w=180,h=Math.max(60,items.length*40+30);
+  let g=`<rect x="${x}" y="50" width="${w}" height="${h}" rx="10" class="L"/><text x="${x+w/2}" y="74" text-anchor="middle" class="lt">${title}</text>`;
+  items.forEach((it,i)=>{ g+=`<rect x="${x+12}" y="${88+i*40}" width="${w-24}" height="30" rx="7" class="${client?'dn':'bx'}"/><text x="${x+w/2}" y="${108+i*40}" text-anchor="middle" class="bt">${it}</text>`;});
+  return g;
+}
+function ciStep(x,t){return `<rect x="${x-55}" y="404" width="110" height="32" rx="7" fill="#fff" stroke="#15B5CB"/><text x="${x}" y="424" text-anchor="middle" class="bt">${t}</text>`;}
+function ciArrow(x1,x2){return `<line x1="${x1-55}" y1="420" x2="${x2+55}" y2="420" class="fl"/>`;}
+// scroll spy
+(function(){var ls=[].slice.call(document.querySelectorAll('.toc a')),ss=ls.map(a=>document.querySelector(a.getAttribute('href')));
+function spy(){var y=scrollY+150,i=0;for(var k=0;k<ss.length;k++)if(ss[k]&&ss[k].offsetTop<=y)i=k;ls.forEach(l=>l.classList.remove('on'));if(ls[i])ls[i].classList.add('on');}
+addEventListener('scroll',spy,{passive:true});spy();})();
+</script>
+</body>
+</html>
