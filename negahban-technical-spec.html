@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>سند فنی و راهنمای پیاده‌سازی — نگاهبان</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0F2A4A;--navy-deep:#081B30;--cyan:#15B5CB;--cyan-d:#0E7E91;--cyan-soft:#e8f8fb;
+  --green:#1E8E4E;--green-soft:#e9f7ef;--red:#C62828;--red-soft:#fceaea;--amber:#B5790F;--amber-soft:#fdf4e3;
+  --ink:#16202B;--muted:#5B6B7A;--line:#E2E8EF;--bg:#EEF2F7;--surface:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Vazirmatn',Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:2;font-size:15px}
+code,pre,.path{font-family:'JetBrains Mono',monospace}
+/* cover */
+.cover{background:radial-gradient(900px 400px at 80% -10%,#1c4a7a,var(--navy) 55%,var(--navy-deep));color:#fff;padding:36px 24px}
+.cover-in{max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:26px}
+.cv-logo{width:74px;height:85px;flex:none}
+.cv-logo svg{width:100%;height:100%}
+.cv-kick{color:var(--cyan);font-weight:700;font-size:13px;letter-spacing:.4px;margin-bottom:6px}
+.cover h1{margin:0;font-size:30px;font-weight:900}
+.cv-sub{color:#bdd6ee;margin-top:6px;font-size:15px}
+.cv-tags{margin-top:12px;display:flex;gap:10px}
+.cv-tags span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:3px 12px;border-radius:20px;font-size:12.5px}
+/* layout */
+.wrap{max-width:1180px;margin:24px auto;padding:0 20px;display:grid;grid-template-columns:248px 1fr;gap:26px;align-items:start}
+.toc{position:sticky;top:18px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;max-height:calc(100vh - 40px);overflow:auto}
+.toc-h{font-weight:800;color:var(--navy);padding:4px 8px 10px;border-bottom:2px solid var(--cyan);margin-bottom:8px}
+.toc a{display:flex;gap:9px;align-items:center;text-decoration:none;color:#33485c;font-size:13.5px;padding:7px 8px;border-radius:8px;line-height:1.6}
+.toc a:hover{background:var(--cyan-soft);color:var(--navy)}
+.toc a.on{background:var(--navy);color:#fff}
+.toc a.on .t-n{background:var(--cyan);color:var(--navy)}
+.t-n{flex:none;width:22px;height:22px;border-radius:6px;background:var(--cyan-soft);color:var(--navy);font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center}
+.content{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:30px 34px;min-width:0}
+/* sections */
+.sec{padding:14px 0 26px;border-bottom:1px solid var(--line)}
+.sec:last-child{border-bottom:0}
+.sec h2{display:flex;align-items:center;gap:12px;font-size:23px;color:var(--navy);font-weight:900;margin:8px 0 14px;scroll-margin-top:16px}
+.sn{flex:none;width:34px;height:34px;border-radius:10px;background:var(--navy);color:#fff;font-size:16px;display:flex;align-items:center;justify-content:center}
+.sec h3{font-size:17px;color:var(--navy);font-weight:800;margin:22px 0 10px;padding-right:13px;border-right:4px solid var(--cyan)}
+.sec h4{font-size:15px;color:var(--cyan-d);font-weight:800;margin:16px 0 8px}
+.content p{margin:0 0 12px;text-align:justify}
+.lead{font-size:17px;font-weight:600;color:var(--navy)}
+.content ul,.content ol{margin:0 0 14px;padding-right:22px}
+.content li{margin-bottom:7px;text-align:justify}
+.content b{color:var(--navy)}
+p code,li code,td code{background:#eef3f8;color:#0b3a52;padding:1px 7px;border-radius:6px;font-size:12.5px;direction:ltr;display:inline-block}
+/* code blocks */
+.code{position:relative;margin:14px 0;border-radius:12px;overflow:hidden;border:1px solid #16324f}
+.code .lang{position:absolute;top:0;left:0;background:#15B5CB;color:#06222e;font-size:11px;font-weight:800;padding:3px 12px;border-bottom-right-radius:10px;font-family:'Vazirmatn',sans-serif;z-index:2}
+.code pre{margin:0;background:#0c2438;color:#dbe9f4;padding:34px 18px 18px;overflow-x:auto;font-size:13px;line-height:1.85;text-align:left}
+/* notes */
+.note{border-radius:12px;padding:13px 16px;margin:16px 0;border-right:5px solid}
+.note-h{font-weight:800;margin-bottom:5px}
+.note-b{font-size:14px}
+.note.info{background:var(--cyan-soft);border-color:var(--cyan)}.note.info .note-h{color:var(--cyan-d)}
+.note.sec{background:#eef1f9;border-color:#3b56b5}.note.sec .note-h{color:#2f44a0}
+.note.warn{background:var(--amber-soft);border-color:var(--amber)}.note.warn .note-h{color:var(--amber)}
+.note.perf{background:var(--green-soft);border-color:var(--green)}.note.perf .note-h{color:var(--green)}
+.note.impl{background:#f3f6f9;border-color:var(--navy)}.note.impl .note-h{color:var(--navy)}
+/* tables */
+.tw{overflow-x:auto;margin:14px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{background:var(--navy);color:#fff;padding:10px 12px;text-align:right;font-weight:700}
+td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:#f6f9fc}
+/* steps */
+.steps{background:#f3f9fb;border:1px solid #d4ebf0;border-radius:12px;padding:14px 18px;margin:16px 0}
+.steps-h{font-weight:800;color:var(--cyan-d);margin-bottom:8px}
+.steps ol{margin:0;padding-right:20px}
+.steps li{margin-bottom:6px}
+/* api */
+.api{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#fbfdff;border:1px solid var(--line);border-radius:10px;padding:9px 13px;margin:8px 0}
+.api .m{flex:none;font-weight:800;font-size:11.5px;padding:3px 10px;border-radius:6px;color:#fff}
+.api .m.get{background:#1E8E4E}.api .m.post{background:#15B5CB;color:#06222e}.api .m.put{background:#B5790F}.api .m.delete{background:#C62828}
+.api .path{color:#0b3a52;font-size:13px;direction:ltr}
+.api .desc{color:var(--muted);font-size:13px}
+/* diagram */
+.diagram{margin:16px 0}
+/* footer */
+.foot{max-width:1180px;margin:10px auto 40px;padding:0 20px;color:var(--muted);font-size:12.5px;text-align:center}
+@media (max-width:900px){
+  .wrap{grid-template-columns:1fr}
+  .toc{position:static;max-height:none;order:-1}
+  .cover-in{flex-direction:column;text-align:center}
+}
+@media print{
+  body{background:#fff}
+  .toc{display:none}
+  .wrap{display:block;max-width:none;margin:0;padding:0}
+  .content{border:0;border-radius:0;padding:0}
+  .cover{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .sec{break-inside:avoid-page}
+  .code,.note,.tw,.diagram,.steps,.api{break-inside:avoid}
+  @page{size:A4;margin:14mm;@bottom-center{content:counter(page);color:#5B6B7A;font-size:9pt}}
+}</style>
+</head>
+<body>
+<header class="cover">
+  <div class="cover-in">
+    <div class="cv-logo"><svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="shield" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#163a63"/>
+      <stop offset="1" stop-color="#0b2742"/>
+    </linearGradient>
+    <linearGradient id="iris" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4dd7e6"/>
+      <stop offset="1" stop-color="#13a8c4"/>
+    </linearGradient>
+  </defs>
+  <!-- shield -->
+  <path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z"
+        fill="url(#shield)" stroke="#19b6cd" stroke-width="3"/>
+  <!-- sensing arcs (top) -->
+  <path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+  <!-- eye almond -->
+  <path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z"
+        fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/>
+  <!-- iris -->
+  <circle cx="66" cy="78" r="17" fill="url(#iris)"/>
+  <!-- pupil -->
+  <circle cx="66" cy="78" r="7.5" fill="#0b2742"/>
+  <!-- highlight -->
+  <circle cx="60" cy="72" r="3" fill="#eafaff" opacity="0.9"/>
+  <!-- radar ticks around iris -->
+  <g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+    <line x1="66" y1="55" x2="66" y2="60"/>
+    <line x1="66" y1="96" x2="66" y2="101"/>
+    <line x1="43" y1="78" x2="48" y2="78"/>
+    <line x1="84" y1="78" x2="89" y2="78"/>
+  </g>
+</svg>
+</div>
+    <div class="cv-meta">
+      <div class="cv-kick">نگاهبان • محرمانه — ویژهٔ تیم فنی</div>
+      <h1>سند فنی و راهنمای پیاده‌سازی</h1>
+      <div class="cv-sub">سامانهٔ هوشمند امنیت و نگهبانی — مرجع مهندسی و نقشهٔ راه ساخت</div>
+      <div class="cv-tags"><span>نسخهٔ ۱٫۰</span><span>خرداد ۱۴۰۵</span></div>
+    </div>
+  </div>
+</header>
+<div class="wrap">
+  <nav class="toc"><div class="toc-h">فهرست</div><a href="#intro"><span class="t-n">1</span>مقدمه و دامنهٔ سند</a><a href="#architecture"><span class="t-n">2</span>معماری کلان سیستم</a><a href="#stack"><span class="t-n">3</span>پشتهٔ فناوری و قراردادها</a><a href="#data-model"><span class="t-n">4</span>مدل داده</a><a href="#services"><span class="t-n">5</span>سرویس‌ها (میکروسرویس‌ها) — بخش به بخش</a><a href="#mobile"><span class="t-n">6</span>اپلیکیشن موبایل (Flutter)</a><a href="#dashboard"><span class="t-n">7</span>داشبورد مدیریتی (Web)</a><a href="#security"><span class="t-n">8</span>امنیت و حریم خصوصی</a><a href="#observability"><span class="t-n">9</span>مشاهده‌پذیری، پایایی و پشتیبان‌گیری</a><a href="#deploy"><span class="t-n">10</span>زیرساخت و استقرار</a><a href="#testing"><span class="t-n">11</span>راهبرد تست</a><a href="#roadmap"><span class="t-n">12</span>نقشهٔ راه پیاده‌سازی (بخش به بخش)</a><a href="#api-appendix"><span class="t-n">13</span>پیوست: نمونهٔ قراردادهای API و رخداد</a></nav>
+  <main class="content"><section class="sec" id="intro"><h2><span class="sn">1</span>مقدمه و دامنهٔ سند</h2><p class="lead">این سند، مرجع فنیِ واحدِ تیم مهندسی برای طراحی، پیاده‌سازی و استقرار سامانهٔ «نگاهبان» است. هدف، تبدیل نیازمندی‌های محصول به یک معماری اجراییِ دقیق و یک نقشهٔ راهِ ساختِ بخش‌به‌بخش است.</p><p>مخاطب این سند، توسعه‌دهندگان Backend و موبایل، مهندسان هوش مصنوعی، DevOps و مسئول امنیت است. فرض بر آشنایی خواننده با معماری میکروسرویس، کانتینر، پایگاه‌دادهٔ رابطه‌ای و مفاهیم بینایی ماشین است.</p><h3>اصول طراحی حاکم بر پروژه</h3><ul><li><b>امنیت پیش‌فرض (Secure by Default):</b> رمزنگاری در حالت سکون و انتقال، کمینهٔ دسترسی، و ایزولاسیون شبکهٔ دوربین‌ها از همان ابتدا.</li><li><b>حاکمیت داده (Data Sovereignty):</b> امکان استقرار کاملاً On-Prem بدون خروج هیچ بایتی از دادهٔ زیست‌سنجشی از محیط مشتری — الزام مراکز حساس.</li><li><b>چندمستأجری و مقیاس‌پذیری (Multi-tenant & Scalable):</b> یک هسته که از یک لابی تا یک کلاستر چندطبقه را با همان کد پوشش دهد.</li><li><b>رخدادمحور (Event-Driven):</b> هر ورود/خروج، هر fix مکانی و هر تطبیق چهره یک رخداد است که از طریق گذرگاه پیام جریان می‌یابد.</li><li><b>مشاهده‌پذیری کامل (Observability):</b> هیچ سرویسی بدون log ساخت‌یافته، metric و trace به Production نمی‌رود.</li></ul><h3>واژه‌نامهٔ کوتاه</h3><div class="tw"><table><thead><tr><th>اصطلاح</th><th>توضیح</th></tr></thead><tbody><tr><td><code>RTLS</code></td><td>Real-Time Location System — سامانهٔ مکان‌یابی بلادرنگ داخلی</td></tr><tr><td><code>Embedding</code></td><td>بردار عددی (۵۱۲ بُعدی) نمایندهٔ یک چهره برای تطبیق</td></tr><tr><td><code>Geofence</code></td><td>محدودهٔ جغرافیایی/چندضلعی برای زون یا شعاع عملیاتی</td></tr><tr><td><code>FAR / FRR</code></td><td>نرخ پذیرش غلط / نرخ رد غلط در احراز هویت زیست‌سنجشی</td></tr><tr><td><code>Liveness</code></td><td>تشخیص زنده‌بودن چهره برای مقابله با جعل (عکس/ویدئو/ماسک)</td></tr><tr><td><code>Tenant</code></td><td>یک مشتری/سازمان مجزا با دادهٔ ایزوله در سامانه</td></tr></tbody></table></div></section><section class="sec" id="architecture"><h2><span class="sn">2</span>معماری کلان سیستم</h2><p>نگاهبان از پنج لایهٔ منطقی تشکیل شده است: <b>لایهٔ لبه</b> (دوربین، اسکنر، تگ و گیت‌وی)، <b>لایهٔ دریافت و دروازه</b>، <b>لایهٔ سرویس‌ها</b> (میکروسرویس‌ها)، <b>لایهٔ داده</b>، و <b>لایهٔ کلاینت</b> (اپ موبایل و داشبورد). ارتباط درون‌سرویسی با gRPC و ارتباط بیرونی با REST/WebSocket است؛ رخدادها از طریق یک گذرگاه پیام (NATS/Kafka) منتشر می‌شوند.</p><div class="diagram"><svg viewBox="0 0 900 470" xmlns="http://www.w3.org/2000/svg" class="dia">
+  <style>
+    .dia{width:100%;height:auto;background:#f7fafc;border:1px solid #e2e8ef;border-radius:12px}
+    .d-cap{text-anchor:middle;font-weight:800;fill:#0F2A4A;font-size:15px;font-family:Vazirmatn,sans-serif}
+    .d-layer{fill:#0F2A4A}
+    .d-lt{fill:#cdeef4;font-weight:800;font-size:13px;font-family:Vazirmatn,sans-serif}
+    .d-box{fill:#fff;stroke:#15B5CB;stroke-width:1.5}
+    .d-bt{text-anchor:middle;fill:#16202B;font-size:12px;font-weight:600;font-family:Vazirmatn,sans-serif}
+    .d-arrow line{stroke:#15B5CB;stroke-width:2;marker-end:url(#ar)}
+    .d-flow{stroke:#15B5CB;stroke-width:2;marker-end:url(#ar)}
+  </style>
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#15B5CB"/></marker></defs>
+  <text x="450" y="26" class="d-cap">معماری لایه‌ای نگاهبان</text>
+  <g><rect x="40" y="60" width="820" height="64" rx="10" class="d-layer"/><text x="56" y="98" class="d-lt">لایهٔ لبه (Edge)</text><g><rect x="190" y="68" width="215.33333333333334" height="48" rx="8" class="d-box"/><text x="297.6666666666667" y="96" class="d-bt">دوربین IP (RTSP/ONVIF)</text></g><g><rect x="417.33333333333337" y="68" width="215.33333333333334" height="48" rx="8" class="d-box"/><text x="525" y="96" class="d-bt">اسکنر چهره/اثرانگشت</text></g><g><rect x="644.6666666666667" y="68" width="215.33333333333334" height="48" rx="8" class="d-box"/><text x="752.3333333333334" y="96" class="d-bt">تگ امنیتی + گیت‌وی</text></g></g>
+  <g><rect x="40" y="150" width="820" height="64" rx="10" class="d-layer"/><text x="56" y="188" class="d-lt">دریافت و دروازه</text><g><rect x="190" y="158" width="215.33333333333334" height="48" rx="8" class="d-box"/><text x="297.6666666666667" y="186" class="d-bt">Video Ingestion</text></g><g><rect x="417.33333333333337" y="158" width="215.33333333333334" height="48" rx="8" class="d-box"/><text x="525" y="186" class="d-bt">API Gateway + Auth</text></g><g><rect x="644.6666666666667" y="158" width="215.33333333333334" height="48" rx="8" class="d-box"/><text x="752.3333333333334" y="186" class="d-bt">Tag/RTLS Gateway</text></g></g>
+  <g><rect x="40" y="240" width="820" height="64" rx="10" class="d-layer"/><text x="56" y="278" class="d-lt">سرویس‌ها (Microservices)</text><g><rect x="190" y="248" width="101.66666666666667" height="48" rx="8" class="d-box"/><text x="240.83333333333334" y="276" class="d-bt">Face</text></g><g><rect x="303.6666666666667" y="248" width="101.66666666666667" height="48" rx="8" class="d-box"/><text x="354.5" y="276" class="d-bt">Zone/Access</text></g><g><rect x="417.33333333333337" y="248" width="101.66666666666667" height="48" rx="8" class="d-box"/><text x="468.1666666666667" y="276" class="d-bt">Attendance</text></g><g><rect x="531" y="248" width="101.66666666666667" height="48" rx="8" class="d-box"/><text x="581.8333333333334" y="276" class="d-bt">Behavior</text></g><g><rect x="644.6666666666667" y="248" width="101.66666666666667" height="48" rx="8" class="d-box"/><text x="695.5000000000001" y="276" class="d-bt">Alert</text></g><g><rect x="758.3333333333334" y="248" width="101.66666666666667" height="48" rx="8" class="d-box"/><text x="809.1666666666667" y="276" class="d-bt">Realtime</text></g></g>
+  <g><rect x="40" y="330" width="820" height="64" rx="10" class="d-layer"/><text x="56" y="368" class="d-lt">داده</text><g><rect x="190" y="338" width="158.5" height="48" rx="8" class="d-box"/><text x="269.25" y="366" class="d-bt">PostgreSQL + pgvector</text></g><g><rect x="360.5" y="338" width="158.5" height="48" rx="8" class="d-box"/><text x="439.75" y="366" class="d-bt">TimescaleDB</text></g><g><rect x="531" y="338" width="158.5" height="48" rx="8" class="d-box"/><text x="610.25" y="366" class="d-bt">Redis</text></g><g><rect x="701.5" y="338" width="158.5" height="48" rx="8" class="d-box"/><text x="780.75" y="366" class="d-bt">MinIO (S3)</text></g></g>
+  <g><rect x="40" y="410" width="820" height="64" rx="10" class="d-layer"/><text x="56" y="448" class="d-lt">کلاینت</text><g><rect x="190" y="418" width="329" height="48" rx="8" class="d-box"/><text x="354.5" y="446" class="d-bt">اپ موبایل (نگهبان/مدیر)</text></g><g><rect x="531" y="418" width="329" height="48" rx="8" class="d-box"/><text x="695.5" y="446" class="d-bt">داشبورد وب</text></g></g>
+  <g class="d-arrow"><line x1="450" y1="120" x2="450" y2="150"/><line x1="450" y1="210" x2="450" y2="240"/><line x1="450" y1="300" x2="450" y2="330"/><line x1="450" y1="390" x2="450" y2="410"/></g>
+</svg></div><h3>جریان‌های کلیدی داده</h3><ol><li><b>ثبت حضور:</b> اسکنر چهره/اثرانگشت ← Attendance Service ← اعتبارسنجی (زمان+مکان+liveness+تطبیق) ← رخداد <code>attendance.checked_in</code>.</li><li><b>تشخیص چهرهٔ ورودی:</b> دوربین (RTSP) ← Video Service (نمونه‌گیری فریم) ← Face Service (تشخیص←embedding←تطبیق با گالری) ← رخداد <code>face.detected</code> / <code>face.unauthorized</code> ← Alert Service.</li><li><b>مکان‌یابی نیرو:</b> تگ ← گیت‌وی‌ها (RSSI/TWR) ← RTLS Service (فیلتر+مثلث‌بندی) ← fix مکانی ← Zone Service (تعیین زون/شعاع) ← Realtime Service (WebSocket به نقشه).</li><li><b>تحلیل رفتار:</b> fixهای مکانی + رخدادها ← Behavior Service (استخراج ویژگی per shift) ← مقایسه با baseline ← امتیاز ناهنجاری ← Alert در صورت تخطی.</li></ol><div class="note info"><div class="note-h">نکته — مرز بلادرنگ</div><div class="note-b">مسیرهای حساس به تأخیر (تطبیق چهره، هشدار ورود غیرمجاز، خروج از محدوده) باید بودجهٔ تأخیر <b>کمتر از ۱ ثانیه</b> از سنسور تا اعلان داشته باشند؛ این قید، انتخاب gRPC، پردازش جریانی و کش Redis را دیکته می‌کند.</div></div></section><section class="sec" id="stack"><h2><span class="sn">3</span>پشتهٔ فناوری و قراردادها</h2><div class="tw"><table><thead><tr><th>لایه</th><th>فناوری</th><th>نسخهٔ پیشنهادی</th><th>علت انتخاب</th></tr></thead><tbody><tr><td>Backend سرویس‌ها</td><td><code>Go</code></td><td>1.22+</td><td>هم‌روندی بالا، باینری سبک، مناسب سرویس‌های بلادرنگ</td></tr><tr><td>AI / بینایی ماشین</td><td><code>Python</code> + <code>ONNX Runtime</code></td><td>3.11 / 1.17</td><td>اکوسیستم مدل‌ها؛ اجرا با TensorRT/CUDA</td></tr><tr><td>اپ موبایل</td><td><code>Flutter</code></td><td>3.22+</td><td>یک کد، دو پلتفرم؛ دسترسی به دوربین/BLE/بیومتریک</td></tr><tr><td>داشبورد وب</td><td><code>React</code> + <code>TypeScript</code></td><td>18 / 5</td><td>اکوسیستم بالغ، نقشهٔ تعاملی، RBAC در UI</td></tr><tr><td>پایگاه‌داده</td><td><code>PostgreSQL</code></td><td>16 + pgvector + TimescaleDB</td><td>رابطه‌ای + بردار چهره + سری‌زمانی مکان</td></tr><tr><td>کش/حضور</td><td><code>Redis</code></td><td>7+</td><td>presence، geofence state، rate-limit، pub/sub</td></tr><tr><td>گذرگاه پیام</td><td><code>NATS JetStream</code></td><td>2.10+</td><td>سبک، تأخیر پایین (جایگزین Kafka در مقیاس کوچک)</td></tr><tr><td>پردازش ویدئو</td><td><code>GStreamer</code> / <code>FFmpeg</code></td><td>1.24 / 6</td><td>رمزگشایی سخت‌افزاری (NVDEC)، نمونه‌گیری فریم</td></tr><tr><td>استقرار</td><td><code>Docker</code> + <code>Kubernetes</code></td><td>K8s 1.29+</td><td>مقیاس‌پذیری، GPU scheduling، rollout</td></tr><tr><td>شیء‌ذخیره</td><td><code>MinIO</code> (S3 API)</td><td>—</td><td>آرشیو ویدئو/کلیپ رویداد، On-Prem</td></tr></tbody></table></div><h3>قراردادهای مهندسی</h3><ul><li><b>API بیرونی:</b> REST/JSON با نسخه‌بندی مسیر (<code>/api/v1/...</code>)، احراز هویت <code>Bearer JWT</code>؛ خطاها با مدل یکنواخت (<code>{code, message, traceId}</code>).</li><li><b>API درونی:</b> gRPC با Protobuf؛ احراز سرویس‌به‌سرویس با mTLS.</li><li><b>رخدادها:</b> نام‌گذاری <code>domain.action</code> (مثل <code>access.denied</code>)، payload نسخه‌دار، تحویل at-least-once و idempotency-key.</li><li><b>زمان:</b> همهٔ مهرهای زمانی UTC و ISO-8601؛ ساعتِ مرجع، سرور است نه دستگاه.</li><li><b>شناسه‌ها:</b> <code>UUIDv7</code> (مرتب‌شدنی زمانی) برای کلیدهای اصلی.</li><li><b>پیکربندی:</b> ۱۲-Factor؛ از طریق متغیر محیطی و Vault؛ هیچ رازی در ایمیج یا کد.</li></ul></section><section class="sec" id="data-model"><h2><span class="sn">4</span>مدل داده</h2><p>مدل داده چندمستأجری است؛ هر ردیف دارای <code>tenant_id</code> برای ایزولاسیون است (با Row-Level Security در PostgreSQL). موجودیت‌های اصلی و رابطهٔ آن‌ها در زیر آمده، سپس DDL جداول کلیدی.</p><h3>موجودیت‌های اصلی</h3><div class="tw"><table><thead><tr><th>موجودیت</th><th>شرح</th><th>روابط کلیدی</th></tr></thead><tbody><tr><td><code>tenant</code></td><td>سازمان/مشتری</td><td>۱ به n با sites, persons</td></tr><tr><td><code>site / building / floor</code></td><td>سلسله‌مراتب مکان فیزیکی</td><td>floor دارای zones و cameras</td></tr><tr><td><code>zone</code></td><td>ناحیهٔ چندضلعی روی یک طبقه با سطح دسترسی</td><td>n به n با roles (قواعد دسترسی)</td></tr><tr><td><code>person</code></td><td>نگهبان/کارمند/بازدیدکننده</td><td>۱ به n با face_templates، shifts</td></tr><tr><td><code>device</code></td><td>اسکنر، تگ، گیت‌وی، دوربین</td><td>متعلق به floor/site</td></tr><tr><td><code>face_template</code></td><td>بردار embedding چهره (رمزنگاری‌شده)</td><td>متعلق به person</td></tr><tr><td><code>shift</code></td><td>شیفت کاری با پنجرهٔ زمانی و سایت</td><td>۱ به n با attendance</td></tr><tr><td><code>attendance_record</code></td><td>ثبت ورود/خروج زیست‌سنجشی</td><td>متعلق به person+shift</td></tr><tr><td><code>location_fix</code></td><td>مختصات لحظه‌ای نیرو (سری‌زمانی)</td><td>متعلق به person/tag</td></tr><tr><td><code>access_event</code></td><td>ورود/خروج به زون (مجاز/غیرمجاز)</td><td>person × zone</td></tr><tr><td><code>alert</code></td><td>هشدار تولیدشده</td><td>منبع: هر سرویس</td></tr><tr><td><code>behavior_profile</code></td><td>امضای رفتاری پایهٔ هر نیرو</td><td>متعلق به person</td></tr><tr><td><code>audit_log</code></td><td>گزارش ممیزی تغییرناپذیر</td><td>—</td></tr></tbody></table></div><h3>DDL جداول کلیدی (PostgreSQL)</h3><div class="code"><span class="lang">sql</span><pre dir="ltr">-- افزونه‌ها
+CREATE EXTENSION IF NOT EXISTS vector;       -- pgvector
+CREATE EXTENSION IF NOT EXISTS timescaledb;
+
+-- اشخاص
+CREATE TABLE person (
+  id            UUID PRIMARY KEY DEFAULT uuidv7(),
+  tenant_id     UUID NOT NULL,
+  full_name     TEXT NOT NULL,
+  national_id   TEXT,
+  role          TEXT NOT NULL CHECK (role IN ('guard','employee','visitor','admin')),
+  status        TEXT NOT NULL DEFAULT 'active',
+  created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX ON person (tenant_id, role);
+
+-- قالب چهره: فقط embedding رمزنگاری‌شده نگهداری می‌شود، نه تصویر خام
+CREATE TABLE face_template (
+  id            UUID PRIMARY KEY DEFAULT uuidv7(),
+  tenant_id     UUID NOT NULL,
+  person_id     UUID NOT NULL REFERENCES person(id) ON DELETE CASCADE,
+  embedding     vector(512) NOT NULL,        -- L2-normalized
+  quality       REAL NOT NULL,               -- 0..1
+  enc_blob      BYTEA,                        -- نسخهٔ رمزنگاری‌شدهٔ متادیتا (AES-256-GCM)
+  created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+-- ایندکس برداری برای جست‌وجوی نزدیک‌ترین همسایه
+CREATE INDEX ON face_template USING hnsw (embedding vector_cosine_ops);
+
+-- زون: چندضلعی روی یک طبقه
+CREATE TABLE zone (
+  id            UUID PRIMARY KEY DEFAULT uuidv7(),
+  tenant_id     UUID NOT NULL,
+  floor_id      UUID NOT NULL,
+  name          TEXT NOT NULL,
+  polygon       JSONB NOT NULL,              -- [[x,y],...] مختصات محلی طبقه
+  sensitivity   SMALLINT NOT NULL DEFAULT 1  -- 1..5
+);
+
+-- قاعدهٔ دسترسی: نقش × زون × بازهٔ زمانی
+CREATE TABLE access_rule (
+  id            UUID PRIMARY KEY DEFAULT uuidv7(),
+  zone_id       UUID NOT NULL REFERENCES zone(id),
+  role          TEXT NOT NULL,
+  time_window   JSONB,                       -- {days:[...], from:'08:00', to:'20:00'}
+  effect        TEXT NOT NULL CHECK (effect IN ('allow','deny'))
+);
+
+-- fixهای مکانی به‌صورت hypertable سری‌زمانی
+CREATE TABLE location_fix (
+  ts            TIMESTAMPTZ NOT NULL,
+  tenant_id     UUID NOT NULL,
+  person_id     UUID NOT NULL,
+  floor_id      UUID NOT NULL,
+  x             REAL NOT NULL,
+  y             REAL NOT NULL,
+  accuracy_m    REAL,
+  source        TEXT NOT NULL                -- 'uwb' | 'ble' | 'fused'
+);
+SELECT create_hypertable('location_fix','ts');
+CREATE INDEX ON location_fix (person_id, ts DESC);
+
+-- رخداد دسترسی
+CREATE TABLE access_event (
+  id            UUID PRIMARY KEY DEFAULT uuidv7(),
+  tenant_id     UUID NOT NULL,
+  person_id     UUID,
+  zone_id       UUID NOT NULL,
+  decision      TEXT NOT NULL,               -- 'authorized' | 'unauthorized'
+  ts            TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+-- گزارش ممیزی تغییرناپذیر (append-only، زنجیرهٔ هش)
+CREATE TABLE audit_log (
+  id            BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  tenant_id     UUID NOT NULL,
+  actor         TEXT NOT NULL,
+  action        TEXT NOT NULL,
+  target        TEXT,
+  ts            TIMESTAMPTZ NOT NULL DEFAULT now(),
+  prev_hash     BYTEA,
+  row_hash      BYTEA NOT NULL
+);</pre></div><div class="note sec"><div class="note-h">امنیت — حفاظت از داده زیست‌سنجشی</div><div class="note-b">تصویر خام چهره پس از استخراج embedding <b>نگهداری نمی‌شود</b> (مگر با رضایت صریح و برای بازآموزی، آن هم رمزنگاری‌شده و با عمر محدود). جدول <code>face_template</code> در سطح ستون با کلید per-tenant از Vault رمزنگاری می‌شود.</div></div><p>در Redis، ساختارهای زیر نگهداری می‌شوند: <code>presence:{person_id}</code> (آخرین وضعیت/زون با TTL)، <code>geo:{person_id}</code> (آخرین fix برای ارزیابی geofence)، و کانال‌های <code>pubsub: alerts, positions</code> برای انتشار بلادرنگ.</p></section><section class="sec" id="services"><h2><span class="sn">5</span>سرویس‌ها (میکروسرویس‌ها) — بخش به بخش</h2><p>هر سرویس مستقل، صاحب دادهٔ خود و مستقل قابل‌استقرار است. در ادامه برای هر سرویس: مسئولیت، API، الگوریتم/نکات پیاده‌سازی و گام‌های ساخت آمده است.</p><h3>۴٫۱ — Auth & API Gateway</h3><p>نقطهٔ ورود واحد؛ مسئول احراز هویت، صدور/نوسازی JWT، نرخ‌گذاری، مسیریابی و ترجمهٔ REST↔gRPC.</p><div class="api"><span class="m post">POST</span><span class="path" dir="ltr">/api/v1/auth/login</span><span class="desc">ورود با نام‌کاربری/گذرواژه یا توکن دستگاه؛ خروجی: access (۱۵ دقیقه) + refresh</span></div><div class="api"><span class="m post">POST</span><span class="path" dir="ltr">/api/v1/auth/refresh</span><span class="desc">نوسازی access با refresh token چرخشی</span></div><p>کنترل دسترسی ترکیبی <b>RBAC + ABAC</b> است: نقش پایه + ویژگی‌ها (tenant، site، سطح حساسیت). ادعاهای JWT شامل <code>sub, tenant, roles[], scopes[]</code> است.</p><div class="steps"><div class="steps-h">گام‌های ساخت</div><ol><li>تعریف مدل نقش/مجوز و seed نقش‌های پایه (admin, operator, guard, viewer).</li><li>پیاده‌سازی صدور JWT با امضای EdDSA و چرخش کلید (kid).</li><li>Middleware اعتبارسنجی توکن + بررسی scope در Gateway.</li><li>نرخ‌گذاری per-IP و per-token با Redis (الگوریتم token-bucket).</li><li>mTLS برای ارتباط Gateway با سرویس‌های داخلی.</li></ol></div><h3>۴٫۲ — Personnel & Identity Service</h3><p>مدیریت اشخاص، نقش‌ها، شیفت‌ها و فرایند <b>ثبت‌نام چهره (enrollment)</b>.</p><div class="api"><span class="m post">POST</span><span class="path" dir="ltr">/api/v1/persons</span><span class="desc">ایجاد شخص</span></div><div class="api"><span class="m post">POST</span><span class="path" dir="ltr">/api/v1/persons/{id}/face:enroll</span><span class="desc">ثبت چهره از چند فریم؛ خروجی: کیفیت و وضعیت</span></div><div class="note impl"><div class="note-h">اجرا — فرایند enrollment</div><div class="note-b">۵ تا ۱۰ فریم گرفته می‌شود؛ هر فریم از فیلتر کیفیت (blur، pose ≤ ±۲۰°، روشنایی) عبور می‌کند؛ embedding هر فریم محاسبه و میانگینِ نرمال‌شده به‌عنوان قالب نهایی ذخیره می‌شود. اگر انحراف بین فریم‌ها زیاد باشد، enrollment رد می‌شود.</div></div><h3>۴٫۳ — Face Recognition Service</h3><p>هستهٔ هوش مصنوعیِ تصویر. خط لولهٔ استنتاج: تشخیص چهره ← هم‌ترازی ← embedding ← liveness ← تطبیق با گالری ← تصمیم.</p><div class="diagram"><svg viewBox="0 0 900 150" xmlns="http://www.w3.org/2000/svg" class="dia"><style>
+    .dia{width:100%;height:auto;background:#f7fafc;border:1px solid #e2e8ef;border-radius:12px}
+    .d-cap{text-anchor:middle;font-weight:800;fill:#0F2A4A;font-size:15px;font-family:Vazirmatn,sans-serif}
+    .d-layer{fill:#0F2A4A}
+    .d-lt{fill:#cdeef4;font-weight:800;font-size:13px;font-family:Vazirmatn,sans-serif}
+    .d-box{fill:#fff;stroke:#15B5CB;stroke-width:1.5}
+    .d-bt{text-anchor:middle;fill:#16202B;font-size:12px;font-weight:600;font-family:Vazirmatn,sans-serif}
+    .d-arrow line{stroke:#15B5CB;stroke-width:2;marker-end:url(#ar)}
+    .d-flow{stroke:#15B5CB;stroke-width:2;marker-end:url(#ar)}
+  </style>
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#15B5CB"/></marker></defs><text x="450" y="22" class="d-cap">خط لولهٔ تشخیص چهره</text><rect x="23" y="50" width="110" height="56" rx="9" class="d-box"/><text x="78" y="82" class="d-bt">فریم دوربین</text><line x1="133" y1="78" x2="147" y2="78" class="d-flow"/><rect x="147" y="50" width="110" height="56" rx="9" class="d-box"/><text x="202" y="82" class="d-bt">تشخیص چهره</text><line x1="257" y1="78" x2="271" y2="78" class="d-flow"/><rect x="271" y="50" width="110" height="56" rx="9" class="d-box"/><text x="326" y="82" class="d-bt">هم‌ترازی</text><line x1="381" y1="78" x2="395" y2="78" class="d-flow"/><rect x="395" y="50" width="110" height="56" rx="9" class="d-box"/><text x="450" y="82" class="d-bt">Embedding ۵۱۲</text><line x1="505" y1="78" x2="519" y2="78" class="d-flow"/><rect x="519" y="50" width="110" height="56" rx="9" class="d-box"/><text x="574" y="82" class="d-bt">Liveness</text><line x1="629" y1="78" x2="643" y2="78" class="d-flow"/><rect x="643" y="50" width="110" height="56" rx="9" class="d-box"/><text x="698" y="82" class="d-bt">تطبیق گالری</text><line x1="753" y1="78" x2="767" y2="78" class="d-flow"/><rect x="767" y="50" width="110" height="56" rx="9" class="d-box"/><text x="822" y="82" class="d-bt">تصمیم</text></svg></div><div class="tw"><table><thead><tr><th>مرحله</th><th>مدل/روش</th><th>خروجی</th><th>نکته</th></tr></thead><tbody><tr><td>Detection</td><td>SCRFD / RetinaFace (ONNX)</td><td>bbox + ۵ لندمارک</td><td>اجرا روی GPU، batch فریم‌ها</td></tr><tr><td>Alignment</td><td>تبدیل تشابهی به 112×112</td><td>چهرهٔ هم‌تراز</td><td>از ۵ لندمارک استاندارد</td></tr><tr><td>Embedding</td><td>ArcFace (glintr100)</td><td>بردار ۵۱۲ بُعدی L2-norm</td><td>FP16 با TensorRT</td></tr><tr><td>Liveness</td><td>MiniFASNet (anti-spoof)</td><td>امتیاز زنده‌بودن</td><td>رد عکس/ویدئو/ماسک</td></tr><tr><td>Matching</td><td>Cosine + pgvector HNSW</td><td>نزدیک‌ترین + امتیاز</td><td>آستانهٔ کالیبره‌شده</td></tr></tbody></table></div><p>تطبیق بر اساس شباهت کسینوسی است. آستانهٔ عملیاتی بر مبنای منحنی ROC و نقطهٔ کاری مطلوب (مثلاً FAR ≤ 1e-4) تعیین و per-deployment کالیبره می‌شود.</p><div class="code"><span class="lang">python</span><pre dir="ltr"># شبه‌کد تطبیق
+emb = embed(align(detect(frame)))          # بردار 512، نرمال‌شده
+if liveness_score(frame) &lt; LIVENESS_TH:
+    return reject("spoof")
+cand = pgvector_search(emb, gallery, k=1)   # 1 &lt;-&gt; cosine distance
+score = 1.0 - cand.distance                 # شباهت کسینوسی
+if score &gt;= MATCH_TH:                        # مثلاً 0.42 (کالیبره‌شونده)
+    emit("face.detected", person=cand.id, score=score)
+else:
+    emit("face.unauthorized", score=score)</pre></div><div class="note perf"><div class="note-h">کارایی — throughput</div><div class="note-b">با یک GPU میان‌رده و TensorRT-FP16، نرخ پردازش در حد چند صد چهره در ثانیه است. برای کاهش بار، تشخیص فقط روی فریم‌های نمونه (مثلاً ۵ فریم بر ثانیه) و فقط هنگام وجود حرکت (motion gate) انجام می‌شود.</div></div><div class="steps"><div class="steps-h">گام‌های ساخت</div><ol><li>آماده‌سازی مدل‌ها به ONNX و سپس TensorRT engine (FP16) برای GPU هدف.</li><li>سرویس استنتاج با gRPC streaming؛ ورودی فریم، خروجی نتیجهٔ تطبیق.</li><li>بارگذاری گالری embedding به pgvector + ساخت ایندکس HNSW.</li><li>پیاده‌سازی liveness و motion gate برای کاهش بار.</li><li>ابزار کالیبراسیون آستانه روی دادهٔ هر استقرار + گزارش FAR/FRR.</li></ol></div><h3>۴٫۴ — Video Ingestion & Stream Service</h3><p>اتصال به دوربین‌ها با ONVIF (کشف) و RTSP (جریان)، رمزگشایی سخت‌افزاری، نمونه‌گیری فریم و تحویل به Face Service؛ و ضبط کلیپ کوتاه پیرامون هر رخداد مهم.</p><div class="code"><span class="lang">bash</span><pre dir="ltr"># نمونهٔ خط لولهٔ GStreamer با رمزگشایی NVDEC و نمونه‌گیری فریم
+gst-launch-1.0 rtspsrc location=rtsp://CAM/Streaming/Channels/101 latency=100 ! \
+  rtph264depay ! h264parse ! nvv4l2decoder ! \
+  videorate ! 'video/x-raw,framerate=5/1' ! appsink</pre></div><ul><li>هر دوربین یک worker مستقل؛ پایش سلامت و reconnect خودکار.</li><li>Motion gate برای فعال‌سازی استنتاج فقط هنگام حرکت → صرفه‌جویی GPU.</li><li>ضبط حلقه‌ای (ring buffer) برای داشتن ۱۰ ثانیه پیش از رخداد در کلیپ.</li><li>آرشیو کلیپ‌ها در MinIO با سیاست ماندگاری قابل‌پیکربندی.</li></ul><h3>۴٫۵ — RTLS / Tag Location Service</h3><p>محاسبهٔ موقعیت دقیق نیرو از سیگنال تگ‌ها. دو فناوری پشتیبانی می‌شود: <b>UWB</b> (دقت ۱۰ تا ۳۰ سانتی‌متر، مبتنی بر TWR/TDoA) برای مراکز حساس، و <b>BLE</b> (دقت متری، مبتنی بر RSSI + فینگرپرینت) برای استقرار اقتصادی.</p><div class="diagram"><svg viewBox="0 0 900 170" xmlns="http://www.w3.org/2000/svg" class="dia"><style>
+    .dia{width:100%;height:auto;background:#f7fafc;border:1px solid #e2e8ef;border-radius:12px}
+    .d-cap{text-anchor:middle;font-weight:800;fill:#0F2A4A;font-size:15px;font-family:Vazirmatn,sans-serif}
+    .d-layer{fill:#0F2A4A}
+    .d-lt{fill:#cdeef4;font-weight:800;font-size:13px;font-family:Vazirmatn,sans-serif}
+    .d-box{fill:#fff;stroke:#15B5CB;stroke-width:1.5}
+    .d-bt{text-anchor:middle;fill:#16202B;font-size:12px;font-weight:600;font-family:Vazirmatn,sans-serif}
+    .d-arrow line{stroke:#15B5CB;stroke-width:2;marker-end:url(#ar)}
+    .d-flow{stroke:#15B5CB;stroke-width:2;marker-end:url(#ar)}
+  </style>
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#15B5CB"/></marker></defs><text x="450" y="22" class="d-cap">جریان مکان‌یابی و کنترل تردد</text><rect x="30" y="60" width="130" height="58" rx="9" class="d-box"/><text x="95" y="93" class="d-bt">تگ نیرو</text><line x1="160" y1="89" x2="172" y2="89" class="d-flow"/><rect x="172" y="60" width="130" height="58" rx="9" class="d-box"/><text x="237" y="93" class="d-bt">گیت‌وی/Anchor</text><line x1="302" y1="89" x2="314" y2="89" class="d-flow"/><rect x="314" y="60" width="130" height="58" rx="9" class="d-box"/><text x="379" y="93" class="d-bt">RTLS (فیلتر کالمن)</text><line x1="444" y1="89" x2="456" y2="89" class="d-flow"/><rect x="456" y="60" width="130" height="58" rx="9" class="d-box"/><text x="521" y="93" class="d-bt">Zone Service (PIP)</text><line x1="586" y1="89" x2="598" y2="89" class="d-flow"/><rect x="598" y="60" width="130" height="58" rx="9" class="d-box"/><text x="663" y="93" class="d-bt">رخداد دسترسی</text><line x1="728" y1="89" x2="740" y2="89" class="d-flow"/><rect x="740" y="60" width="130" height="58" rx="9" class="d-box"/><text x="805" y="93" class="d-bt">نقشهٔ زنده / هشدار</text></svg></div><ul><li>هر طبقه دارای چند anchor/گیت‌وی با مختصات کالیبره‌شده است.</li><li>BLE: مدل افت مسیر (path-loss) برای فاصله + <b>فیلتر کالمن</b> برای صاف‌سازی مسیر و حذف نوسان.</li><li>UWB: Two-Way Ranging بین تگ و anchorها و سپس چندجانبه‌سازی (multilateration).</li><li>تشخیص طبقه با تجمیع anchorهای پاسخ‌دهنده (+ بارومتر تگ در صورت وجود).</li><li>خروجی: <code>location_fix</code> با نرخ ۱ تا ۴ هرتز ← Timescale + Redis.</li></ul><div class="note impl"><div class="note-h">اجرا — ضد لرزش (hysteresis)</div><div class="note-b">برای جلوگیری از flapping در مرز زون‌ها، تغییر زون فقط پس از تثبیت موقعیت برای N نمونهٔ متوالی (یا ماندن بیش از آستانهٔ زمانی) اعمال می‌شود.</div></div><h3>۴٫۶ — Zone & Access Control Service</h3><p>ارزیابی هر fix مکانی نسبت به زون‌ها و قواعد دسترسی، و تولید رخداد ورود مجاز/غیرمجاز و خروج از محدودهٔ عملیاتی.</p><div class="code"><span class="lang">go</span><pre dir="ltr">// تعیین زون با الگوریتم point-in-polygon (ray casting)
+func PointInPolygon(p Point, poly []Point) bool {
+    inside := false
+    j := len(poly) - 1
+    for i := 0; i &lt; len(poly); i++ {
+        if (poly[i].Y &gt; p.Y) != (poly[j].Y &gt; p.Y) &amp;&amp;
+            p.X &lt; (poly[j].X-poly[i].X)*(p.Y-poly[i].Y)/(poly[j].Y-poly[i].Y)+poly[i].X {
+            inside = !inside
+        }
+        j = i
+    }
+    return inside
+}
+
+// خط لولهٔ ارزیابی هر fix
+func Evaluate(fix Fix) {
+    zone := resolveZone(fix)                  // کدام زون؟
+    if !withinOperationalRadius(fix) {        // خارج از محدودهٔ مجاز؟
+        emit("guard.out_of_bounds", fix)
+    }
+    if zone != nil {
+        if !accessAllowed(fix.PersonRole, zone, fix.TS) {
+            emit("access.unauthorized", fix, zone)   // ← Alert
+        } else {
+            emit("access.authorized", fix, zone)
+        }
+    }
+}</pre></div><p>موتور قواعد به‌صورت اعلانی (declarative) است: قواعد <code>allow/deny</code> بر حسب نقش × زون × بازهٔ زمانی ذخیره و به‌ترتیب اولویت ارزیابی می‌شوند (deny مقدم بر allow).</p><h3>۴٫۷ — Attendance Service</h3><p>ثبت ورود/خروج زیست‌سنجشی مقیّد به زمان و مکان. اعتبارسنجی سمت سرور است و به ساعت/موقعیت دستگاه اعتماد نمی‌شود.</p><div class="diagram"><svg viewBox="0 0 900 180" xmlns="http://www.w3.org/2000/svg" class="dia"><style>
+    .dia{width:100%;height:auto;background:#f7fafc;border:1px solid #e2e8ef;border-radius:12px}
+    .d-cap{text-anchor:middle;font-weight:800;fill:#0F2A4A;font-size:15px;font-family:Vazirmatn,sans-serif}
+    .d-layer{fill:#0F2A4A}
+    .d-lt{fill:#cdeef4;font-weight:800;font-size:13px;font-family:Vazirmatn,sans-serif}
+    .d-box{fill:#fff;stroke:#15B5CB;stroke-width:1.5}
+    .d-bt{text-anchor:middle;fill:#16202B;font-size:12px;font-weight:600;font-family:Vazirmatn,sans-serif}
+    .d-arrow line{stroke:#15B5CB;stroke-width:2;marker-end:url(#ar)}
+    .d-flow{stroke:#15B5CB;stroke-width:2;marker-end:url(#ar)}
+  </style>
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#15B5CB"/></marker></defs><text x="450" y="22" class="d-cap">توالی ثبت حضور زیست‌سنجشی</text><rect x="43" y="64" width="150" height="64" rx="9" class="d-box"/><text x="118" y="90" class="d-bt">اپ/اسکنر:</text><text x="118" y="108" class="d-bt">چهره+اثرانگشت</text><line x1="193" y1="96" x2="209" y2="96" class="d-flow"/><rect x="209" y="64" width="150" height="64" rx="9" class="d-box"/><text x="284" y="90" class="d-bt">سرور:</text><text x="284" y="108" class="d-bt">liveness+تطبیق</text><line x1="359" y1="96" x2="375" y2="96" class="d-flow"/><rect x="375" y="64" width="150" height="64" rx="9" class="d-box"/><text x="450" y="100" class="d-bt">بررسی geofence</text><line x1="525" y1="96" x2="541" y2="96" class="d-flow"/><rect x="541" y="64" width="150" height="64" rx="9" class="d-box"/><text x="616" y="100" class="d-bt">بررسی پنجرهٔ زمانی</text><line x1="691" y1="96" x2="707" y2="96" class="d-flow"/><rect x="707" y="64" width="150" height="64" rx="9" class="d-box"/><text x="782" y="100" class="d-bt">ثبت + رخداد</text></svg></div><ol><li>دستگاه/اپ، چهره و اثرانگشت + شناسهٔ دستگاه و موقعیت را ارسال می‌کند.</li><li>سرور بررسی می‌کند: liveness پاس شده باشد، چهره با person تطبیق یابد، اثرانگشت تأیید شود.</li><li>بررسی <b>geofence</b>: موقعیت در محدودهٔ سایتِ شیفت باشد.</li><li>بررسی <b>پنجرهٔ زمانی</b>: زمان سرور در بازهٔ شیفت ± مهلت مجاز باشد.</li><li>ثبت idempotent رکورد؛ تولید رخداد <code>attendance.checked_in/out</code>.</li></ol><div class="note sec"><div class="note-h">امنیت — ضد جعل</div><div class="note-b">ترکیب liveness + اثرانگشت + قید مکان، عملاً مانع ثبت با عکس یا از راه دور می‌شود. شناسهٔ دستگاه با گواهی دستگاه (device cert) احراز می‌شود.</div></div><h3>۴٫۸ — Behavior Analytics Service</h3><p>یادگیری «امضای رفتاری» هر نیرو و تشخیص ناهنجاری و <b>جایگزینی پنهان</b>.</p><h4>ویژگی‌های استخراجی per shift</h4><ul><li>طول مسیر پیموده‌شده و توزیع سرعت حرکت</li><li>زمان ماندگاری در هر زون و توالی بازدید زون‌ها</li><li>میزان پوشش/کامل‌بودن گشت (نسبت زون‌های بازدیدشده به الزامی)</li><li>دوره‌های بی‌حرکتی/توقف غیرعادی و زمان حضور در پست</li><li>الگوی زمانی رویدادها (ساعت‌های فعالیت)</li></ul><p>baseline هر نیرو به‌صورت پروفایل غلتان (میانگین/انحراف هر ویژگی) نگهداری می‌شود. تشخیص ناهنجاری چندمتغیره با <b>Isolation Forest</b> (یا Autoencoder در مقیاس داده‌ٔ بزرگ‌تر) انجام می‌شود.</p><div class="note impl"><div class="note-h">اجرا — منطق کشف جایگزینی</div><div class="note-b">اگر طبق حضوروغیاب «نیروی A» در شیفت باشد، اما (الف) تطبیق چهره در ایست‌های بازرسی با A نخواند، یا (ب) امضای رفتاریِ امروز به‌طور معنادار از baseline ‌A فاصله بگیرد در حالی که تگ A حاضر است، سامانه احتمال «جایگزینی بدون اطلاع» را علامت می‌زند و هشدار می‌دهد. تصمیم نهایی بر پایهٔ ترکیب سه سیگنال (چهره + رفتار + تگ) و امتیاز اطمینان است.</div></div><h3>۴٫۹ — Alert & Notification Service</h3><p>دریافت رخدادهای خطر، اعمال قواعد، حذف تکرار (dedup)، تشدید (escalation) و ارسال چندکاناله.</p><ul><li>کانال‌ها: اعلان درون‌برنامه‌ای (WebSocket/Push)، پیامک، و وب‌هوک برای یکپارچگی.</li><li>Dedup با پنجرهٔ زمانی و کلید رخداد برای جلوگیری از سیل هشدار.</li><li>Escalation پلکانی: اگر هشدار در زمان مقرر تأیید/رسیدگی نشد، به سطح بالاتر ارجاع می‌شود.</li><li>هر هشدار دارای شدت (info/warning/critical) و چرخهٔ حیات (new→ack→resolved) است.</li></ul><h3>۴٫۱۰ — Realtime, Map & Reporting</h3><p>Realtime Service موقعیت‌ها و رخدادها را از طریق WebSocket به نقشهٔ داشبورد می‌رساند. Reporting Service گزارش‌های کارکرد، تردد و رویداد را تولید و به Excel/PDF خروجی می‌دهد.</p><div class="code"><span class="lang">json</span><pre dir="ltr">// پیام WebSocket موقعیت زنده
+{ "type": "position", "personId": "...", "floorId": "...",
+  "x": 12.4, "y": 33.1, "zone": "lobby", "ts": "2026-..." }</pre></div></section><section class="sec" id="mobile"><h2><span class="sn">6</span>اپلیکیشن موبایل (Flutter)</h2><p>دو نقش در یک اپ: <b>نگهبان</b> (ثبت حضور، وضعیت شیفت/محدوده، اعلان‌ها) و <b>مدیر</b> (پایش و هشدارها). معماری پیشنهادی: لایه‌ای + الگوی <b>BLoC/Riverpod</b>.</p><ul><li>ماژول بیومتریک: دوربین برای چهره (+liveness سمت اپ به‌عنوان لایهٔ اول)، و <code>local_auth</code> برای اثرانگشت.</li><li>ماژول BLE: اسکن/ارتباط با تگ امنیتی و گزارش مجاورت.</li><li>ذخیرهٔ امن توکن/کلید با <code>flutter_secure_storage</code> (Keystore/Keychain).</li><li>حالت آفلاین: صف رویدادها و همگام‌سازی هنگام اتصال (با مهر زمانی سرور هنگام دریافت).</li><li>Push با FCM/APNs برای هشدارها؛ نقشهٔ داخلی طبقه برای نمایش موقعیت.</li></ul><div class="note sec"><div class="note-h">امنیت — اعتماد صفر به کلاینت</div><div class="note-b">هیچ تصمیم امنیتی سمت اپ گرفته نمی‌شود؛ liveness و تطبیق نهایی همیشه سمت سرور تکرار و اعتبارسنجی می‌شود.</div></div></section><section class="sec" id="dashboard"><h2><span class="sn">7</span>داشبورد مدیریتی (Web)</h2><ul><li>نقشهٔ تعاملی طبقات با موقعیت زندهٔ نیروها و زون‌ها (Leaflet با لایهٔ تصویر طبقه یا Mapbox GL).</li><li>صفحهٔ رویدادها/هشدارها با فیلتر و چرخهٔ رسیدگی.</li><li>ویرایشگر زون: ترسیم چندضلعی روی نقشهٔ طبقه و تخصیص قواعد دسترسی.</li><li>گزارش کارکرد، بازپخش مسیر (timeline scrubber) و خروجی گزارش.</li><li>مدیریت کاربران/نقش‌ها؛ UI مبتنی بر RBAC (مخفی‌سازی اقدامات غیرمجاز).</li><li>به‌روزرسانی بلادرنگ از طریق WebSocket.</li></ul></section><section class="sec" id="security"><h2><span class="sn">8</span>امنیت و حریم خصوصی</h2><div class="tw"><table><thead><tr><th>محور</th><th>تصمیم فنی</th></tr></thead><tbody><tr><td>انتقال</td><td>TLS 1.3 بیرونی؛ mTLS داخلی بین سرویس‌ها</td></tr><tr><td>سکون</td><td>AES-256-GCM؛ کلید per-tenant از Vault/KMS؛ رمزنگاری ستونی برای داده زیست‌سنجشی</td></tr><tr><td>زیست‌سنجش</td><td>نگهداری فقط embedding (نه تصویر خام)؛ امکان template protection/cancelable</td></tr><tr><td>دسترسی</td><td>RBAC + ABAC؛ JWT کوتاه‌عمر + refresh چرخشی؛ device cert برای دوربین/اسکنر</td></tr><tr><td>ممیزی</td><td>audit_log تغییرناپذیر با زنجیرهٔ هش؛ ثبت هر دسترسی به داده حساس</td></tr><tr><td>شبکه</td><td>جداسازی VLAN دوربین‌ها؛ بدون اینترنت در حالت On-Prem؛ egress کنترل‌شده</td></tr><tr><td>اسرار</td><td>Vault؛ هیچ رازی در ایمیج/کد/لاگ؛ چرخش دوره‌ای کلیدها</td></tr><tr><td>ماندگاری</td><td>سیاست retention قابل‌پیکربندی per داده؛ حذف خودکار پس از انقضا</td></tr></tbody></table></div><div class="note warn"><div class="note-h">هشدار — مدل تهدید</div><div class="note-b">سامانهٔ امنیتی، خود یک هدف ارزشمند است. سطح حمله شامل دوربین‌های در معرض شبکه، endpointهای API، و دادهٔ زیست‌سنجشی است. اقدامات: سخت‌سازی کانتینرها، اسکن آسیب‌پذیری ایمیج، WAF روی Gateway، نرخ‌گذاری، و تست نفوذ پیش از تحویل مراکز حساس.</div></div></section><section class="sec" id="observability"><h2><span class="sn">9</span>مشاهده‌پذیری، پایایی و پشتیبان‌گیری</h2><ul><li><b>Log:</b> ساخت‌یافته (JSON) با correlation/trace id ← Loki.</li><li><b>Metric:</b> Prometheus (نرخ، تأخیر، خطا per سرویس) + داشبورد Grafana.</li><li><b>Trace:</b> OpenTelemetry ← Tempo/Jaeger برای ردیابی مسیر رخداد.</li><li><b>Alert زیرساخت:</b> Alertmanager (سلامت سرویس، صف، GPU، دیسک).</li><li><b>SLO نمونه:</b> تأخیر تشخیص چهره p95 < ۱s؛ در دسترس‌بودن سرویس هشدار ۹۹٫۹٪.</li><li><b>HA/DR:</b> چند replica برای سرویس‌های بی‌حالت؛ replication پایگاه‌داده؛ پشتیبان‌گیری زمان‌بندی‌شده و تستِ بازگردانی دوره‌ای.</li></ul></section><section class="sec" id="deploy"><h2><span class="sn">10</span>زیرساخت و استقرار</h2><p>استقرار با Kubernetes (یا k3s برای On-Prem کوچک). نودهای GPU با nvidia device plugin برای سرویس‌های هوش مصنوعی برچسب‌گذاری می‌شوند.</p><div class="code"><span class="lang">yaml</span><pre dir="ltr"># نمونهٔ Deployment سرویس تشخیص چهره روی نود GPU
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: face-service, namespace: negahban }
+spec:
+  replicas: 2
+  selector: { matchLabels: { app: face-service } }
+  template:
+    metadata: { labels: { app: face-service } }
+    spec:
+      nodeSelector: { gpu: "true" }
+      containers:
+        - name: face
+          image: registry.local/negahban/face:1.0
+          resources:
+            limits: { nvidia.com/gpu: 1, memory: "8Gi" }
+          envFrom:
+            - secretRef: { name: face-secrets }</pre></div><div class="tw"><table><thead><tr><th>مقیاس</th><th>نمونهٔ توپولوژی</th></tr></thead><tbody><tr><td>لابی/کوچک (≤۱۶ دوربین)</td><td>تک‌نود k3s + ۱ GPU ورودی؛ Postgres+Redis محلی؛ MinIO تک‌نود</td></tr><tr><td>سازمانی (≤۶۴ دوربین)</td><td>کلاستر ۳ نود + نود GPU میان‌رده؛ Postgres با replica؛ NATS</td></tr><tr><td>مرکز حساس (۱۲۸+)</td><td>کلاستر چندنود، چند GPU، شبکهٔ ایزوله، افزونگی کامل، Vault اختصاصی</td></tr></tbody></table></div><h3>CI/CD</h3><ul><li>Pipeline: lint → unit → build image → scan آسیب‌پذیری → push → deploy (GitOps/ArgoCD).</li><li>محیط‌ها: dev → staging → prod؛ مهاجرت پایگاه‌داده نسخه‌دار (migrations).</li><li>ایمیج‌های امضاشده و SBOM برای استقرار در محیط حساس.</li></ul></section><section class="sec" id="testing"><h2><span class="sn">11</span>راهبرد تست</h2><div class="tw"><table><thead><tr><th>نوع</th><th>هدف</th><th>ابزار/روش</th></tr></thead><tbody><tr><td>واحد (Unit)</td><td>منطق سرویس‌ها</td><td>go test / pytest / flutter test</td></tr><tr><td>یکپارچگی</td><td>تعامل سرویس‌ها + DB + گذرگاه</td><td>محیط docker-compose تست</td></tr><tr><td>بار (Load)</td><td>تأخیر و throughput زیر بار</td><td>k6 / Locust؛ شبیه‌سازی N دوربین و تگ</td></tr><tr><td>دقت AI</td><td>FAR/FRR، دقت liveness</td><td>دیتاست برچسب‌خورده + گزارش ROC</td></tr><tr><td>امنیت</td><td>آسیب‌پذیری و نفوذ</td><td>اسکن SAST/DAST + تست نفوذ</td></tr><tr><td>پذیرش میدانی</td><td>کارکرد واقعی در محل</td><td>چک‌لیست استقرار + سناریوهای واقعی</td></tr></tbody></table></div></section><section class="sec" id="roadmap"><h2><span class="sn">12</span>نقشهٔ راه پیاده‌سازی (بخش به بخش)</h2><p>ترتیب ساخت بر پایهٔ وابستگی‌ها چیده شده تا در هر فاز یک قابلیتِ قابل‌نمایش به دست آید. هر فاز خروجی مشخص و معیار پذیرش دارد.</p><div class="tw"><table><thead><tr><th>فاز</th><th>ماژول‌ها</th><th>خروجی قابل‌نمایش</th><th>وابستگی</th></tr></thead><tbody><tr><td>۰ — پی‌ریزی</td><td>Repo، CI/CD، Auth، مدل داده، گذرگاه</td><td>اسکلت پروژه + لاگین + محیط‌ها</td><td>—</td></tr><tr><td>۱ — هستهٔ افراد/حضور</td><td>Personnel، Attendance، اپ نگهبان (حضور)</td><td>ثبت حضور زیست‌سنجشی واقعی</td><td>فاز ۰</td></tr><tr><td>۲ — ویدئو/چهره</td><td>Video، Face Service، گالری</td><td>تشخیص ورود مجاز/غیرمجاز + هشدار</td><td>فاز ۰</td></tr><tr><td>۳ — مکان‌یابی/زون</td><td>RTLS، Zone، Realtime، نقشهٔ داشبورد</td><td>موقعیت زنده + کنترل تردد + خروج از محدوده</td><td>فاز ۱</td></tr><tr><td>۴ — هوش رفتاری</td><td>Behavior، کشف جایگزینی</td><td>هشدار ناهنجاری/جایگزینی</td><td>فاز ۱،۲،۳</td></tr><tr><td>۵ — گزارش/سخت‌سازی</td><td>Reporting، امنیت، Observability، HA</td><td>گزارش‌ها + آماده‌سازی Production</td><td>همه</td></tr></tbody></table></div><div class="note info"><div class="note-h">نکته — تعریف MVP</div><div class="note-b">خروجی پایان فاز ۲ یک MVP قابل‌ارائه است: حضور زیست‌سنجشی + تشخیص چهرهٔ ورودی + هشدار. فازهای ۳ تا ۵ آن را به محصول کامل و آمادهٔ مراکز حساس می‌رسانند.</div></div></section><section class="sec" id="api-appendix"><h2><span class="sn">13</span>پیوست: نمونهٔ قراردادهای API و رخداد</h2><h3>نمونهٔ Protobuf سرویس چهره (gRPC داخلی)</h3><div class="code"><span class="lang">proto</span><pre dir="ltr">syntax = "proto3";
+package negahban.face.v1;
+
+service FaceService {
+  rpc Match(stream Frame) returns (stream MatchResult);
+  rpc Enroll(EnrollRequest) returns (EnrollResponse);
+}
+
+message Frame {
+  string tenant_id = 1;
+  string camera_id = 2;
+  bytes  image     = 3;   // JPEG/RAW
+  int64  ts_unix_ms = 4;
+}
+
+message MatchResult {
+  string person_id = 1;   // خالی اگر ناشناس
+  float  score     = 2;   // شباهت کسینوسی
+  bool   live      = 3;
+  string decision  = 4;   // authorized | unauthorized
+}</pre></div><h3>نمونهٔ رخداد روی گذرگاه</h3><div class="code"><span class="lang">json</span><pre dir="ltr">{
+  "event": "access.unauthorized",
+  "version": 1,
+  "tenantId": "0190...",
+  "personId": null,
+  "zoneId": "0190-zone-serverroom",
+  "floorId": "0190-floor-2",
+  "ts": "2026-06-15T11:20:33Z",
+  "evidence": { "cameraId": "cam-12", "clipUrl": "s3://events/..." },
+  "idempotencyKey": "evt-0190..."
+}</pre></div><h3>نمونهٔ REST گزارش کارکرد</h3><div class="api"><span class="m get">GET</span><span class="path" dir="ltr">/api/v1/reports/attendance?personId=..&amp;from=..&amp;to=..</span><span class="desc">گزارش کارکرد یک نیرو در بازه؛ خروجی JSON/Excel/PDF</span></div></section></main>
+</div>
+<footer class="foot">نگاهبان — سند فنی و راهنمای پیاده‌سازی • نسخهٔ ۱٫۰ • محرمانه — ویژهٔ تیم فنی</footer>
+<script>
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.toc a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  function spy(){
+    var y=window.scrollY+140,idx=0;
+    for(var i=0;i<secs.length;i++){ if(secs[i]&&secs[i].offsetTop<=y) idx=i; }
+    links.forEach(function(l){l.classList.remove('on');});
+    if(links[idx]) links[idx].classList.add('on');
+  }
+  window.addEventListener('scroll',spy,{passive:true}); spy();
+})();
+</script>
+</body>
+</html>
