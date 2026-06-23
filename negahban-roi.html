@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>نگاهبان — تحلیل بازگشت سرمایه (ROI)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{--navy:#0F2A4A;--deep:#081B30;--cyan:#15B5CB;--cyanB:#4DD7E6;--green:#23A65B;--red:#E23B3B;--amber:#E8A317;--ink:#16202B;--muted:#5B6B7A;--line:#E2E8EF;--bg:#EEF2F7;--soft:#E8F8FB}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Vazirmatn',Tahoma,sans-serif;background:var(--bg);color:var(--ink);line-height:1.9;font-size:15px}
+.doc{max-width:1040px;margin:0 auto;background:#fff}
+.cover{background:radial-gradient(700px 280px at 82% -15%,#1c4a7a,var(--navy) 58%,var(--deep));color:#fff;padding:26px 32px;display:flex;align-items:center;gap:18px}
+.cover svg{width:56px;height:64px;flex:none}
+.cover .k{color:var(--cyan);font-weight:700;font-size:12px}
+.cover h1{font-size:23px;font-weight:900}
+.cover .s{color:#bdd6ee;font-size:13px;margin-top:3px}
+.body{padding:22px 32px}
+.note{background:var(--soft);border-right:4px solid var(--cyan);border-radius:10px;padding:11px 15px;margin:6px 0 18px;font-size:13.5px}
+.note b{color:var(--navy)}
+.controls{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+.f{border:1px solid var(--line);border-radius:11px;padding:10px 12px;background:#fbfdff}
+.f label{display:block;font-size:12px;color:var(--muted);font-weight:600;margin-bottom:5px}
+.f input{width:100%;border:1px solid #cfdbe7;border-radius:8px;padding:7px 9px;font-family:inherit;font-size:14px;text-align:left;direction:ltr}
+.f input:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 2px var(--soft)}
+.f .u{font-size:11px;color:var(--muted);margin-top:3px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:8px 0 20px}
+.card{border-radius:14px;padding:16px;border:1px solid var(--line);background:linear-gradient(180deg,#fff,#f7fbfd)}
+.card.big{background:linear-gradient(120deg,var(--navy),#163a63);color:#fff;border:0}
+.card .t{font-size:12.5px;color:var(--muted);font-weight:600}
+.card.big .t{color:#bdd6ee}
+.card .v{font-size:22px;font-weight:900;color:var(--navy);margin-top:4px;line-height:1.3}
+.card.big .v{color:#fff}.card .v.cyan{color:var(--cyan)}
+.card .u{font-size:11.5px;color:var(--muted)}.card.big .u{color:#9ec4e6}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
+.chart-box{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fff}
+.chart-box h4{font-size:14px;color:var(--navy);font-weight:800;margin-bottom:8px}
+.btns{display:flex;gap:8px;margin-bottom:8px}
+.btn{background:var(--cyan);color:var(--deep);border:0;border-radius:8px;padding:8px 14px;font-family:inherit;font-weight:800;font-size:13px;cursor:pointer}
+.btn.ghost{background:#eef3f8;color:var(--navy)}
+.foot{padding:6px 32px 30px;color:var(--muted);font-size:12px}
+.foot ul{margin:6px 0;padding-right:18px}
+@media (max-width:780px){.controls,.cards{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}}
+@media print{body{background:#fff}.btns{display:none}@page{size:A4;margin:10mm}}
+</style>
+</head>
+<body>
+<div class="doc">
+<div class="cover">
+  <svg viewBox="0 0 132 152" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163a63"/><stop offset="1" stop-color="#0b2742"/></linearGradient><linearGradient id="ir" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4dd7e6"/><stop offset="1" stop-color="#13a8c4"/></linearGradient></defs><path d="M66 6 L120 26 V74 C120 110 96 134 66 146 C36 134 12 110 12 74 V26 Z" fill="url(#sh)" stroke="#19b6cd" stroke-width="3"/><path d="M40 40 A34 34 0 0 1 92 40" fill="none" stroke="#19b6cd" stroke-width="3" stroke-linecap="round" opacity="0.55"/><path d="M30 78 C46 58 86 58 102 78 C86 98 46 98 30 78 Z" fill="none" stroke="#e8f6fa" stroke-width="4.5" stroke-linejoin="round"/><circle cx="66" cy="78" r="17" fill="url(#ir)"/><circle cx="66" cy="78" r="7.5" fill="#0b2742"/><circle cx="60" cy="72" r="3" fill="#eafaff"/><g stroke="#4dd7e6" stroke-width="2.4" stroke-linecap="round" opacity="0.85"><line x1="66" y1="55" x2="66" y2="60"/><line x1="66" y1="96" x2="66" y2="101"/><line x1="43" y1="78" x2="48" y2="78"/><line x1="84" y1="78" x2="89" y2="78"/></g></svg>
+  <div>
+    <div class="k">نگاهبان • تحلیل بازگشت سرمایه</div>
+    <h1>ROI و نقطهٔ سربه‌سر — ساختمان ۱۱ طبقه</h1>
+    <div class="s">مقایسهٔ نگاهبان با نگهبانی سنتی • همهٔ مفروضات قابل تنظیم</div>
+  </div>
+</div>
+<div class="body">
+  <div class="note"><b>چارچوب صادقانه:</b> این سامانه یک سرمایه‌گذاری امنیتیِ ممتاز است؛ بازگشت سرمایه آن عمدتاً از <b>کاهش ریسک و خسارت</b> و <b>بهینه‌سازی نیروی انسانی</b> حاصل می‌شود، نه صرفاً جایگزینی نگهبان. ورودی «ارزش کاهش ریسک/خسارت سالانه» را بر اساس برآورد واقعیِ کارفرما تنظیم کنید تا نقطهٔ سربه‌سر واقعی به دست آید.</div>
+
+  <div class="btns"><button class="btn" onclick="window.print()">چاپ / ذخیرهٔ PDF</button><button class="btn ghost" onclick="resetAll()">بازنشانی</button></div>
+
+  <div class="controls">
+    <div class="f"><label>افق تحلیل (سال)</label><input id="horizon" type="number" value="7" min="1"><div class="u">بازهٔ مقایسه</div></div>
+    <div class="f"><label>تعداد نگهبان — مدل سنتی</label><input id="gT" type="number" value="9"><div class="u">پوشش ۲۴ ساعته، چند شیفت</div></div>
+    <div class="f"><label>تعداد نگهبان — با نگاهبان</label><input id="gN" type="number" value="4"><div class="u">کاهش نیرو با اتوماسیون</div></div>
+    <div class="f"><label>هزینهٔ ماهانهٔ هر نگهبان (تومان)</label><input id="gCost" type="number" value="35000000"><div class="u">حقوق + بیمه + سربار</div></div>
+    <div class="f"><label>هزینهٔ استقرار نگاهبان — یک‌بار (تومان)</label><input id="deploy" type="number" value="23648152000"><div class="u">سخت‌افزار + نصب + راه‌اندازی</div></div>
+    <div class="f"><label>هزینهٔ عملیات سالانهٔ نگاهبان (تومان)</label><input id="ops" type="number" value="1732680000"><div class="u">پشتیبانی، برق، نگهداری</div></div>
+    <div class="f"><label>ارزش کاهش ریسک/خسارت سالانه (تومان)</label><input id="risk" type="number" value="2500000000"><div class="u">پیشگیری از سرقت/حادثه/تقلب</div></div>
+  </div>
+
+  <div class="cards">
+    <div class="card"><div class="t">منفعت خالص سالانه</div><div class="v cyan" id="oBenefit">—</div><div class="u">صرفه‌جویی نیرو − عملیات + ارزش ریسک</div></div>
+    <div class="card big"><div class="t">نقطهٔ سربه‌سر</div><div class="v" id="oBreak">—</div><div class="u" id="oBreakU">سرمایهٔ اولیه ÷ منفعت سالانه</div></div>
+    <div class="card"><div class="t">ارزش خالص تجمعی در افق</div><div class="v" id="oNet">—</div><div class="u" id="oNetU">پس از کسر سرمایهٔ اولیه</div></div>
+  </div>
+
+  <div class="grid2">
+    <div class="chart-box"><h4>هزینهٔ نقدیِ تجمعی (میلیارد تومان)</h4><canvas id="chCash" height="210"></canvas></div>
+    <div class="chart-box"><h4>ارزش خالص تجمعی نگاهبان (میلیارد تومان)</h4><canvas id="chNet" height="210"></canvas></div>
+  </div>
+</div>
+<div class="foot">
+  <ul>
+    <li>«هزینهٔ نقدیِ تجمعی» فقط جریان نقدی است (سنتی = نیرو؛ نگاهبان = استقرار + عملیات + نیروی کاهش‌یافته) و ارزش ریسک را لحاظ نمی‌کند.</li>
+    <li>«ارزش خالص تجمعی» منفعت کامل (نیرو + ریسک) منهای سرمایهٔ اولیه است؛ جایی که از صفر عبور کند، نقطهٔ سربه‌سر است.</li>
+    <li>اگر ارزش ریسک را صفر بگذارید، می‌بینید که صرفه‌جویی نیرو به‌تنهایی این سرمایه‌گذاری ممتاز را توجیه نمی‌کند — این صادقانه است.</li>
+    <li>ارقام پیش‌فرض تخمینی‌اند و با فایل ساختار هزینه هماهنگ‌اند.</li>
+  </ul>
+</div>
+</div>
+<script>
+const fa=s=>String(s).replace(/[0-9]/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);
+const fmt=n=>fa(Math.round(n||0).toLocaleString('en-US'));
+const mld=n=>fa(((n||0)/1e9).toLocaleString('en-US',{minimumFractionDigits:1,maximumFractionDigits:1}));
+const DEF={horizon:7,gT:9,gN:4,gCost:35000000,deploy:23648152000,ops:1732680000,risk:2500000000};
+const ids=Object.keys(DEF);
+function read(){const o={};ids.forEach(k=>o[k]=parseFloat(document.getElementById(k).value)||0);return o;}
+function resetAll(){ids.forEach(k=>document.getElementById(k).value=DEF[k]);recalc();}
+let chCash,chNet;
+function initCharts(){
+  chCash=new Chart(document.getElementById('chCash'),{type:'line',
+    data:{labels:[],datasets:[
+      {label:'نگهبانی سنتی',data:[],borderColor:'#5B6B7A',backgroundColor:'#5B6B7A',tension:.2},
+      {label:'نگاهبان',data:[],borderColor:'#15B5CB',backgroundColor:'#15B5CB',tension:.2}]},
+    options:{plugins:{legend:{labels:{font:{family:'Vazirmatn'}}}},scales:{x:{ticks:{font:{family:'Vazirmatn'}}},y:{ticks:{font:{family:'Vazirmatn'}}}}}});
+  chNet=new Chart(document.getElementById('chNet'),{type:'line',
+    data:{labels:[],datasets:[{label:'ارزش خالص تجمعی',data:[],borderColor:'#23A65B',backgroundColor:'rgba(35,166,91,.12)',fill:true,tension:.2}]},
+    options:{plugins:{legend:{labels:{font:{family:'Vazirmatn'}}}},scales:{x:{ticks:{font:{family:'Vazirmatn'}}},y:{ticks:{font:{family:'Vazirmatn'}}}}}});
+}
+function recalc(){
+  const v=read();
+  const laborT=v.gT*v.gCost*12, laborN=v.gN*v.gCost*12;
+  const annualBenefit=(laborT-laborN-v.ops)+v.risk;
+  const be=annualBenefit>0? v.deploy/annualBenefit : Infinity;
+  document.getElementById('oBenefit').textContent=fmt(annualBenefit)+' تومان';
+  const beEl=document.getElementById('oBreak'), beU=document.getElementById('oBreakU');
+  if(!isFinite(be)){beEl.textContent='—'; beU.textContent='منفعت سالانه منفی است';}
+  else if(be>v.horizon){beEl.textContent=fa(be.toFixed(1))+' سال'; beU.textContent='فراتر از افق تحلیل';}
+  else {beEl.textContent=fa(be.toFixed(1))+' سال'; beU.textContent='در محدودهٔ افق';}
+  const labels=[],cumT=[],cumN=[],net=[];
+  for(let y=0;y<=v.horizon;y++){
+    labels.push(fa('سال '+y));
+    cumT.push((laborT*y)/1e9);
+    cumN.push((v.deploy+(laborN+v.ops)*y)/1e9);
+    net.push((annualBenefit*y-v.deploy)/1e9);
+  }
+  const netH=annualBenefit*v.horizon-v.deploy;
+  document.getElementById('oNet').textContent=mld(netH*1e9)+' میلیارد';
+  document.getElementById('oNetU').textContent= netH>=0? 'سرمایه بازگشته است':'هنوز در دورهٔ بازگشت';
+  document.getElementById('oNet').className='v '+(netH>=0?'cyan':'');
+  chCash.data.labels=labels;chCash.data.datasets[0].data=cumT;chCash.data.datasets[1].data=cumN;chCash.update();
+  chNet.data.labels=labels;chNet.data.datasets[0].data=net;chNet.update();
+}
+ids.forEach(k=>document.getElementById(k).addEventListener('input',recalc));
+initCharts();recalc();
+</script>
+</body>
+</html>
